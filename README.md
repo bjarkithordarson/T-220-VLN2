@@ -3,12 +3,15 @@ Verklegt námskeið 2 - Vor 2023 - Háskólinn í Reykjavík
 
 ## Getting started
 ### Virtual environment 
+#### First setup
 Setup the virtual environment. You only need to do this once. Do this in the project directory.
 ```
 cd /path/to/project
 python -m venv venv
 ```
-Activate the virtual environment:
+
+#### Activate
+Activate the virtual environment. You need to do this every time you start writing code:
 ```
 source /path/to/project/venv/bin/activate
 ```
