@@ -3,12 +3,12 @@
 h1, h2, h3, p {
     font-family: Gliker, sans-serif;
     color: #18BE72;
+    border: 5px ;
 }
 
 a {
     font-family: Gliker, serif;
     color: #18BE72;
-    border: 5px #18BE72;
 }
 
 .submenu a {
