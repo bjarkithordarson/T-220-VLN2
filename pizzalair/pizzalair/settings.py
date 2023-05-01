@@ -27,20 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'pages',
+    'products.apps.ProductsConfig',
+    'orders.apps.OrdersConfig',
+    'cart.apps.CartConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages',
-    'products',
-    'orders',
-    'cart'
 ]
 
 MIDDLEWARE = [
@@ -81,16 +80,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pizzalair',
-        'USERNAME': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '5432',
-        'OPTIONS': {
-            'sslmode': 'verify-ca',
-            'sslrootcert': '',
-            'sslcert': '',
-            'sslkey': ''
-        }
+        'USER': 'pizzalair',
+        'PASSWORD': 'tuG=L3muT{m%K&ki',
+        'HOST': '35.242.130.83',
+        'PORT': '5432'
     }
 }
 
