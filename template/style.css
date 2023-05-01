@@ -29,6 +29,9 @@ a {
     padding-right: 10px;
     padding-top: 3px;
     padding-bottom: 4px;
+}
+
+a{
     text-decoration: none;
 }
 
@@ -74,10 +77,12 @@ button {
 
 button:active {
     box-shadow: inset 2px 2px #18BE72;
+}
+
 footer {
     background: #ffffff;
     color: #18BE72;
-    font-family: gliker, sans;
+    font-family: Gliker, sans;
 }
 footer > p{
    word-spacing:10px;
@@ -102,3 +107,6 @@ footer > p{
    background: #18BE72;
 }
 
+p {
+    font-size: 12px;
+}
