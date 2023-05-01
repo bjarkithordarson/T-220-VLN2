@@ -1,1 +1,30 @@
-style.css
+
+
+footer {
+    background:#ffffff;
+    color:#18BE72;
+    font-family: gliker, sans;
+}
+footer > p{
+   word-spacing:10px;
+}
+
+.popup{
+    display:flex;
+    flex-direction: column;
+
+}
+
+.beverage{
+    color:#18BE72;
+    font-family: gliker, sans;
+}
+
+.popup > .left{
+    background:#ffffff;
+}
+
+.popup > .right {
+   background: #18BE72;
+}
+
