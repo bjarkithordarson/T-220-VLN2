@@ -56,6 +56,8 @@ input {
 footer {
     font-family: Gliker, sans-serif;
     color: #18BE72;
+    display:inline-block;
+    margin-inline: 10px;
 }
 
 button {
@@ -74,31 +76,39 @@ button {
 
 button:active {
     box-shadow: inset 2px 2px #18BE72;
-footer {
-    background: #ffffff;
-    color: #18BE72;
-    font-family: gliker, sans;
 }
 footer > p{
    word-spacing:10px;
 }
 
-.popup{
-    display:flex;
-    flex-direction: column;
+.popup > .left, .right{
+    display:inline-block;
 
-}
-
-.beverage{
-    color:#18BE72;
-    font-family: gliker, sans;
 }
 
 .popup > .left{
+    width:50%;
+    height:100%;
     background:#ffffff;
+    align-content: center;
+}
+.beverage > p{
+    text-align: center;
+}
+.beverage > button{
+
+  position: relative;
+  margin:10px;
+    height:60px;
+
 }
 
 .popup > .right {
+    width:49%;
+    height:100%;
    background: #18BE72;
+    color:#ffffff ;
 }
-
+.right > #pizza_name, #pizza_description, #pizza_price, p{
+    color:#ffffff;
+}
