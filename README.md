@@ -15,7 +15,18 @@ Activate the virtual environment. You need to do this every time you start writi
 ```
 source /path/to/project/venv/bin/activate
 ```
-Not sure how to do this on Windows :(
+
+##### Windows
+```
+/path/to/project/venv/scripts/activate.bat
+```
+
+### Install
+```
+cd /path/to/project
+pip install -r requirements.txt
+```
+
 ### Starting the server
 Run the commands:
 ```
