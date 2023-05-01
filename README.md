@@ -12,6 +12,7 @@ python -m venv venv
 
 #### Activate
 Activate the virtual environment. You need to do this every time you start writing code:
+#### Mac/Linux
 ```
 source /path/to/project/venv/bin/activate
 ```
