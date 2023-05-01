@@ -1,4 +1,8 @@
-
+@font-face {
+    font-family: "Gliker";
+    src: local("Gliker"),
+            url("./fonts/Gliker-Regular.otf") format("opentype");
+}
 
 h1, h2, h3, p {
     font-family: Gliker, sans-serif;
