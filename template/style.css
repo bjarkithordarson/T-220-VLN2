@@ -1,6 +1,6 @@
 
 
-h1, h2, h3 {
+h1, h2, h3, p {
     font-family: Gliker, sans-serif;
     color: #18BE72;
 }
@@ -71,3 +71,4 @@ button {
 button:active {
     box-shadow: inset 2px 2px #18BE72;
 }
+
