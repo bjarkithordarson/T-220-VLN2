@@ -29,6 +29,9 @@ a {
     padding-right: 10px;
     padding-top: 3px;
     padding-bottom: 4px;
+}
+
+a{
     text-decoration: none;
 }
 
@@ -140,3 +143,4 @@ button:active {
 .right > #pizza_name, #pizza_description, #pizza_price, p{
     color:#ffffff;
 }
+
