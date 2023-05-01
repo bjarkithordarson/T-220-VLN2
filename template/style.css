@@ -1,1 +1,29 @@
-style.css
+
+
+h1, h2, h3 {
+    font-family: Gliker, serif;
+    color: #18BE72;
+}
+
+a {
+    font-family: Gliker, serif;
+    color: #18BE72;
+    border: 5px #18BE72;
+}
+
+.submenu a {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    width: 55px;
+    height: 15px;
+    border: 1px solid #18BE72;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    box-shadow: 2px 2px #18BE72;
+    text-decoration: none;
+}
+
