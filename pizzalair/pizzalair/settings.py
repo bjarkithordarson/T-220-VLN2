@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pages',
+    'products',
+    'orders',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +79,18 @@ WSGI_APPLICATION = 'pizzalair.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pizzalair',
+        'USERNAME': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'verify-ca',
+            'sslrootcert': '',
+            'sslcert': '',
+            'sslkey': ''
+        }
     }
 }
 
