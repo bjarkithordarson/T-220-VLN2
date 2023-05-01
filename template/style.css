@@ -1,8 +1,82 @@
+@font-face {
+    font-family: "Gliker";
+    src: local("Gliker"),
+            url("./fonts/Gliker-Regular.otf") format("opentype");
+}
 
+h1, h2, h3, p {
+    font-family: Gliker, sans-serif;
+    color: #18BE72;
+}
+
+a {
+    font-family: Gliker, serif;
+    color: #18BE72;
+    border: 5px #18BE72;
+}
+
+.submenu a {
+    display: inline-block;
+    box-shadow: 2px 2px #18BE72;
+    font-size: 28px;
+    text-align: center;
+    vertical-align: top;
+    width: 100px;
+    height: 25px;
+    border: 1px solid #18BE72;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    text-decoration: none;
+}
+
+.submenu a:active {
+    box-shadow: inset 2px 2px #18BE72;
+}
+
+form label{
+    font-family: Gliker, sans-serif;
+    color: #18BE72;
+}
+
+
+
+input {
+    background-color: #18BE7250;
+    border: none;
+    border-radius: 5px;
+    width: 350px;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+}
 
 footer {
-    background:#ffffff;
-    color:#18BE72;
+    font-family: Gliker, sans-serif;
+    color: #18BE72;
+}
+
+button {
+    font-family: Gliker, sans-serif;
+    color: #18BE72;
+    box-shadow: 2px 2px #18BE72;
+    text-align: center;
+    vertical-align: top;
+    border: 1px solid #18BE72;
+    border-radius: 3px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+button:active {
+    box-shadow: inset 2px 2px #18BE72;
+footer {
+    background: #ffffff;
+    color: #18BE72;
     font-family: gliker, sans;
 }
 footer > p{
