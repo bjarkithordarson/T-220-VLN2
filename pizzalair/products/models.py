@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import mark_safe
 
 class Product(models.Model):
     name = models.CharField(max_length=120)
@@ -8,6 +9,10 @@ class Product(models.Model):
     loyalty_points = models.IntegerField(default=0)
     loyalty_points_only = models.BooleanField(default=False)
     #category = model.ForeignKey(ProductCategory)
+    def img_preview(self): #new
+        return mark_safe('<img src = "{url}" width = "300"/>'.format(
+             url=self.picture.url
+         ))
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=120)
