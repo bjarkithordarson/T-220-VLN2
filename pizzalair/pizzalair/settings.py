@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os.path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,10 +28,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'pages',
+    'products.apps.ProductsConfig',
+    'orders.apps.OrdersConfig',
+    'cart.apps.CartConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +59,9 @@ ROOT_URLCONF = 'pizzalair.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,7 +73,7 @@ TEMPLATES = [
         },
     },
 ]
-
+print(os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'))
 WSGI_APPLICATION = 'pizzalair.wsgi.application'
 
 
@@ -76,8 +82,12 @@ WSGI_APPLICATION = 'pizzalair.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pizzalair',
+        'USER': 'pizzalair',
+        'PASSWORD': 'tuG=L3muT{m%K&ki',
+        'HOST': '35.242.130.83',
+        'PORT': '5432'
     }
 }
 
@@ -120,6 +130,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+# Uploaded files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

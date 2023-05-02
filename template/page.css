@@ -1,0 +1,91 @@
+body {
+    margin: 90px 0;
+    background-image:
+      linear-gradient(45deg, #18BE72 25%, transparent 25%),
+      linear-gradient(135deg, #18BE72 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #18BE72 75%),
+      linear-gradient(135deg, transparent 75%, #18BE72 75%);
+    background-size:26px 26px; /* Must be a square */
+    background-position:0 0, 12.5px 0, 12.5px -12.5px, 0px 12.5px;
+    background-attachment: fixed;
+}
+header .page,
+.body .page,
+footer .page {
+    width: calc(1280px - 50px - 50px);
+    max-width: calc(100% - 50px - 50px);
+    margin: auto;
+    padding: 0 50px;
+}
+header .page,
+footer .page {
+    max-width: calc(100% - 50px - 50px - 38px - 38px);
+}
+
+header {
+    height: 90px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    overflow: hidden;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+    header .page {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+    }
+    header .page h1 {
+    }
+    header .page nav {
+        grid-area: menu;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        gap: 20px;
+    }
+    header .page nav a {
+        display: inline-block;
+    }
+
+.body {
+    background: white;
+    margin: 0 37px;
+    min-height: calc(100vh - 90px - 90px);
+    overflow: hidden;
+}
+    .body .page {
+        padding: 50px 0;
+    }
+
+footer {
+    background: white;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    position: fixed;
+}
+    footer .page {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    footer .page .contact {
+        display: flex;
+        gap: 20px;
+    }
+    footer .page .social .icon {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    footer .page .social .icon img {
+        width: 35px;
+        height: 35px;
+    }

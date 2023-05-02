@@ -5,14 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0391407d-f3cc-4a2b-b5bf-7d7bdb923c30" name="Changes" comment="">
+<<<<<<< Updated upstream
+      <change afterPath="$PROJECT_DIR$/template/fonts/Gliker-Regular.otf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/template/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/template/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/template.html" afterDir="false" />
+=======
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,24 +35,49 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2PBXIrsUiwNA9zybfh7Vd5VGrRJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Rebekka&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/rebekkalogadottir/Desktop/Skólinn/2. önn/T-220-VLN2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+<<<<<<< Updated upstream
+    "git-widget-placeholder": "Rebekka",
+    "last_opened_file_path": "/home/thordarson/Documents/ru-23-vln2/T-220-VLN2/template/fonts",
+=======
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/rebekkalogadottir/Desktop/Skólinn/2. önn/T-220-VLN2",
+>>>>>>> Stashed changes
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
+<<<<<<< Updated upstream
+}]]></component>
+<<<<<<< Updated upstream
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/template/fonts" />
+    </key>
+  </component>
+=======
+>>>>>>> Stashed changes
+=======
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/template" />
+    </key>
+  </component>
+>>>>>>> Stashed changes
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -48,11 +87,22 @@
       <option name="presentableId" value="Default" />
       <updated>1682931371910</updated>
       <workItem from="1682931373198" duration="861000" />
-      <workItem from="1682932236903" duration="8155000" />
+      <workItem from="1682932236903" duration="8704000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
