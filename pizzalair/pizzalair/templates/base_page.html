@@ -1,0 +1,56 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="page.css">
+    <link rel="stylesheet" href="{% static 'pizzalair/css/style.css' %}">
+    <title>Pizza Lair</title>
+</head>
+<body>
+<header>
+    <div class="page">
+        <h1><a href="/">Pizza Lair</a></h1>
+        <nav>
+            <a href="#">Sign in</a>
+            <a href="#">Sign-up</a>
+            <a class="btn small" href="#">Cart</a>
+        </nav>
+    </div>
+</header>
+
+<div class="body">
+    <div class="page">
+        <h2>{% block page_title %}Untitled Page{% endblock %}</h2>
+        {% block page_body %}
+        <p>Content goes here.</p>
+        {% endblock %}
+    </div>
+</div>
+
+<footer>
+    <div class="page">
+        <div class="contact">
+            <a href="/about">About</a>
+            <a href="/locations">Locations</a>
+            <span>Tel: +354 58 12345</span>
+        </div>
+        <div class="social">
+            <a class="icon facebook" href="#"><span>Check us out on</span><img src="./images/fb_logo.svg" alt="Facebook"></a>
+        </div>
+    </div>
+</footer>
+
+<div class="popup-overlay">
+    <div class="popup">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</div>
+
+</body>
+</html>
