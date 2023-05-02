@@ -21,23 +21,5 @@ class Migration(migrations.Migration):
                 ('description', models.TextField()),
                 ('picture', models.ImageField(upload_to='')),
             ],
-        ),
-        migrations.CreateModel(
-            name='ProductCategory',
-            fields=[
-                ('name', models.CharField(max_length=120)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Pizza',
-            fields=[
-                ('toppings', models.CharField(max_length=12)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Offer',
-            fields=[
-                ('template',models.CharField(max_length=120)),
-            ],
-        ),
+        )
     ]
