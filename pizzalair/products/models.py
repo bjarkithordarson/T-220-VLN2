@@ -18,5 +18,5 @@ class Pizza(models.Model):
 
 class Offer(models.Model):
     #products=models.ForeignKey(Product)
-    template = models.CharField(length=120)
+    template = models.CharField(max_length=120)
 
