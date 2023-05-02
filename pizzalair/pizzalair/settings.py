@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig'
+    'user.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -80,6 +80,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+LOGIN_URL = '/user/login'
+LOGIN_REDIRECT_URL = '/'
 
 
 # Password validation
