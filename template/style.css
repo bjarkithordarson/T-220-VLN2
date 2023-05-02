@@ -14,21 +14,43 @@ a {
     font-family: Gliker, serif;
     color: #18BE72;
 }
+a:hover {
+    text-decoration: underline;
+}
 
-.submenu a {
+a.btn {
     display: inline-block;
-    box-shadow: 2px 2px #18BE72;
-    font-size: 28px;
-    text-align: center;
-    vertical-align: top;
-    width: 100px;
-    height: 25px;
+    box-shadow: 2px 2px 0px #18BE72;
+    font-size: 24px;
     border: 1px solid #18BE72;
-    border-radius: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 3px;
-    padding-bottom: 4px;
+    border-radius: 4px;
+    padding: 4px 10px 3px 10px;
+    text-align: center;
+}
+a.btn.small {
+    font-size: 18px;
+}
+a.btn.large {
+    font-size: 30px;
+}
+
+a.btn.small {
+
+}
+
+a.btn:active {
+    box-shadow: inset 2px 2px #18BE72;
+}
+.submenu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    min-width: 100px;
+    margin: 0 0 50px 0;
+}
+.submenu a{
+    display: inline-block;
+    vertical-align: top;
 }
 
 a{
@@ -88,7 +110,7 @@ footer > p{
    word-spacing:10px;
 }
 
-.popup{
+/*.popup{
     display:flex;
     flex-direction: column;
 
@@ -106,7 +128,81 @@ footer > p{
 .popup > .right {
    background: #18BE72;
 }
+*/
+body.overlay {
+    overflow: hidden;
+}
+body.overlay .popup-overlay {
+    display: flex;
+}
+.popup-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.popup {
+    width: 60%;
+    height: 55%;
+    background: white;
+    border: 2px solid #18BE72;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    display: flex;
+    overflow: hidden;
+}
+    .popup .left,
+    .popup .right {
+        height: 100%;
+        flex: 1;
+    }
+    .popup .left {
+    }
+    .popup .right {
+        background: #18BE72;
+    }
 
 p {
     font-size: 12px;
 }
+
+.product-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.card {
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 30px 0;
+}
+    .card a {
+        display: block;
+        position: relative;
+    }
+    .card img.thumb {
+        width: 100%;
+    }
+    .card .label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: calc(100% - 20px - 20px);
+        color: white;
+        background: #18BE72;
+        border-radius: 13px;
+        padding: 15px 20px;
+    }
+    .card .label a,
+    .card .label p {
+        color: white;
+        margin: 0;
+    }
