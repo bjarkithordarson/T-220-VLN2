@@ -5,8 +5,8 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     description = models.TextField()
     picture = models.ImageField()
-    loyalty_points = models.IntegerField(default = 0)
-    loyalty_points_only = models.BooleanField()
+    loyalty_points = models.IntegerField(default=0)
+    loyalty_points_only = models.BooleanField(default=False)
     #category = model.ForeignKey(ProductCategory)
 
 class ProductCategory(models.Model):
