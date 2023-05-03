@@ -13,17 +13,17 @@ class Product(models.Model):
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
              url=self.picture.url
          ))
-    def get_absolute_url(self):
-        return reverse('')
+
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=120)
-    #product = model.ForeignKey(Product)
+    product = models.ManyToManyField(Product)
 
 class Pizza(Product):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Pizza')
     toppings = models.CharField(max_length=120)
 
 class Offer(Product):
-    #products=models.ForeignKey(Product)
+    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Offer')
     template = models.CharField(max_length=120)
 
