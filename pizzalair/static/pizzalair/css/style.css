@@ -161,6 +161,19 @@ a.btn.large {
 }
 a.btn.xlarge {
     font-size: 50px;
+    width: 200px;
+    font-family: Gliker, sans-serif;
+    color: #18BE72;
+    box-shadow: 5px 5px #18BE72;
+    text-align: center;
+    vertical-align: top;
+    border: 2px solid #18BE72;
+    border-radius: 9px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px;
+    padding-bottom: 3px;
+
 }
 
 a.btn.small {
