@@ -18,10 +18,10 @@ class ProductCategory(models.Model):
     name = models.CharField(max_length=120)
     #product = model.ForeignKey(Product)
 
-class Pizza(models.Model):
+class Pizza(Product):
     toppings = models.CharField(max_length=120)
 
-class Offer(models.Model):
+class Offer(Product):
     #products=models.ForeignKey(Product)
     template = models.CharField(max_length=120)
 
