@@ -6,7 +6,7 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
-            return redirect('login')
+            return redirect('signin')
     return render(request, 'register.html', {
         'form': UserCreationForm()
     })
