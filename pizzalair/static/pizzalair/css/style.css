@@ -4,6 +4,7 @@
             url("../fonts/Gliker-Regular.otf") format("opentype");
 }
 
+
 body {
     margin: 0;
     background-image:
@@ -192,9 +193,33 @@ a{
 form label{
     font-family: Gliker, sans-serif;
     color: #18BE72;
+    display: block;
 }
 
+.form-horizontal {
+    display: grid;
+    margin-left: 100px;
+}
 
+.helptext {
+    display: none;
+}
+
+.btn_primary {
+    display: block;
+    background-color: white;
+    border: 1px solid #18BE72;
+    width: 70px;
+    box-shadow: 2px 2px #18BE72;
+
+}
+
+    .btn-primary:active {
+        box-shadow: inset 2px 2px #18BE72;
+    }
+.page h1 {
+    margin-left: 100px;
+}
 
 input {
     background-color: #18BE7250;
@@ -329,3 +354,4 @@ p {
         color: white;
         margin: 0;
     }
+

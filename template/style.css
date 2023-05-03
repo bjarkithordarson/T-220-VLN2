@@ -67,6 +67,7 @@ form label{
 }
 
 input {
+    display: block;
     background-color: #18BE7250;
     border: none;
     border-radius: 5px;
@@ -121,14 +122,10 @@ button:active {
     height:80%;
 }
 
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .beverage button {
-      position: center;
-  margin:10px;
+    position: center;
+    margin:10px;
     height:60px;
     align-self: center;
 }
@@ -153,7 +150,7 @@ button:active {
 .right > #pizza_name, #pizza_description, #pizza_price, p{
     color:#ffffff;
 }
-*/
+
 body.overlay {
     overflow: hidden;
 }
