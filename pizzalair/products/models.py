@@ -16,9 +16,15 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('')
 
+    def __str__(self):
+        return self.name
+
 class ProductCategory(models.Model):
     name = models.CharField(max_length=120)
     #product = model.ForeignKey(Product)
+
+    def __str__(self):
+        return self.name
 
 class Pizza(Product):
     toppings = models.CharField(max_length=120)
@@ -26,4 +32,3 @@ class Pizza(Product):
 class Offer(Product):
     #products=models.ForeignKey(Product)
     template = models.CharField(max_length=120)
-
