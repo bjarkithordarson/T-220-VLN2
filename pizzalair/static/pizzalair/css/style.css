@@ -15,6 +15,26 @@ body {
     background-position:0 0, 12.5px 0, 12.5px -12.5px, 0px 12.5px;
     background-attachment: fixed;
 }
+#HeroLogo {
+    font-size: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: -2px -2px 0px #18BE72,
+                 -2px 0px 0px #18BE72,
+                 -2px 2px 0px #18BE72,
+                 0px -2px 0px #18BE72,
+                 0px 2px 0px #18BE72,
+                 2px -2px 0px #18BE72,
+                 2px 0px 0px #18BE72,
+                 2px 1px 0px #18BE72,
+                 10px 10px 0px #18BE72;
+}
+#HeroLogo img {
+    height: 200px;
+    margin: 20px;
+}
 header .page,
 .body .page,
 footer .page {
@@ -26,6 +46,13 @@ footer .page {
 header .page,
 footer .page {
     max-width: calc(100% - 50px - 50px - 38px - 38px);
+}
+
+body.frontpage header,
+body.frontpage footer {
+    background: none;
+    backdrop-filter: none;
+    box-shadow: none;
 }
 
 header {
@@ -130,6 +157,9 @@ a.btn.small {
 }
 a.btn.large {
     font-size: 30px;
+}
+a.btn.xlarge {
+    font-size: 50px;
 }
 
 a.btn.small {
