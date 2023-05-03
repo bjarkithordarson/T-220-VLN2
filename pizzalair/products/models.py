@@ -20,10 +20,9 @@ class ProductCategory(models.Model):
     product = models.ManyToManyField(Product)
 
 class Pizza(Product):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Pizza')
+    #product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Pizza')
     toppings = models.CharField(max_length=120)
 
 class Offer(Product):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Offer')
+    #product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Offer')
     template = models.CharField(max_length=120)
-
