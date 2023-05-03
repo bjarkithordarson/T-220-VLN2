@@ -1,0 +1,15 @@
+{% extends "base_page.html" %}
+{% load humanize %}
+{% block page_title %}{{product.name}}{% endblock %}
+{% block page_body %}
+    <img src="{{ product.picture.url }}" alt="{{ product.name }}">
+    <div>
+        {{product.description}}
+    </div>
+    <div>
+        {{ product.price | intcomma }} kr.
+    </div>
+    <div>
+        <button onclick="javascript:alert('🛒')">Add to Cart</button>
+    </div>
+{% endblock %}
