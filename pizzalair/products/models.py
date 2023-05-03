@@ -15,15 +15,20 @@ class Product(models.Model):
          ))
 
 
+    def __str__(self):
+        return self.name
+
 class ProductCategory(models.Model):
     name = models.CharField(max_length=120)
     product = models.ManyToManyField(Product)
 
+    def __str__(self):
+        return self.name
+
 class Pizza(Product):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Pizza')
+    #product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Pizza')
     toppings = models.CharField(max_length=120)
 
 class Offer(Product):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Offer')
+    #product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Offer')
     template = models.CharField(max_length=120)
-

@@ -5,7 +5,7 @@
 }
 
 body {
-    margin: 90px 0;
+    margin: 0;
     background-image:
       linear-gradient(45deg, #18BE72 25%, transparent 25%),
       linear-gradient(135deg, #18BE72 25%, transparent 25%),
@@ -14,6 +14,26 @@ body {
     background-size:26px 26px; /* Must be a square */
     background-position:0 0, 12.5px 0, 12.5px -12.5px, 0px 12.5px;
     background-attachment: fixed;
+}
+#HeroLogo {
+    font-size: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: -2px -2px 0px #18BE72,
+                 -2px 0px 0px #18BE72,
+                 -2px 2px 0px #18BE72,
+                 0px -2px 0px #18BE72,
+                 0px 2px 0px #18BE72,
+                 2px -2px 0px #18BE72,
+                 2px 0px 0px #18BE72,
+                 2px 1px 0px #18BE72,
+                 10px 10px 0px #18BE72;
+}
+#HeroLogo img {
+    height: 200px;
+    margin: 20px;
 }
 header .page,
 .body .page,
@@ -28,15 +48,24 @@ footer .page {
     max-width: calc(100% - 50px - 50px - 38px - 38px);
 }
 
+body.frontpage header,
+body.frontpage footer {
+    background: none;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
 header {
     height: 90px;
     width: 100%;
     box-shadow: 0 0 15px rgba(0,0,0,0.15);
     overflow: hidden;
-    background: white;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 100;
 }
     header .page {
         display: flex;
@@ -58,6 +87,7 @@ header {
     }
 
 .body {
+    padding: 90px 0;
     background: white;
     margin: 0 37px;
     min-height: calc(100vh - 90px - 90px);
@@ -70,7 +100,8 @@ header {
     }
 
 footer {
-    background: white;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
     bottom: 0;
     left: 0;
     width: 100%;
@@ -126,6 +157,9 @@ a.btn.small {
 }
 a.btn.large {
     font-size: 30px;
+}
+a.btn.xlarge {
+    font-size: 50px;
 }
 
 a.btn.small {
@@ -195,11 +229,6 @@ button:active {
     box-shadow: inset 2px 2px #18BE72;
 }
 
-footer {
-    background: #ffffff;
-    color: #18BE72;
-    font-family: Gliker, sans;
-}
 footer > p{
    word-spacing:10px;
 }
