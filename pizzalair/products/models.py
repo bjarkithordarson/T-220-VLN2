@@ -13,6 +13,8 @@ class Product(models.Model):
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
              url=self.picture.url
          ))
+    def get_absolute_url(self):
+        return reverse('')
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=120)

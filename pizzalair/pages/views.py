@@ -8,6 +8,9 @@ def index(request):
     context = {
         "page_title": "Welcome to Pizza Lair!",
         "page_body": """
+        <ul>
+        <li><a href="/products">Products</a></li>
+        </ul>
         <p>:)</p>
         """
     }
