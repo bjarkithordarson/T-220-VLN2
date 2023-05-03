@@ -159,24 +159,33 @@ a{
 form label{
     font-family: Gliker, sans-serif;
     color: #18BE72;
+    display: block;
 }
 
-.page div {
+.form-horizontal {
     display: grid;
     margin-left: 100px;
 }
 
-.btn-primary {
+.helptext {
+    display: none;
+}
+
+.btn_primary {
+    display: block;
     background-color: white;
     border: 1px solid #18BE72;
-    width: 60px;
+    width: 70px;
     box-shadow: 2px 2px #18BE72;
-    margin-left: 100px;
+
 }
 
     .btn-primary:active {
         box-shadow: inset 2px 2px #18BE72;
     }
+.page h1 {
+    margin-left: 100px;
+}
 
 input {
     background-color: #18BE7250;

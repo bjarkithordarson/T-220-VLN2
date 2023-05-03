@@ -1,19 +1,18 @@
 {% extends "base_page.html" %}
 {% block page_body %}
-    <form method="post" class="form form-horizontal">
+    <form method="post" class="form form-horizontal" style="display: block">
         {% csrf_token %}
         <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text"></div>
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
         </div>
 
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control">
+            <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
         </div>
-
-    <input type="submit" class="btn btn-primary" value="Login" id="exampleInputPassword1"/>
+    <input type="submit" class="btn btn_primary" value="Login"/>
     </form>
 
 {% endblock %}
+
