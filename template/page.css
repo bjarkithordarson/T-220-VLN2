@@ -70,22 +70,25 @@ footer {
     box-shadow: 0 0 15px rgba(0,0,0,0.15);
     position: fixed;
 }
-    footer .page {
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    footer .page .contact {
-        display: flex;
-        gap: 20px;
-    }
-    footer .page .social .icon {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    footer .page .social .icon img {
-        width: 35px;
-        height: 35px;
-    }
+footer .page {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer .page .contact {
+    display: flex;
+    gap: 20px;
+}
+footer .page .social .icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+footer .page .social .icon img {
+    width: 35px;
+    height: 35px;
+}
+
+
+

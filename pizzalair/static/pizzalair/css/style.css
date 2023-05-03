@@ -4,6 +4,7 @@
             url("../fonts/Gliker-Regular.otf") format("opentype");
 }
 
+
 body {
     margin: 90px 0;
     background-image:
@@ -160,7 +161,22 @@ form label{
     color: #18BE72;
 }
 
+.page div {
+    display: grid;
+    margin-left: 100px;
+}
 
+.btn-primary {
+    background-color: white;
+    border: 1px solid #18BE72;
+    width: 60px;
+    box-shadow: 2px 2px #18BE72;
+    margin-left: 100px;
+}
+
+    .btn-primary:active {
+        box-shadow: inset 2px 2px #18BE72;
+    }
 
 input {
     background-color: #18BE7250;
@@ -300,3 +316,4 @@ p {
         color: white;
         margin: 0;
     }
+

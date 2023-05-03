@@ -92,7 +92,7 @@ DATABASES = {
 }
 
 LOGIN_URL = '/user/login'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL: str = '/user/profile'
 
 
 # Password validation
@@ -142,3 +142,5 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
