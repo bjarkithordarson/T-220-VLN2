@@ -4,13 +4,8 @@ from django.template import loader
 
 # Create your views here.
 def index(request):
-    template = loader.get_template("page.html")
-    context = {
-        "page_title": "Welcome to Pizza Lair!",
-        "page_body": """
-        <p>:)</p>
-        """
-    }
+    template = loader.get_template("frontpage.html")
+    context = { }
     return HttpResponse(template.render(context, request))
 
 def about(request):

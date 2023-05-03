@@ -14,14 +14,21 @@ class Product(models.Model):
              url=self.picture.url
          ))
 
+
+    def __str__(self):
+        return self.name
+
 class ProductCategory(models.Model):
     name = models.CharField(max_length=120)
-    #product = model.ForeignKey(Product)
+    product = models.ManyToManyField(Product)
 
-class Pizza(models.Model):
+    def __str__(self):
+        return self.name
+
+class Pizza(Product):
+    #product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Pizza')
     toppings = models.CharField(max_length=120)
 
-class Offer(models.Model):
-    #products=models.ForeignKey(Product)
+class Offer(Product):
+    #product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Offer')
     template = models.CharField(max_length=120)
-
