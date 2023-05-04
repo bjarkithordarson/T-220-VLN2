@@ -23,10 +23,11 @@
             {% else %}
                 <a href="{% url 'signin' %}">Sign in</a>
                 <a href="{% url 'signup' %}">Sign up</a>
+
             {% endif %}
 
 
-            <a class="btn small" href="#">Cart</a>
+            <a class="btn small" href="{% url 'cart' %}">Cart</a>
         </nav>
     </div>
 </header>
