@@ -43,7 +43,11 @@ class Cart(models.Model):
         product = Product.object.filter(id = product_ids)
 
         cart = self.cart.copy()
+<<<<<<< HEAD
 #        #for product in
+=======
+        #for product in
+>>>>>>> 4d0eb08 (Syntax errors.)
 
 
 
@@ -81,7 +85,7 @@ class Cart(models.Model):
         product = Product.object.filter(id = product_ids)
 
         cart = self.cart.copy()
-  #      for product in
+        #for product in
 
 
 
