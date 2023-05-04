@@ -7,7 +7,7 @@ from user.models import User
 # Create your models here.
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
-    created_at = models.DateField(defult = datetime)
+    created_at = models.DateField(default = datetime)
 
 class CartItem(models.Model):
     products = models.ManyToManyField(Product)
