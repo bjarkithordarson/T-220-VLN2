@@ -77,6 +77,22 @@ TEMPLATES = [
 print(os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'))
 WSGI_APPLICATION = 'pizzalair.wsgi.application'
 
+# Cache
+TEST_MEMCACHE = False
+if not DEBUG or TEST_MEMCACHE:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': '127.0.0.1:11211',
+        }
+    }
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        }
+    }
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

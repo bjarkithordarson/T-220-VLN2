@@ -34,17 +34,16 @@
             <span>Tel: +354 58 12345</span>
         </div>
         <div class="social">
-            <a class="icon facebook" href="#"><span>Check us out on</span><img src="./images/fb_logo.svg" alt="Facebook"></a>
+            <a class="icon facebook" href="#"><span>Check us out on</span><img src="{% static 'pizzalair/images/fb_logo.svg' %}" alt="Facebook"></a>
         </div>
     </div>
 </footer>
 
 <div class="popup-overlay">
-    <div class="popup">
-        <div class="left"></div>
-        <div class="right"></div>
+    <div id="ProductPopup" class="popup">
     </div>
 </div>
-
+{% include 'base_popup.html' %}
+<script type="text/javascript" src="{% static 'pizzalair/scripts/main.js' %}"></script>
 </body>
 </html>
