@@ -1,0 +1,35 @@
+{% extends "base_page.html" %}
+{% load static %}
+
+{% block page_title %}
+    Your order
+{% endblock %}
+
+{% block page_body %}
+<h2>Your Items</h2>
+<table class="cart"></table>
+   <thead>
+       <tr>
+           <th>Product</th>
+           <th>Quantity</th>
+           <th>Remove</th>
+           <th>Price</th>
+           <th>Total price</th>
+
+       </tr>
+   </thead>
+{% for product in products %}
+    <div class="card">
+        <a href="{% url 'product_details' product.id %}">
+            <img class="thumb" src="{{  product.picture.url }}" alt="{{ product.name }}">
+            <div class="label">
+                <a href="{% url 'product_details' product.id %}">{{ product.name }}</a>
+                <p>{{ product.description }}</p>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+
+
+
+{% endblock %}

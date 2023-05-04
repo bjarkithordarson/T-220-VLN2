@@ -7,10 +7,12 @@ from django.conf import settings
 from products.models import Product
 
 
-
 # Create your models here.
 class Cart(models.Model):
+    users = models.ForeignKey(User, on_delete = models.CASCADE)
+    created_at = models.DateField(default = datetime)
 
+    """
     def __init__(self, request):
         self.session = request.session
         cart = self.session.get(settings.CART)
@@ -56,13 +58,12 @@ class Cart(models.Model):
     def get_total_price(self):
         return sum(Decimal(item['price'] * item['quantity'] for item in self.cart.values()))
 
-
+   
     def clear(self):
         del self.session[settings.CART_SESSION_ID]
         self.save()
 
-   # users = models.ForeignKey(User, on_delete = models.CASCADE)
-    #created_at = models.DateField(default = datetime)
+   
 
 
     def __init__(self, request):
@@ -101,7 +102,7 @@ class Cart(models.Model):
 
    # users = models.ForeignKey(User, on_delete = models.CASCADE)
     #created_at = models.DateField(default = datetime)
-
+"""
 
 class CartItem(models.Model):
     products = models.ManyToManyField(Product)

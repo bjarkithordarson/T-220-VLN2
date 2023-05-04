@@ -1,10 +1,27 @@
+from django.http import HttpResponse
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 from .models import Cart, CartItem
 from django.shortcuts import render, redirect, get_object_or_404
 from products.models import Product
-
+from django.template import loader
 
 # Create your views here.
+
+
+
+
+def index(request):
+    template = loader.get_template("cart.html")
+    cart = Cart.objects.all()
+
+    context = {
+        "page_title": "Menu",
+        "products": cart
+    }
+
+    return HttpResponse(template.render(context, request))
+
+
 
 def cart_add(request, product_id):
     cart = Cart(request)
@@ -45,16 +62,6 @@ def item_increment(request, id):
     cart.clear()
     return redirect("cart")"""
 
-def cart_detail(request):
-
-    return render(request, 'cart.html')
 
 
-def product_details(request, product_id):
-    template = loader.get_template("details.html")
-    product = get_object_or_404(Product, pk=product_id)
 
-    context = {
-        "product": product
-    }
-    return HttpResponse(template.render(context, request))
