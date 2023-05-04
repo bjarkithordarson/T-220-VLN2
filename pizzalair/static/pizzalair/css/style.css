@@ -289,25 +289,40 @@ body.overlay .popup-overlay {
     border: 2px solid #18BE72;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
-    display: flex;
+    display: block;
     overflow: hidden;
+    position: relative;
 }
     .popup .content {
         display: flex;
     }
     .popup .content .left,
     .popup .content .right {
-        height: 100%;
+        height: auto;
         flex: 1;
     }
     .popup .left {
     }
     .popup .right {
+        position: relative;
         background: #18BE72;
     }
     .popup .right p,
     .popup .right h2 {
         color: white;
+        text-align: center;
+    }
+    .close {
+        position: absolute;
+        top: 320px;
+        right: 50px;
+        box-shadow: 2px 2px white;
+    }
+    .add-to-cart {
+        position: absolute;
+        top: 320px;
+        right: 140px;
+        box-shadow: 2px 2px white;
     }
 
 p {
