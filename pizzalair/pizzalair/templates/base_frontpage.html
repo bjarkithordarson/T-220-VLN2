@@ -17,7 +17,9 @@
         <nav>
             <a class="btn small" href="#">Merch</a>
         </nav>
+
         {% include "navigation.html" %}
+
         <nav>
             {% if user.is_authenticated %}
                 <a href="{% url 'signout' %}">Sign out</a>
