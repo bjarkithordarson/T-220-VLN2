@@ -230,6 +230,9 @@ form label{
     .btn-primary:active {
         box-shadow: inset 2px 2px #18BE72;
     }
+.page h1 {
+    margin-left: 100px;
+}
 
 input {
     background-color: #18BE7250;
@@ -292,7 +295,6 @@ body.overlay {
 }
 body.overlay .popup-overlay {
     display: flex;
-    z-index: 200;
 }
 .popup-overlay {
     position: absolute;
@@ -306,7 +308,7 @@ body.overlay .popup-overlay {
     align-items: center;
 }
 .popup {
-    width: 1280px;
+    width: 60%;
     height: 55%;
     background: white;
     border: 2px solid #18BE72;

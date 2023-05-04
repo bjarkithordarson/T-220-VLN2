@@ -8,6 +8,10 @@ from products.models import Product
 
 # Create your models here.
 class Cart(models.Model):
+<<<<<<< Updated upstream
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    created_at = models.DateField(default = datetime)
+=======
     def __init__(self, request):
         self.session = request.session
         cart = self.session.get(settings.CART)
@@ -44,6 +48,7 @@ class Cart(models.Model):
 
    # user = models.ForeignKey(User, on_delete = models.CASCADE)
     #created_at = models.DateField(default = datetime)
+>>>>>>> Stashed changes
 
 class CartItem(models.Model):
     products = models.ManyToManyField(Product)
