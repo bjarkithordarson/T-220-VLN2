@@ -15,7 +15,13 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def product_details(request, product_id):
-    template = loader.get_template("details.html")
+    is_popup = request.GET.get('popup', False)
+
+    if is_popup:
+        template = loader.get_template("details_popup.html")
+    else:
+        template = loader.get_template("details.html")
+
     product = get_object_or_404(Product, pk=product_id)
 
     context = {

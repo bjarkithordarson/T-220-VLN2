@@ -1,0 +1,9 @@
+{% load humanize %}
+<div class="left">
+    <img src="{{ product.picture.url }}" alt="">
+</div>
+<div class="right">
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p>{{ product.price | intcomma }} kr.</p>
+</div>
