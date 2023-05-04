@@ -297,7 +297,7 @@ body.overlay .popup-overlay {
     display: flex;
 }
 .popup-overlay {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
@@ -317,8 +317,11 @@ body.overlay .popup-overlay {
     display: flex;
     overflow: hidden;
 }
-    .popup .left,
-    .popup .right {
+    .popup .content {
+        display: flex;
+    }
+    .popup .content .left,
+    .popup .content .right {
         height: 100%;
         flex: 1;
     }
@@ -326,6 +329,10 @@ body.overlay .popup-overlay {
     }
     .popup .right {
         background: #18BE72;
+    }
+    .popup .right p,
+    .popup .right h2 {
+        color: white;
     }
 
 p {
