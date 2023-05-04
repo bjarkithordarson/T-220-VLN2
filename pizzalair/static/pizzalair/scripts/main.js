@@ -13,6 +13,8 @@ product_card_links.forEach(link => {
         product_popup_content.innerHTML = popup_content;
         document.body.classList.add("overlay");
         console.log(popup_content);
-        window.history.pushState('page2', 'Title', url);
+        //window.history.pushState('page2', 'Title', url);
     })
+
 });
+
