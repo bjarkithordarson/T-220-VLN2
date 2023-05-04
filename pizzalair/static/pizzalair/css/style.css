@@ -292,6 +292,7 @@ body.overlay {
 }
 body.overlay .popup-overlay {
     display: flex;
+    z-index: 200;
 }
 .popup-overlay {
     position: absolute;
@@ -305,7 +306,7 @@ body.overlay .popup-overlay {
     align-items: center;
 }
 .popup {
-    width: 60%;
+    width: 1280px;
     height: 55%;
     background: white;
     border: 2px solid #18BE72;
