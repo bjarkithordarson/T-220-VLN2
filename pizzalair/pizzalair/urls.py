@@ -1,7 +1,7 @@
 """
 URL configuration for pizzalair project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The urlpatterns list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
 Examples:
 Function views
@@ -21,8 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('pages.urls'), name="home"),
-    path('products', include('products.urls'), name="products"),
+    path('products/', include('products.urls'), name="products"),
     path('cart/', include('cart.urls'), name="cart"),
     path('admin/', admin.site.urls),
-    path('user/', include('user.urls'))
+    path('users/', include('user.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

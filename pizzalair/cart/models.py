@@ -1,16 +1,14 @@
 import datetime
+from _decimal import Decimal
+
 from django.db import models
 from user.models import User
 from django.conf import settings
-
 from products.models import Product
 
 
 # Create your models here.
 class Cart(models.Model):
-
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    created_at = models.DateField(default = datetime)
 
     def __init__(self, request):
         self.session = request.session
@@ -39,12 +37,28 @@ class Cart(models.Model):
 
     def __iter__(self):
         product_ids = self.cart.keys()
-        product = Product.object.filter(id = product_ids)
+        products = Product.object.filter(id = product_ids)
 
         cart = self.cart.copy()
-        for product in
+        for product in products:
+            cart[str(product.id)]['product'] = product
+
+        for item in cart.values():
+            item['price'] = Decimal(item['price'])
+            item['total_price'] = item['price'] * item['quantity']
+            yield item
+
+    def __len__(self):
+        return sum(item['quantity'] for item in self.cart.values())
 
 
+    def get_total_price(self):
+        return sum(Decimal(item['price'] * item['quantity'] for item in self.cart.values()))
+
+
+    def clear(self):
+        del self.session[settings.CART_SESSION_ID]
+        self.save()
 
    # user = models.ForeignKey(User, on_delete = models.CASCADE)
     #created_at = models.DateField(default = datetime)
@@ -54,16 +68,5 @@ class CartItem(models.Model):
     products = models.ManyToManyField(Product)
     amount = models.IntegerField(default=1)
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
-
-
-
-    def remove(self, request):
-        pass
-
-    def decrement(self, product):
-        pass
-
-    def clear(self, request):
-        pass
 
 
