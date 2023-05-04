@@ -17,18 +17,8 @@
         <nav>
             <a class="btn small" href="#">Merch</a>
         </nav>
-        <nav>
-            {% if user.is_authenticated %}
-                <a href="{% url 'signout' %}">Sign out</a>
-            {% else %}
-                <a href="{% url 'signin' %}">Sign in</a>
-                <a href="{% url 'signup' %}">Sign up</a>
 
-            {% endif %}
-
-
-            <a class="btn small" href="{% url 'cart' %}">Cart</a>
-        </nav>
+        {% include "navigation.html" %}
     </div>
 </header>
 
@@ -59,13 +49,7 @@
         </div>
     </div>
 </footer>
-
-<div class="popup-overlay">
-    <div class="popup">
-        <div class="left"></div>
-        <div class="right"></div>
-    </div>
-</div>
-
+{% include 'base_popup.html' %}
+<script type="text/javascript" src="{% static 'pizzalair/scripts/main.js' %}"></script>
 </body>
 </html>

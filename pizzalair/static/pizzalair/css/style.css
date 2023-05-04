@@ -230,9 +230,6 @@ form label{
     .btn-primary:active {
         box-shadow: inset 2px 2px #18BE72;
     }
-.page h1 {
-    margin-left: 100px;
-}
 
 input {
     background-color: #18BE7250;
@@ -270,26 +267,6 @@ button:active {
 footer > p{
    word-spacing:10px;
 }
-
-/*.popup{
-    display:flex;
-    flex-direction: column;
-
-}
-
-.beverage{
-    color:#18BE72;
-    font-family: gliker, sans;
-}
-
-.popup > .left{
-    background:#ffffff;
-}
-
-.popup > .right {
-   background: #18BE72;
-}
-*/
 body.overlay {
     overflow: hidden;
 }
@@ -297,7 +274,7 @@ body.overlay .popup-overlay {
     display: flex;
 }
 .popup-overlay {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
@@ -317,8 +294,11 @@ body.overlay .popup-overlay {
     display: flex;
     overflow: hidden;
 }
-    .popup .left,
-    .popup .right {
+    .popup .content {
+        display: flex;
+    }
+    .popup .content .left,
+    .popup .content .right {
         height: 100%;
         flex: 1;
     }
@@ -326,6 +306,10 @@ body.overlay .popup-overlay {
     }
     .popup .right {
         background: #18BE72;
+    }
+    .popup .right p,
+    .popup .right h2 {
+        color: white;
     }
 
 p {
