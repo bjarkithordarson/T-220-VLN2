@@ -43,7 +43,7 @@ class Cart(models.Model):
         product = Product.object.filter(id = product_ids)
 
         cart = self.cart.copy()
-        for product in
+#        #for product in
 
 
 
@@ -81,7 +81,7 @@ class Cart(models.Model):
         product = Product.object.filter(id = product_ids)
 
         cart = self.cart.copy()
-        for product in
+  #      for product in
 
 
 
