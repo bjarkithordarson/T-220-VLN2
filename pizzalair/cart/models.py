@@ -6,6 +6,7 @@ from django.conf import settings
 from products.models import Product
 
 
+
 # Create your models here.
 class Cart(models.Model):
 
