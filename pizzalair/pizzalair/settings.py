@@ -31,17 +31,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pages',
+    'pages.apps.PagesConfig',
     'products.apps.ProductsConfig',
     'orders.apps.OrdersConfig',
     'cart.apps.CartConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
     'django.contrib.humanize'
 ]
 
@@ -110,8 +110,8 @@ DATABASES = {
     }
 }
 
-LOGIN_URL = '/users/login'
-LOGIN_REDIRECT_URL: str = '/users/profile'
+#LOGIN_URL = '/users/login'
+#LOGIN_REDIRECT_URL: str = '/users/profile'
 
 
 # Password validation
