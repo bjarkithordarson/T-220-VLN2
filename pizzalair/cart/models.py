@@ -43,12 +43,7 @@ class Cart(models.Model):
         product = Product.object.filter(id = product_ids)
 
         cart = self.cart.copy()
-<<<<<<< HEAD
-#        #for product in
-=======
         #for product in
->>>>>>> 4d0eb08 (Syntax errors.)
-
 
 
    # users = models.ForeignKey(User, on_delete = models.CASCADE)
