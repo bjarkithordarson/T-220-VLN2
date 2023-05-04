@@ -1,6 +1,6 @@
 import datetime
 from django.db import models
-from user.models import User
+from users.models import User
 from django.conf import settings
 
 from products.models import Product
@@ -46,7 +46,7 @@ class Cart(models.Model):
 
 
 
-   # user = models.ForeignKey(User, on_delete = models.CASCADE)
+   # users = models.ForeignKey(User, on_delete = models.CASCADE)
     #created_at = models.DateField(default = datetime)
 
 
@@ -84,7 +84,7 @@ class Cart(models.Model):
 
 
 
-   # user = models.ForeignKey(User, on_delete = models.CASCADE)
+   # users = models.ForeignKey(User, on_delete = models.CASCADE)
     #created_at = models.DateField(default = datetime)
 
 

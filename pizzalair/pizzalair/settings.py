@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user.apps.UsersConfig',
+    'users.apps.UsersConfig',
     'django.contrib.humanize'
 ]
 
@@ -94,8 +94,8 @@ DATABASES = {
     }
 }
 
-LOGIN_URL = '/user/login'
-LOGIN_REDIRECT_URL: str = '/user/profile'
+LOGIN_URL = '/users/login'
+LOGIN_REDIRECT_URL: str = '/users/profile'
 
 
 # Password validation

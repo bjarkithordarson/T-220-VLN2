@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Order(models.Model):
     #cart = models.ForeignKey(Cart)
-    #user = models.ForeignKey(User)
+    #users = models.ForeignKey(User)
     is_paid = models.BooleanField(default=False)
     billing_name = models.TextField()
     billing_address = models.TextField()
