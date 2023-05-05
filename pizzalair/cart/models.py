@@ -57,6 +57,8 @@ class Cart(models.Model):
 
     def get_total_price(self):
         return sum(Decimal(item['price'] * item['quantity'] for item in self.cart.values()))
+   # users = models.ForeignKey(User, on_delete = models.CASCADE)
+    #created_at = models.DateField(default = datetime)
 
 
    

@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='cart',
             name='users',
-            field=models.ManyToManyField(to='users.user'),
+            field=models.ManyToManyField(to='users.user.old'),
         ),
     ]

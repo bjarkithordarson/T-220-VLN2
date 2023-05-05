@@ -1,15 +1,22 @@
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
-from django.template import loader
-from products.models import Product, ProductCategory
 
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, JsonResponse
+from django.template import loader
+from products.models import Product
+from products.models import Pizza
+from products.models import ProductCategory
 
 # Create your views here.
 def index(request):
+    if 'search_filter' in request.GET:
+        search_filter = request.GET['search_filter']
+        pizzas = Pizza.objects.filter(name__icontains=search_filter).order_by('name')
+        return JsonResponse({'data': pizzas})
     template = loader.get_template("category.html")
     products = Product.objects.all()
-
+    productcategory = ProductCategory.objects.filter(filter=True)
     context = {
+        "productcategory": productcategory,
         "page_title": "Menu",
         "products": products
     }
@@ -42,3 +49,4 @@ def category(request, category_id):
         "products": products
     }
     return HttpResponse(template.render(context, request))
+

@@ -220,7 +220,6 @@ form label{
     }
 
 .helptext {
-    display: none;
 }
 
 .btn_primary {
@@ -240,7 +239,7 @@ input {
     background-color: #18BE7250;
     border: none;
     border-radius: 5px;
-    width: 350px;
+    min-width: 350px;
     margin-bottom: 10px;
     padding: 10px 10px;
     box-sizing: border-box;
@@ -392,3 +391,44 @@ p {
         margin: 5px;
     }
 
+a.avatar {
+    display: flex !important;
+    align-items: center;
+    justify-items: center;
+    gap: 15px;
+}
+a.avatar img {
+    border-radius: 50%;
+}
+#LoginForm,
+#RegisterForm{
+    width: 40%;
+    margin: auto;
+}
+    #LoginForm input,
+    #RegisterForm input {
+        width: 100%;
+    }
+
+form .errors,
+form .errorlist{
+    color: red;
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-size: 0.8em;
+}
+
+form .helptext {
+    color: #999;
+    font-size: 0.8em;
+    display: none;
+}
+    form .helptext ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    form input:focus + br + .helptext {
+        display: block;
+    }
