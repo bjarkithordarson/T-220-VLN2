@@ -1,15 +1,29 @@
 {% extends "base_page.html" %}
+{% block page_title %}Login{% endblock %}
 {% block page_body %}
-    <form method="post" class="form form-horizontal" style="display: block">
+    <form id="LoginForm" method="post" style="display: block">
         {% csrf_token %}
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+        {% if form.errors %}
+          <ul class="errors">
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <div>
+            <label>
+                Username<br>
+                <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required>
+            </label>
         </div>
 
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+        <div>
+            <label>
+                Password<br>
+                <input type="password" name="password" required id="id_password">
+            </label>
         </div>
     <input type="submit" class="btn btn_primary" value="Login"/>
     </form>

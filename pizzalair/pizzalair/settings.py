@@ -110,8 +110,8 @@ DATABASES = {
     }
 }
 
-#LOGIN_URL = '/users/login'
-#LOGIN_REDIRECT_URL: str = '/users/profile'
+LOGIN_URL = '/users/signin'
+LOGIN_REDIRECT_URL: str = '/users/profile'
 
 
 # Password validation
