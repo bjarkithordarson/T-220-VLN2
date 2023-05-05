@@ -3,7 +3,7 @@ from django.utils.html import mark_safe
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=120)
-    #product = models.ManyToManyField(Product)
+    filter = models.BooleanField()
 
     def __str__(self):
         return self.name
