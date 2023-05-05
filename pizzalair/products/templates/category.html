@@ -2,17 +2,15 @@
 {% block page_title %}{{page_title}}{% endblock %}
 {% block page_body %}
     <form method="get">
-        <input type="text" placeholder="Search the Pizzalair..." value ='{{ request.GET.q }}'>
+        <input id = "search_filter" type="text" placeholder="Search the Pizzalair..." value ='{{ request.GET.q }}'>
     <label for="categoryselector">Choose category:</label>
     <select id = categoryselector>
-    {% for ProductCategory in products %}
-    <option value="{{ProductCategory.name }}" {% if request.GET.category == ProductCategory.name %}selected{% endif %}>{{ProductCategory.name }}</option>
+    {% for category in productcategory %}
+        <option  value = "productcategory">{{ category.name }}</option>
     {% endfor %}
     </select>
 <div class="product-list">
 {% for product in products %}
-    {% if not request.GET.q or request.GET.q|lower in product.name|lower %}
-        {% if not request.GET.category or request.GET.category == product.category.name %}
             <div class="card">
                 <a href="{% url 'product_details' product.id %}">
                     <img class="thumb" src="{{  product.picture.url }}" alt="{{ product.name }}">
@@ -22,11 +20,6 @@
                     </div>
                 </a>
             </div>
-        {% endif %}
-    {% endif %}
-{% empty %}
-    <p>No products found.</p>
 {% endfor %}
 </div>
-{% endblock %}
 </form>
