@@ -5,6 +5,7 @@
         <input id = "search_filter" type="text" placeholder="Search the Pizzalair..." value ='{{ request.GET.q }}'>
     <label for="categoryselector">Choose category:</label>
     <select id = categoryselector>
+
     {% for category in productcategory %}
         <option  value = "productcategory">{{ category.name }}</option>
     {% endfor %}
@@ -22,4 +23,5 @@
             </div>
 {% endfor %}
 </div>
+{% endblock %}
 </form>
