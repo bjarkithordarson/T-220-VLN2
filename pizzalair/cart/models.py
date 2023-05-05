@@ -46,7 +46,6 @@ class Cart(models.Model):
         #for product in
 
 
-
    # users = models.ForeignKey(User, on_delete = models.CASCADE)
     #created_at = models.DateField(default = datetime)
 
