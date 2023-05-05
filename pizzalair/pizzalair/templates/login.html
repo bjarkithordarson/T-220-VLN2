@@ -2,6 +2,7 @@
 {% block page_body %}
     <form method="post" class="form form-horizontal">
         {% csrf_token %}
+        <h2>Sign in</h2>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Username</label>
             <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">

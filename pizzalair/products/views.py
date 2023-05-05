@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django.template import loader
-from products.models import Product
+from products.models import Product, ProductCategory
+
 
 # Create your views here.
 def index(request):
@@ -26,5 +27,18 @@ def product_details(request, product_id):
 
     context = {
         "product": product
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def category(request, category_id):
+    template = loader.get_template("category.html")
+    print("hello")
+    categories = ProductCategory.objects.get(id = category_id)
+    products = Product.objects.filter(category = categories)
+
+    context = {
+        "page_title": "Menu",
+        "products": products
     }
     return HttpResponse(template.render(context, request))
