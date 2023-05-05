@@ -1,17 +1,14 @@
 import datetime
 from django.db import models
-from users.models import User
 from django.conf import settings
 
-from products.models import Product
+#from products.models import Product
 
-
-
-# Create your models here.
 class Cart(models.Model):
-
-    user = models.ForeignKey(User, on_delete = models.CASCADE)
-    created_at = models.DateField(default = datetime)
+    pass
+# Create your models here.
+"""class Cart(models.Model):
+    #user = models.ForeignKey(User, on_delete = models.CASCADE)
 
     def __init__(self, request):
         self.session = request.session
@@ -104,4 +101,4 @@ class CartItem(models.Model):
     def clear(self, request):
         pass
 
-
+"""

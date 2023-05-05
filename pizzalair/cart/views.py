@@ -1,10 +1,30 @@
-from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
-from .models import Cart, CartItem
+#from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
+from .models import Cart
 from django.shortcuts import render, redirect
 from products.models import Product
 
 
 # Create your views here.
+
+def get_or_create_cart(request):
+    try:
+        cart_id = request.session.get('cart')
+        cart = Cart.objects.filter(id=cart_id)
+    except:
+        cart = Cart()
+        cart.save()
+        request.session['cart'] = cart.id
+    return cart
+
+def index(request):
+    cart = get_or_create_cart(request)
+    context = {
+        "test": "Session is not set!"
+    }
+    if request.session.get("cart"):
+        context["test"] = "Session is set! The value is: " + request.session.get("cart")
+
+    return render(request, 'cart.html', context)
 
 def cart_add(request, id):
     cart = Cart(request)
@@ -36,7 +56,6 @@ def item_increment(request, id):
     return redirect("cart")"""
 
 def cart_detail(request):
-
     return render(request, 'cart.html')
 
 
