@@ -21,7 +21,7 @@
     <div class="page">
         <h2>{% block page_title %}{% endblock %}</h2>
         {% block page_body %}
-        <p>Content goes here.</p>
+            <a href="{% url 'cart' %}">Cart</a>
         {% endblock %}
     </div>
 </div>

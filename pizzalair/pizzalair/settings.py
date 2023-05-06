@@ -31,19 +31,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pages',
+    'pages.apps.PagesConfig',
     'products.apps.ProductsConfig',
     'orders.apps.OrdersConfig',
     'cart.apps.CartConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user.apps.UsersConfig',
     'django.contrib.humanize'
 ]
+
+CART_SESSION_ID = 'cart'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,7 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/')
+            os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -74,7 +76,7 @@ TEMPLATES = [
         },
     },
 ]
-print(os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'))
+print(os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'))
 WSGI_APPLICATION = 'pizzalair.wsgi.application'
 
 # Cache
@@ -108,8 +110,8 @@ DATABASES = {
     }
 }
 
-LOGIN_URL = '/user/login'
-LOGIN_REDIRECT_URL: str = '/user/profile'
+LOGIN_URL = '/users/signin'
+LOGIN_REDIRECT_URL: str = '/users/profile'
 
 
 # Password validation
@@ -159,5 +161,3 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-

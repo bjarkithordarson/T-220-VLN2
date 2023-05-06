@@ -3,7 +3,7 @@ from django.utils.html import mark_safe
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=120)
-    #product = models.ManyToManyField(Product)
+    filter = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -16,7 +16,6 @@ class Product(models.Model):
     picture = models.ImageField()
     loyalty_points = models.IntegerField(default=0)
     loyalty_points_only = models.BooleanField(default=False)
-    #category = model.ForeignKey(ProductCategory)
     def img_preview(self): #new
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
              url=self.picture.url
@@ -34,11 +33,3 @@ class Pizza(Product):
 class Offer(Product):
     #product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Offer')
     template = models.CharField(max_length=120)
-
-class OfferComponent(models.Model):
-    offer = models.ForeignKey(Offer, on_delete=models.RESTRICT)
-    category = models.OneToOneField(ProductCategory, on_delete=models.RESTRICT, related_name='Category')
-    quantity = models.IntegerField(default=1)
-
-    def __str__(self):
-        return self.offer.name + ": " + str(self.quantity) + "x " + self.category.name

@@ -1,5 +1,9 @@
 <nav>
     {% if user.is_authenticated %}
+        <a class="avatar" href="{% url 'profile' %}">
+            <img src="http://placekitten.com/32/32" alt="">
+            <span>{{ user }}</span>
+        </a>
         <a href="{% url 'signout' %}">Sign out</a>
     {% else %}
         <a href="{% url 'signin' %}">Sign in</a>
@@ -7,5 +11,5 @@
     {% endif %}
 
 
-    <a class="btn small" href="#">Cart</a>
+    <a class="btn small" href="{% url 'cart' %}">Cart</a>
 </nav>
