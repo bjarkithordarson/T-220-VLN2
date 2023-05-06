@@ -9,5 +9,4 @@ urlpatterns = [
     path('profile/', views.updateUser, name='profile'),
     #path('profile/<int:user_id>/', views.updateUser, name='update')
 
-
 ]
