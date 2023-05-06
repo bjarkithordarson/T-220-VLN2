@@ -6,11 +6,15 @@
         <input id = "search_filter" type="text" placeholder="Search the Pizzalair..." value ='{{ request.GET.q }}'>
     <label for="categoryselector">Choose category:</label>
     <select id = categoryselector>
-
     {% for category in productcategory %}
         <option  value = "productcategory">{{ category.name }}</option>
     {% endfor %}
     </select>
+ <nav class="submenu">
+        <a href="/products/category/8" class="btn xlarge">Pizzas</a>
+        <a href="/products/category/6" class="btn xlarge">Offers</a>
+        <a href="/products/category/5" class="btn xlarge">Sides</a>
+</nav>
 <div class="product-list">
 {% if products %}
     {% for product in products %}
@@ -25,7 +29,7 @@
         </div>
     {% endfor %}
 {% else %}
-    <p>No items</p>
+    <h1>No items</h1>
 {% endif %}
 </div>
 {% endblock %}

@@ -6,6 +6,8 @@ urlpatterns = [
     path('signup/', views.register, name='signup'),
     path('signin/', LoginView.as_view(template_name='login.html', redirect_authenticated_user=True), name='signin'),
     path('signout/', LogoutView.as_view(next_page='signin'), name='signout'),
-    path('profile/', views.profile, name='profile')
+    path('profile/', views.updateUser, name='profile'),
+    #path('profile/<int:user_id>/', views.updateUser, name='update')
+
 
 ]

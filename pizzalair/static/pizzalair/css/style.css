@@ -239,7 +239,7 @@ input {
     background-color: #18BE7250;
     border: none;
     border-radius: 5px;
-    min-width: 350px;
+    min-width: 250px;
     margin-bottom: 10px;
     padding: 10px 10px;
     box-sizing: border-box;
@@ -335,12 +335,23 @@ body.overlay .popup-overlay {
         font-size: 26px;
         font-family: system-ui;
     }
-    .add-to-cart {
-        width: 150px;
+
+    #price {
         position: absolute;
-        top: 370px;
-        right: 125px;
+        top: 351px;
+        font-size: 15px;
+    }
+    .add-to-cart {
+        font-size: 20px;
+        width: 150px;
+        height: 40px;
+        position: absolute;
+        top: 386px;
+        right: 36px;
         box-shadow: 2px 2px white;
+        border: solid 1px white;
+        background: #18BE72;
+        color: white;
     }
 
     .left img {
@@ -400,6 +411,43 @@ a.avatar {
 a.avatar img {
     border-radius: 50%;
 }
+.user-img {
+    max-width: 100%;
+    margin-left: 100px;
+}
+
+.user-profile{
+    display: flex;
+}
+
+.user-profile input {
+    height: 30px;
+    width: 200px;
+
+}
+
+.user-profile label {
+    position: relative;
+    top: 7px;
+    height: 30px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.btn-update {
+    position: relative;
+    left: 500px;
+    top: 46px;
+}
+
+.btn-update-pic {
+    position: relative;
+    left: 50px;
+    top: 46px;
+}
+
+
+
 #LoginForm,
 #RegisterForm{
     width: 40%;
