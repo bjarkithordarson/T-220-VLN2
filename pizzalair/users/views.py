@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import UpdateUserForm, UpdateProfileForm
+from .forms import SignUpForm
 
 
 
@@ -15,7 +16,7 @@ def register(request):
     form = UserCreationForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
+        form = SignUpForm(data=request.POST)
 
         if form.is_valid():
             form.save()
