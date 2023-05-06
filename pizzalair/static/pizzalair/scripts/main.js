@@ -19,7 +19,7 @@ product_card_links.forEach(link => {
 });
 
 $(document).ready(function(){
-    $('#search-btn').on('click', function(e) {
+    $('#search-form').on('submit', function(e) {
 
         e.preventDefault();
         let searchText = $('#search_box').val();
@@ -28,11 +28,12 @@ $(document).ready(function(){
             url: '?search_filter=' + searchText,
             type: 'GET',
             success: function (resp) {
-        let newHtml = resp.data.map(d => {
+        let  newHtml= resp.data.map(d => (
+          `<div class="card"> <a href ="products/${d.id}/ "><img class="thumb" src="/media/${d.picture}" alt="${d.name}"><div class="label"><a href="/products/${d.id}"> ${d.name} </a> <p>${d.description}</p></div></a></div>`)
+        )
 
-            return '<div class="well pizza>"> <a href ="{d.name}"></a></div>'
-        });
-        $('.products').html(newHtml.join(''));
+        $('.product-list').html(newHtml.join(''));
+        console.log(newHtml,resp.data)
         $('#search-box').val('');
             },
             error: function (xhr, status, error) {
@@ -41,15 +42,14 @@ $(document).ready(function(){
             }
         })
     });
-
 });
 
-<div className="card">
-    <a href="{% url 'product_details' product.id %}">
-        <img className="thumb" src="{{  product.picture.url }}" alt="{{ product.name }}">
-            <div className="label">
-                <a href="{% url 'product_details' product.id %}">{{product.name}}</a>
-                <p>{{product.description}}</p>
-            </div>
-    </a>
-</div>
+// <div className="card">
+//     <a href="{% url 'product_details' product.id %}">
+//         <img className="thumb" src="{{  product.picture.url }}" alt="{{ product.name }}">
+//             <div className="label">
+//                 <a href="{% url 'product_details' product.id %}">{{product.name}}</a>
+//                 <p>{{product.description}}</p>
+//             </div>
+//     </a>
+// </div>
