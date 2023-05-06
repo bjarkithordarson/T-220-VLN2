@@ -2,17 +2,18 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from products.models import Product
-from products.models import Pizza
 from products.models import ProductCategory
 
 # Create your views here.
 def index(request):
     if 'search_filter' in request.GET:
-        search_filter = request.GET['search_filter']
-        pizzas = Pizza.objects.filter(name__icontains=search_filter).order_by('name')
+        search_filter = request.GET["search_filter"]
+
+        assert isinstance(Product.objects.filter(name__icontains=search_filter).values, object)
+        pizzas = list(Product.objects.filter(name__icontains=search_filter).values())
         return JsonResponse({'data': pizzas})
     template = loader.get_template("category.html")
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('name')
     productcategory = ProductCategory.objects.filter(filter=True)
     context = {
         "productcategory": productcategory,
