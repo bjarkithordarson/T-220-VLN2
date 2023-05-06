@@ -1,4 +1,3 @@
-#from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 from .models import Cart, CartItem
 from django.shortcuts import render, redirect, get_object_or_404
 from products.models import Product

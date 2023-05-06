@@ -40,6 +40,7 @@ header .page,
 .body .page,
 footer .page {
     width: calc(1280px - 50px - 50px);
+    min-width: 1280px;
     max-width: calc(100% - 50px - 50px);
     margin: auto;
     padding: 0 50px;
@@ -68,6 +69,7 @@ header {
     left: 0;
     z-index: 100;
 }
+
     header .page {
         display: flex;
         align-items: center;
@@ -234,6 +236,10 @@ input {
     background-color: #18BE7250;
     border: none;
     border-radius: 5px;
+<<<<<<< HEAD
+    min-width: 250px;
+=======
+>>>>>>> bjarki
     margin-bottom: 10px;
     padding: 10px 10px;
     box-sizing: border-box;
@@ -276,12 +282,14 @@ body.overlay .popup-overlay {
     left: 0;
     top: 0;
     width: 100vw;
+    min-width: 1280px;
     height: 100vh;
     background: rgba(0,0,0,0.4);
     display: none;
     justify-content: center;
     align-items: center;
 }
+
 .popup {
     width: 60%;
     height: 55%;
@@ -289,25 +297,68 @@ body.overlay .popup-overlay {
     border: 2px solid #18BE72;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
-    display: flex;
+    display: block;
     overflow: hidden;
+    position: relative;
 }
     .popup .content {
         display: flex;
+        height: 100%;
     }
     .popup .content .left,
     .popup .content .right {
-        height: 100%;
         flex: 1;
     }
     .popup .left {
     }
     .popup .right {
+        position: relative;
         background: #18BE72;
+        text-align: center;
     }
     .popup .right p,
     .popup .right h2 {
         color: white;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .right p {
+        font-size: 14px;
+    }
+    .close {
+        position: absolute;
+        top: 12px;
+        right: 21px;
+        color: white;
+        background-color: #18BE72;
+        font-size: 26px;
+        font-family: system-ui;
+    }
+
+    #price {
+        position: absolute;
+        top: 351px;
+        font-size: 15px;
+    }
+    .add-to-cart {
+        font-size: 20px;
+        width: 150px;
+        height: 40px;
+        position: absolute;
+        top: 386px;
+        right: 36px;
+        box-shadow: 2px 2px white;
+        border: solid 1px white;
+        background: #18BE72;
+        color: white;
+    }
+
+    .left img {
+        width: 100%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 15px;
     }
 
 p {
@@ -343,11 +394,12 @@ p {
         background: #18BE72;
         border-radius: 13px;
         padding: 15px 20px;
+        height: 60px;
     }
     .card .label a,
     .card .label p {
         color: white;
-        margin: 0;
+        margin: 5px;
     }
 
 a.avatar {
@@ -359,6 +411,43 @@ a.avatar {
 a.avatar img {
     border-radius: 50%;
 }
+.user-img {
+    max-width: 100%;
+    margin-left: 100px;
+}
+
+.user-profile{
+    display: flex;
+}
+
+.user-profile input {
+    height: 30px;
+    width: 200px;
+
+}
+
+.user-profile label {
+    position: relative;
+    top: 7px;
+    height: 30px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.btn-update {
+    position: relative;
+    left: 500px;
+    top: 46px;
+}
+
+.btn-update-pic {
+    position: relative;
+    left: 50px;
+    top: 46px;
+}
+
+
+
 #LoginForm,
 #RegisterForm{
     width: 40%;
