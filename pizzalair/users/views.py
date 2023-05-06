@@ -2,7 +2,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import UpdateUserForm
+from .forms import UpdateUserForm, UpdateProfileForm
+
 
 
 # Create your views here.
@@ -37,12 +38,15 @@ def profile(request):
 def updateUser(request):
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user)
 
-        if user_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
+            profile_form.save()
             messages.success(request, 'Your profile is updated successfully')
             return redirect(to='profile')
     else:
         user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user)
 
-    return render(request, 'profile.html', {'user_form': user_form})
+    return render(request, 'profile.html', {'user_form': user_form, 'profile_form': profile_form})

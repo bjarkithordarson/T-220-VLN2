@@ -1,5 +1,6 @@
 from django import forms
-from django.contrib.auth.models import User
+from .models import User
+from django.contrib.auth.models import User as AU
 
 
 
@@ -7,9 +8,18 @@ class UpdateUserForm(forms.ModelForm):
     username = forms.CharField(max_length=100,
                                required=True,
                                widget=forms.TextInput(attrs={'class': 'form-control'}))
-    #profile_picture = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
+
+    class Meta:
+        model = AU
+        fields = ['username']
+
+
+class UpdateProfileForm(forms.ModelForm):
+    profile_picture = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
+
     class Meta:
         model = User
-        fields = ['username']
+        fields = ['profile_picture']
+
 
 

@@ -9,7 +9,7 @@ from products.models import Product
 
 # Create your models here.
 class Cart(models.Model):
-    users = models.ForeignKey(User, on_delete = models.CASCADE)
+    #users = models.ForeignKey(User, on_delete = models.CASCADE)
     created_at = models.DateField(default = datetime)
 
     """
