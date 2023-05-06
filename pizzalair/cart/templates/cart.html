@@ -1,35 +1,41 @@
-{% extends "base_page.html" %}
-{% load static %}
-
-{% block page_title %}
-    Your order
-{% endblock %}
-
+{% load humanize %}
+{% block page_title %}Cart{% endblock %}
 {% block page_body %}
-<h2>Your Items</h2>
-<table class="cart"></table>
-   <thead>
-       <tr>
-           <th>Product</th>
-           <th>Quantity</th>
-           <th>Remove</th>
-           <th>Price</th>
-           <th>Total price</th>
-
-       </tr>
-   </thead>
-{% for product in products %}
-    <div class="card">
-        <a href="{% url 'product_details' product.id %}">
-            <img class="thumb" src="{{  product.picture.url }}" alt="{{ product.name }}">
-            <div class="label">
-                <a href="{% url 'product_details' product.id %}">{{ product.name }}</a>
-                <p>{{ product.description }}</p>
-            </div>
-        </a>
-    </div>
-{% endfor %}
-
-
-
+    <p>{{ test }}</p>
+    {% if items %}
+        <table id="CartTable" style="width:100%">
+            <thead>
+                <tr>
+                    <td>Product</td>
+                    <td>Qty.</td>
+                    <td>Item price</td>
+                    <td>Total amount</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td><input type="number" name="quantity[{{ item.id }}]" value="{{ item.quantity }}"></td>
+                        <td>{{ item.item_price | intcomma }} kr.</td>
+                        <td>{{ item.total_price | intcomma }} kr.</td>
+                        <td><button onclick="window.location.href='/cart/remove/{{ item.id }}'">Remove from cart</button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ cart_total | intcomma }} kr.</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <button>Checkout</button>
+    {% else %}
+        <p>Your cart is empty :(</p>
+    {% endif %}
 {% endblock %}

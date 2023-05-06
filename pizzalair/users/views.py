@@ -1,6 +1,10 @@
 from django.contrib.auth.forms import UserCreationForm
+<<<<<<< HEAD
 from django.contrib import messages
 from django.http import HttpResponse
+=======
+from django.contrib.auth.decorators import login_required
+>>>>>>> bjarki
 from django.shortcuts import render, redirect
 from .forms import UpdateUserForm, UpdateProfileForm
 
@@ -27,10 +31,11 @@ def register(request):
     })
 
 
+<<<<<<< HEAD
+=======
+@login_required
+>>>>>>> bjarki
 def profile(request):
-    if not request.user.is_authenticated:
-        return redirect('signin')
-
     return render(request, 'profile.html')
 
 
