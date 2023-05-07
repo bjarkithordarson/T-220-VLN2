@@ -39,10 +39,10 @@ def product_details(request, product_id):
     return HttpResponse(template.render(context, request))
 
 
-def category(request, category_id):
+def category(request, slug):
     template = loader.get_template("category.html")
     print("hello")
-    categories = get_object_or_404(ProductCategory, id=category_id)
+    categories = get_object_or_404(ProductCategory, slug=slug)
     #categories = ProductCategory.objects.get(id = category_id)
     products = Product.objects.filter(category = categories)
 
