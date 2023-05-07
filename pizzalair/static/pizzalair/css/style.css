@@ -199,7 +199,9 @@ a.btn:active {
     display: inline-block;
     vertical-align: top;
 }
-
+.search-container {
+    display: flex;
+}
 a{
     text-decoration: none;
 }

@@ -1,6 +1,7 @@
 {% extends "base_page.html" %}
 {% block page_title %}{{page_title}}{% endblock %}
 {% block page_body %}
+    <div class="search-container">
     <form method="get" id="search-form">
     <div class="input-group">
         <input class="form-control" id = "search_box" type="text" placeholder="Search the Pizzalair..." />
@@ -9,16 +10,16 @@
     </div>
     </div>
     </form>
-
-    <form method="get">
-        <input id = "search_filter" type="text" placeholder="Search the Pizzalair..." value ='{{ request.GET.q }}'>
-    <label for="categoryselector">Choose category:</label>
-    <select id = categoryselector>
-    {% for category in productcategory %}
-        <option  value = "productcategory">{{ category.name }}</option>
-    {% endfor %}
-    </select>
-    </form>
+        <form method="get">
+            <input id = "search_filter" type="text" placeholder="Search the Pizzalair..." value ='{{ request.GET.q }}'>
+        <label for="categoryselector">Choose category:</label>
+        <select id = categoryselector>
+        {% for category in productcategory %}
+            <option  value = "productcategory">{{ category.name }}</option>
+        {% endfor %}
+        </select>
+        </form>
+    </div>
 
  <nav class="submenu">
         <a href="/products/category/pizzas" class="btn xlarge">Pizzas</a>
