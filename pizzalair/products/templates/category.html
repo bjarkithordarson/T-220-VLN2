@@ -9,16 +9,11 @@
     </div>
     </div>
     </form>
-
-    <form method="get">
-        <input id = "search_filter" type="text" placeholder="Search the Pizzalair..." value ='{{ request.GET.q }}'>
-    <label for="categoryselector">Choose category:</label>
-    <select id = categoryselector>
+    <select id = category-selector>
     {% for category in productcategory %}
         <option  value = "productcategory">{{ category.name }}</option>
     {% endfor %}
     </select>
-    </form>
  <nav class="submenu">
         <a href="/products/category/pizzas" class="btn xlarge">Pizzas</a>
         <a href="/products/category/offers" class="btn xlarge">Offers</a>

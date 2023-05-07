@@ -31,9 +31,10 @@ $(document).ready(function(){
             url: '?search_filter=' + searchText,
             type: 'GET',
             success: function (resp) {
+                console.log(resp.data.map)
         let  newHtml= resp.data.map(d => (
-          `<div class="card"> <a href ="products/${d.id}/ "><img class="thumb" src="/media/${d.picture}" alt="${d.name}"><div class="label"><a href="/products/${d.id}"> ${d.name} </a> <p>${d.description}</p></div></a></div>`)
-        )
+          `<div class="card"> <a href ="products/${d.id}/ "><img class="thumb" src="/media/${d.picture}" alt="${d.name}"><div class="label"><a href="/products/${d.id}"> ${d.name} </a> <p>${d.description}</p></div></a></div>`
+        ))
 
         $('.product-list').html(newHtml.join(''));
         console.log(newHtml,resp.data)
