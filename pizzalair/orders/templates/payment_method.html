@@ -1,0 +1,9 @@
+{% extends 'base_page.html' %}
+{% block page_title %}Payment Method{% endblock %}
+{% block page_body %}
+    <form action="{% url 'payment_method' order_id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <input type="submit" value="Continue">
+    </form>
+{% endblock %}

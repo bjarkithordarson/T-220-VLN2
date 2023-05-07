@@ -1,6 +1,9 @@
 {% extends 'base_page.html' %}
-{% block page_title %}{% endblock %}
+{% block page_title %}Billing{% endblock %}
 {% block page_body %}
-
-
+    <form action="{% url 'billing' order_id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <input type="submit" value="Save and Continue">
+    </form>
 {% endblock %}
