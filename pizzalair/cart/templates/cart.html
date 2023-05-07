@@ -1,5 +1,6 @@
 {% extends 'base_page.html' %}
 {% load humanize %}
+{% load static %}
 {% block page_title %}Cart{% endblock %}
 {% block page_body %}
     <p>{{ test }}</p>
@@ -16,21 +17,21 @@
             </thead>
             <tbody>
                 {% for item in items %}
-                    <tr>
+                    <tr data-cart-item="{{ item.id }}">
                         <td>{{ item.name }}</td>
-                        <td><input type="number" name="quantity[{{ item.id }}]" value="{{ item.quantity }}"></td>
-                        <td>{{ item.item_price | intcomma }} kr.</td>
-                        <td>{{ item.total_price | intcomma }} kr.</td>
+                        <td><input required type="number" class="quantity" data-cart-item="{{ item.id }}" name="quantity[{{ item.id }}]" value="{{ item.quantity }}"></td>
+                        <td class="item-price">{{ item.item_price | intcomma }} kr.</td>
+                        <td class="item-total">{{ item.total_price | intcomma }} kr.</td>
                         <td><button onclick="window.location.href='/cart/remove/{{ item.id }}'">Remove from cart</button></td>
                     </tr>
                 {% endfor %}
             </tbody>
             <tfoot>
-                <tr>
+                <tr class="summary">
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>{{ cart_total | intcomma }} kr.</td>
+                    <td class="cart-total">{{ cart_total | intcomma }} kr.</td>
                     <td></td>
                 </tr>
             </tfoot>
@@ -40,3 +41,4 @@
         <p>Your cart is empty :(</p>
     {% endif %}
 {% endblock %}
+

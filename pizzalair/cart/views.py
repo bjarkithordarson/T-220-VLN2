@@ -1,15 +1,14 @@
+import json
 from .models import Cart, CartItem
 from django.shortcuts import render, redirect, get_object_or_404
 from products.models import Product
-from django.db.models import Sum
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.db import IntegrityError
 from .helpers import *
 
 # Create your views here.
 def index(request):
     items = get_cart_items_if_any(request)
-    print(items)
     context = {
         "test": "Session is not set!",
         "items": items,
@@ -21,6 +20,8 @@ def index(request):
     return render(request, 'cart.html', context)
 
 def add(request, product_id, quantity=1):
+    is_ajax = request.GET.get('ajax', False) != False
+
     cart = get_or_create_cart(request)
     product = Product.objects.get(id=product_id)
     print(product)
@@ -36,7 +37,19 @@ def add(request, product_id, quantity=1):
         cart_item.save()
     except IntegrityError:
         pass
-    return redirect('cart')
+
+    if is_ajax:
+        data = {
+            'id': cart_item.id,
+            'quantity': cart_item.quantity,
+            'item_price': cart_item.item_price,
+            'item_total_price': cart_item.total_price,
+            'total_price': get_cart_total(request),
+            'cart_count': len(get_cart_items_if_any(request))
+        }
+        return HttpResponse(json.dumps(data), content_type='application/json')
+    else:
+        return redirect('cart')
 
 def remove(request, cart_item_id):
     try:
@@ -48,6 +61,7 @@ def remove(request, cart_item_id):
     return redirect('cart')
 
 def update(request, cart_item_id, quantity):
+    is_ajax = request.GET.get('ajax', False) != False
     item = get_object_or_404(CartItem, pk=cart_item_id)
     if item.cart.id == request.session['cart']:
         if quantity <= 0:
@@ -55,6 +69,21 @@ def update(request, cart_item_id, quantity):
         else:
             item.quantity = quantity
             item.save()
-        return redirect('cart')
+
+        if is_ajax:
+            data = {
+                'id': item.id,
+                'deleted': quantity <= 0,
+                'quantity': item.quantity,
+                'item_price': item.item_price,
+                'item_total_price': item.total_price,
+                'total_price': get_cart_total(request),
+                'cart_count': len(get_cart_items_if_any(request))
+            }
+
+            return HttpResponse(json.dumps(data), content_type='application/json')
+
+        else:
+            return redirect('cart')
     else:
         raise Http404("Cart item not found.")

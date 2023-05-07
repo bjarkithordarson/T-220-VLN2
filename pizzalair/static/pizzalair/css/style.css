@@ -341,17 +341,17 @@ body.overlay .popup-overlay {
         top: 351px;
         font-size: 15px;
     }
-    .add-to-cart {
+    a.add-to-cart {
         font-size: 20px;
-        width: 150px;
-        height: 40px;
+        min-width: 160px;
         position: absolute;
         top: 386px;
         right: 36px;
         box-shadow: 2px 2px white;
-        border: solid 1px white;
+        border: 1px solid white;
         background: #18BE72;
         color: white;
+        padding: 10px;
     }
 
     .left img {
@@ -480,3 +480,10 @@ form .helptext {
     form input:focus + br + .helptext {
         display: block;
     }
+
+#CartItemCount::before {
+    content: '(';
+}
+#CartItemCount::after {
+    content: ')';
+}

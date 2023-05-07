@@ -11,5 +11,5 @@
     {% endif %}
 
 
-    <a class="btn small" href="{% url 'cart' %}">Cart</a>
+    <a class="btn small" href="{% url 'cart' %}">Cart{% if cart_num_items %} <span id="CartItemCount">{{ cart_num_items }}</span>{% endif %}</a>
 </nav>
