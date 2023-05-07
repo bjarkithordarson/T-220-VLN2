@@ -13,7 +13,6 @@ from products.models import Product
 
 class Cart(models.Model):
     created_at = models.DateField(auto_now=True)
-
     def __str__(self):
         return f"Anonymous cart created at {self.created_at}"
 

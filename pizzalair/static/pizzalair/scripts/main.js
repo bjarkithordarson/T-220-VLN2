@@ -21,7 +21,6 @@ product_card_links.forEach(link => {
         //window.history.pushState('page2', 'Title', url);
     })
 });
-
 $(document).ready(function(){
     $('#search-form').on('submit', function(e) {
 

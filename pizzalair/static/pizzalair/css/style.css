@@ -215,6 +215,9 @@ form label{
     display: grid;
     margin-left: 100px;
 }
+    .page h1 {
+        margin-left: 100px;
+    }
 
 .helptext {
 }
@@ -335,7 +338,6 @@ body.overlay .popup-overlay {
         font-size: 26px;
         font-family: system-ui;
     }
-
     #price {
         position: absolute;
         top: 351px;

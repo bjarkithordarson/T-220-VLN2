@@ -38,12 +38,10 @@ def product_details(request, product_id):
     }
     return HttpResponse(template.render(context, request))
 
-
 def category(request, category_id):
     template = loader.get_template("category.html")
     print("hello")
     categories = get_object_or_404(ProductCategory, id=category_id)
-    #categories = ProductCategory.objects.get(id = category_id)
     products = Product.objects.filter(category = categories)
 
     context = {
