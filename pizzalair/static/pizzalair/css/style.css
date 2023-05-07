@@ -40,6 +40,7 @@ header .page,
 .body .page,
 footer .page {
     width: calc(1280px - 50px - 50px);
+    min-width: 1280px;
     max-width: calc(100% - 50px - 50px);
     margin: auto;
     padding: 0 50px;
@@ -68,6 +69,7 @@ header {
     left: 0;
     z-index: 100;
 }
+
     header .page {
         display: flex;
         align-items: center;
@@ -213,6 +215,9 @@ form label{
     display: grid;
     margin-left: 100px;
 }
+    .page h1 {
+        margin-left: 100px;
+    }
 
 .helptext {
 }
@@ -276,12 +281,14 @@ body.overlay .popup-overlay {
     left: 0;
     top: 0;
     width: 100vw;
+    min-width: 1280px;
     height: 100vh;
     background: rgba(0,0,0,0.4);
     display: none;
     justify-content: center;
     align-items: center;
 }
+
 .popup {
     width: 60%;
     height: 55%;
@@ -295,10 +302,10 @@ body.overlay .popup-overlay {
 }
     .popup .content {
         display: flex;
+        height: 100%;
     }
     .popup .content .left,
     .popup .content .right {
-        height: auto;
         flex: 1;
     }
     .popup .left {
@@ -306,23 +313,40 @@ body.overlay .popup-overlay {
     .popup .right {
         position: relative;
         background: #18BE72;
+        text-align: center;
     }
     .popup .right p,
     .popup .right h2 {
         color: white;
         text-align: center;
+        margin: 50px;
+    }
+
+    .right p {
+        font-size: 14px;
     }
     .close {
         position: absolute;
-        top: 320px;
-        right: 50px;
-        box-shadow: 2px 2px white;
+        top: 12px;
+        right: 21px;
+        color: white;
+        background-color: #18BE72;
+        font-size: 26px;
+        font-family: system-ui;
     }
     .add-to-cart {
+        width: 150px;
         position: absolute;
-        top: 320px;
-        right: 140px;
+        top: 370px;
+        right: 125px;
         box-shadow: 2px 2px white;
+    }
+
+    .left img {
+        width: 100%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-left: 15px;
     }
 
 p {
@@ -358,11 +382,12 @@ p {
         background: #18BE72;
         border-radius: 13px;
         padding: 15px 20px;
+        height: 60px;
     }
     .card .label a,
     .card .label p {
         color: white;
-        margin: 0;
+        margin: 5px;
     }
 
 a.avatar {

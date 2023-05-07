@@ -1,7 +1,12 @@
 // Add click handlers to product cards to show a popup
 const product_card_links = document.querySelectorAll(".product-list .card a");
 const product_popup = document.getElementById("Popup");
-const product_popup_content = product_popup.querySelector(".content")
+const product_popup_content = product_popup.querySelector(".content");
+
+closePopUp = () => {
+    document.body.classList.remove("overlay");
+}
+
 product_card_links.forEach(link => {
     link.addEventListener('click', async (e) => {
         e.preventDefault();
@@ -15,6 +20,7 @@ product_card_links.forEach(link => {
         console.log(popup_content);
         //window.history.pushState('page2', 'Title', url);
     })
-
 });
+
+
 

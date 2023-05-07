@@ -36,5 +36,14 @@ def product_details(request, product_id):
     }
     return HttpResponse(template.render(context, request))
 
+def category(request, category_id):
+    template = loader.get_template("category.html")
+    print("hello")
+    categories = ProductCategory.objects.get(id = category_id)
+    products = Product.objects.filter(category = categories)
 
-
+    context = {
+        "page_title": "Menu",
+        "products": products
+    }
+    return HttpResponse(template.render(context, request))
