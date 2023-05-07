@@ -236,10 +236,6 @@ input {
     background-color: #18BE7250;
     border: none;
     border-radius: 5px;
-<<<<<<< HEAD
-    min-width: 250px;
-=======
->>>>>>> bjarki
     margin-bottom: 10px;
     padding: 10px 10px;
     box-sizing: border-box;
@@ -335,23 +331,22 @@ body.overlay .popup-overlay {
         font-size: 26px;
         font-family: system-ui;
     }
-
     #price {
         position: absolute;
         top: 351px;
         font-size: 15px;
     }
-    .add-to-cart {
+    a.add-to-cart {
         font-size: 20px;
-        width: 150px;
-        height: 40px;
+        min-width: 160px;
         position: absolute;
         top: 386px;
         right: 36px;
         box-shadow: 2px 2px white;
-        border: solid 1px white;
+        border: 1px solid white;
         background: #18BE72;
         color: white;
+        padding: 10px;
     }
 
     .left img {
@@ -480,3 +475,10 @@ form .helptext {
     form input:focus + br + .helptext {
         display: block;
     }
+
+#CartItemCount::before {
+    content: '(';
+}
+#CartItemCount::after {
+    content: ')';
+}
