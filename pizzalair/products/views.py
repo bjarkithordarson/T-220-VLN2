@@ -7,17 +7,9 @@ from products.models import ProductCategory
 
 # Create your views here.
 def index(request):
-    if 'search_filter' in request.GET:
-        search_filter = request.GET["search_filter"]
-
-        assert isinstance(Product.objects.filter(name__icontains=search_filter).values, object)
-        pizzas = list(Product.objects.filter(name__icontains=search_filter).values())
-        return JsonResponse({'data': pizzas})
     template = loader.get_template("category.html")
     products = Product.objects.all().order_by('name')
-    productcategory = ProductCategory.objects.filter(filter=True)
     context = {
-        "productcategory": productcategory,
         "page_title": "Menu",
         "products": products
     }
@@ -39,14 +31,22 @@ def product_details(request, product_id):
     return HttpResponse(template.render(context, request))
 
 def category(request, slug):
+
     template = loader.get_template("category.html")
     print("hello")
     categories = get_object_or_404(ProductCategory, slug=slug)
     #categories = ProductCategory.objects.get(id = category_id)
-
+    productcategory = ProductCategory.objects.filter(filter=True)
     products = Product.objects.filter(category = categories)
 
+    if 'search_filter' in request.GET:
+        search_filter = request.GET["search_filter"]
+        assert isinstance(Product.objects.filter(name__icontains=search_filter).values, object)
+        pizzas = list(Product.objects.filter(name__icontains=search_filter).values())
+        return JsonResponse({'data': pizzas})
+
     context = {
+        "productcategory": productcategory,
         "page_title": "Menu",
         "products": products
     }
