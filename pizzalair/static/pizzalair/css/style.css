@@ -195,10 +195,7 @@ a.btn:active {
     margin: 0 0 50px 0;
     cursor: pointer;
 }
-.submenu a{
-    display: inline-block;
-    vertical-align: top;
-}
+
 .search-container {
     display: flex;
 }
@@ -222,9 +219,6 @@ a{
     text-decoration: underline;
 }
 
-.btn .xlarge a:hover {
-    color: black !important;
-}
 
 form label{
     font-family: Gliker, sans-serif;
