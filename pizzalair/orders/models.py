@@ -2,23 +2,6 @@ from django.db import models
 from cart.models import Cart
 from users.models import User
 
-# Pizza order statuses
-# 0 - Incomplete
-# 1 - New
-# 2 - Preparing
-# 3 - Baking
-# 4 - Delivering
-# 5 - Delivered
-# 6 - Cancelled
-# 7 - Refunded
-# 8 - Pending payment
-# 8 - Ready for pickup
-
-# Payment methods
-# 0 - Pay on pickup
-# 1 - Pay with card
-
-
 class OrderStatus(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
