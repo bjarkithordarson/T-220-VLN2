@@ -6,6 +6,7 @@
     <div class="row my-3 p-3">
         <img class="rounded-circle account-img" src="{{ user.profile_picture.url }}"/>
     </div>
+    <div>
     {% if user_form.errors %}
         <div class="alert alert-danger alert-dismissible" role="alert">
             <div id="form_errors">
@@ -30,14 +31,16 @@
                     <div class="form-group profile-pic">
 
                         <label class="small mb-1">Change profile picture:</label>
-                         {{ profile_form.profile_picture }}
+                         {{ user_form.profile_picture }}
                     </div>
                 </div>
             </div>
+
             <br><br>
             <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
             <button type="reset" class="btn btn-dark btn-lg">Reset</button>
         </form>
+    </div>
     </div>
     </div>
 {% endblock page_body %}
