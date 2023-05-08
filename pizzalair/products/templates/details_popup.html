@@ -5,6 +5,16 @@
 <div class="right">
     <h2>{{ product.name }}</h2>
     <p>{{ product.description }}</p>
+    {% if offer_qnt %}
+        {% for x in offer_qnt %}
+            <label for="offers">Choose your pizza</label>
+            <select name="selection" id="">
+                {% for product in all_pizza %}
+                <option value="product_selection">{{ product }}</option>
+                {% endfor %}
+                </select>
+            {% endfor %}
+    {% endif %}
     <p id="price">Total: {{ product.price | intcomma }} kr.</p>
     <!--<button class="add-to-cart" onclick="window.location.(`/cart/add/{{ product.id }}/1`)">Add to cart</button>-->
     <a href="/cart/add/{{ product.id }}/1" class="add-to-cart btn" onclick="add_to_cart(event)">Add to cart</a>
