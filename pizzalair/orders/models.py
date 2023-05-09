@@ -79,5 +79,35 @@ class Order(models.Model):
 
         super().save(*args, **kwargs)
 
+    def validate_billing_info(self):
+        if not self.billing_name:
+            return False
+        if not self.billing_address:
+            return False
+        if not self.billing_city:
+            return False
+        if not self.billing_postal_code:
+            return False
+        if not self.billing_country:
+            return False
+        return True
+
+    def validate_payment_info(self):
+        if not self.payment_method:
+            return False
+        if self.payment_method.method == 'pickup':
+            return True
+        if not self.payment_card_name:
+            return False
+        if not self.payment_card_number:
+            return False
+        if not self.payment_expiry_month:
+            return False
+        if not self.payment_expiry_year:
+            return False
+        if not self.payment_cvc:
+            return False
+        return True
+
     def __str__(self):
         return f"Order #{self.id} by {self.user}"
