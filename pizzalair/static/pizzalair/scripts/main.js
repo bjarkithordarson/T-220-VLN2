@@ -3,6 +3,8 @@ const product_card_links = document.querySelectorAll(".product-list .card a");
 const product_popup = document.getElementById("Popup");
 const product_popup_content = product_popup.querySelector(".content");
 
+
+
 closePopUp = () => {
     document.body.classList.remove("overlay");
 }
@@ -17,10 +19,13 @@ product_card_links.forEach(link => {
         const popup_content = await response.text();
         product_popup_content.innerHTML = popup_content;
         document.body.classList.add("overlay");
-        console.log(popup_content);
+        //console.log(popup_content);
         //window.history.pushState('page2', 'Title', url);
     })
 });
+
+
+
 $(document).ready(function(){
 
     $('#search-form').on('submit', function(e) {
@@ -56,6 +61,12 @@ openCategory = (name) => {
   }
   document.getElementById(cityName).style.display = "block";
 }
+
+
+
+
+
+
 
 // <div className="card">
 //     <a href="{% url 'product_details' product.id %}">

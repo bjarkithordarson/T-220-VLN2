@@ -371,6 +371,14 @@ p {
     gap: 30px;
 }
 
+.search-container select{
+    height: 35px;
+    position: relative;
+    top: -5px;
+}
+
+
+
 #category-selector {
     height: 35px;
     width: 159px;
@@ -384,8 +392,12 @@ p {
 }
 
 .input-group button {
+    background: white;
     height: 35px;
     width: 100px;
+    position: relative;
+    top: -5px;
+    border: 2px solid;
 }
 
 .product-list {
