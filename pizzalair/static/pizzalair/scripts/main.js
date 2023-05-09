@@ -22,10 +22,11 @@ product_card_links.forEach(link => {
     })
 });
 $(document).ready(function(){
+
     $('#search-form').on('submit', function(e) {
 
         e.preventDefault();
-        let searchText = $('#search_box').val();
+        let searchText = $('#search_filter').val();
 
         $.ajax({
             url: '?search_filter=' + searchText,
@@ -35,7 +36,6 @@ $(document).ready(function(){
         let  newHtml= resp.data.map(d => (
           `<div class="card"> <a href ="products/${d.id}/ "><img class="thumb" src="/media/${d.picture}" alt="${d.name}"><div class="label"><a href="/products/${d.id}"> ${d.name} </a> <p>${d.description}</p></div></a></div>`
         ))
-
         $('.product-list').html(newHtml.join(''));
         console.log(newHtml,resp.data)
         $('#search-box').val('');
