@@ -1,6 +1,7 @@
-{% extends 'base_page.html' %}
-{% block page_title %}Card Payment{% endblock %}
-{% block page_body %}
+{% extends 'checkout_step.html' %}
+{% block step_number %}2{% endblock %}
+{% block step_name %}Payment{% endblock %}
+{% block step_content %}
     <form action="{% url 'payment_card' order_id %}" method="post">
         {% csrf_token %}
         {{ form.as_div }}

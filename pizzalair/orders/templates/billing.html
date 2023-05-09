@@ -1,6 +1,7 @@
-{% extends 'base_page.html' %}
-{% block page_title %}Billing{% endblock %}
-{% block page_body %}
+{% extends 'checkout_step.html' %}
+{% block step_number %}1{% endblock %}
+{% block step_name %}Billing{% endblock %}
+{% block step_content %}
     <form action="{% url 'billing' order_id %}" method="post">
         {% csrf_token %}
         {{ form.as_div }}

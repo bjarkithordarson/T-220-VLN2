@@ -482,3 +482,81 @@ form .helptext {
 #CartItemCount::after {
     content: ')';
 }
+
+.progressbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .progressbar .step {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .progressbar .step .marker {
+        border-radius: 20px;
+        background: #fff;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        gap: 10px;
+        border: 2px solid #18BE72;
+        box-shadow: 5px 5px 0px #18BE72;
+    }
+        .progressbar .step .number {
+            display: none;
+        }
+        .progressbar .step.active .marker {
+            background: #18BE72;
+            color: white;
+            border-color: #ffffff;
+        }
+            .progressbar .step.active .marker a {
+                color: #ffffff;
+            }
+        .progressbar .step.active .line {
+            border-color: #ffffff;
+            background: #18BE72;
+        }
+    .progressbar .line {
+        width: 100px;
+        height: 10px;
+        border: 2px solid #18BE72;
+        border-width: 2px 0;
+        box-shadow: 5px 5px 0px #18BE72;
+    }
+
+.checkout-review {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+    .checkout-review .card {
+        flex: 1;
+        padding: 20px;
+        display: grid;
+        grid-template-areas: "heading heading button" "body body body";
+        grid-template-rows: 30px auto;
+    }
+    .checkout-review .card>h2 {
+        margin: 0 0 20px 0;
+        grid-area: heading;
+    }
+    .checkout-review .card>a.btn {
+        grid-area: button;
+        justify-self: end;
+    }
+    .checkout-review .card>.card-body {
+        grid-area: body;
+    }
+
+dl {
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+}
+    dl dt {
+        font-weight: bold;
+    }
+    dl dt::after {
+        content: ':';
+    }

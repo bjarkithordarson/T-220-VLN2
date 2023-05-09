@@ -1,9 +1,9 @@
-{% extends 'base_page.html' %}
-{% block page_title %}Payment Method{% endblock %}
-{% block page_body %}
-    <form action="{% url 'payment_method' order_id %}" method="post">
-        {% csrf_token %}
-        {{ form.as_div }}
-        <input type="submit" value="Continue">
-    </form>
+{% extends 'checkout_step.html' %}
+{% block step_number %}2{% endblock %}
+{% block step_name %}Payment{% endblock %}
+{% block step_content %}
+    {% for payment_method in payment_methods %}
+        <h2><a href="?method={{ payment_method.id }}">{{ payment_method.name }}</a></h2>
+        <p>{{ payment_method.description }}</p>
+    {% endfor %}
 {% endblock %}

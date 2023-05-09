@@ -3,11 +3,44 @@ from cart.models import Cart
 from users.models import User
 
 class OrderStatus(models.Model):
+    INITIAL = 1
+    RECEIVED = 2
+    PROCESSING = 3
+    FINISHED = 4
+    CANCELLED = 5
+
+    ORDER_STATUS_TYPE_CHOICES = [
+        (INITIAL, 'Initial'),
+        (RECEIVED, 'Received'),
+        (PROCESSING, 'Processing'),
+        (FINISHED, 'Finished'),
+        (CANCELLED, 'Cancelled')
+    ]
+
+    order_status_type = models.IntegerField(
+        choices=ORDER_STATUS_TYPE_CHOICES,
+        default=INITIAL
+    )
+
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
+    type = models.IntegerField(choices=ORDER_STATUS_TYPE_CHOICES, default=INITIAL)
 
+    def is_closed(self):
+        return self.order_status_type in [
+            self.FINISHED,
+            self.CANCELLED
+        ]
+
+    def is_user_editable(self):
+        return self.order_status_type in [
+            self.INITIAL
+        ]
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Order statuses"
 
 class OrderPaymentMethod(models.Model):
     name = models.CharField(max_length=255)
@@ -34,6 +67,11 @@ class Order(models.Model):
     payment_expiry_year = models.CharField(null=True)
     payment_cvc = models.CharField(null=True)
 
+    def save(self, *args, **kwargs):
+        if not self.status:
+            self.status = OrderStatus.objects.filter(type=OrderStatus.OrderStatusType.INITIAL).first()
+
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"Order #{self.id} by {self.user}"
-

@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from cart.helpers import *
 from cart.models import CartItem, Cart
-from .models import Order
+from .models import Order, OrderPaymentMethod
 from .forms import BillingForm, CardPaymentForm, PaymentMethodForm
 
 
@@ -17,6 +17,7 @@ def index(request):
 
 @login_required
 def checkout(request):
+    """Checkout view"""
     # Redirect to index if no items in cart
     items = get_cart_items_if_any(request)
     if not len(items):
@@ -37,33 +38,43 @@ def checkout(request):
 
 @login_required
 def order(request, order_id):
+    """Overview of all orders for a user"""
     return render(request, 'order.html')
 
 @login_required
 def payment_method(request, order_id):
+    """Payment method view"""
     try:
         order = Order.objects.get(id=order_id, user=request.user)
     except:
         return redirect('checkout')
 
+    if not order.status.is_user_editable():
+        return redirect('orders')
+
     template = 'payment_method.html'
 
-    if request.method == 'POST':
-        form = PaymentMethodForm(request.POST)
-        if form.is_valid():
-            order = Order.objects.get(id=order_id)
-            order.payment_method = form.cleaned_data['payment_method']
+    payment_methods = OrderPaymentMethod.objects.all()
+
+    payment_method_id = request.GET.get('method', None)
+
+    if payment_method_id:
+        try:
+            payment_method = OrderPaymentMethod.objects.get(id=payment_method_id)
+            order.payment_method = payment_method
             order.save()
             if order.payment_method.method == 'card':
                 return redirect('payment_card', order_id=order_id)
             else:
                 return redirect('review', order_id=order_id)
-    else:
-        form = PaymentMethodForm(instance=order)
+        except:
+            return redirect('payment_method', order_id=order_id)
+
 
     context = {
+        'payment_methods': payment_methods,
         'order_id': order_id,
-        'form': form
+        'step': 2
     }
 
     return render(request, template, context)
@@ -72,10 +83,14 @@ def payment_method(request, order_id):
 
 @login_required
 def payment_card(request, order_id):
+    """Payment card view"""
     try:
         order = Order.objects.get(id=order_id, user=request.user)
     except:
         return redirect('checkout')
+
+    if not order.status.is_user_editable():
+        return redirect('orders')
 
     if request.method == 'POST':
         form = CardPaymentForm(request.POST)
@@ -93,17 +108,24 @@ def payment_card(request, order_id):
 
     context = {
         'form': form,
-        'order_id': order_id
+        'order_id': order_id,
+        'step': 2
     }
     return render(request, 'payment_card.html', context)
 
 @login_required
 def billing(request, order_id):
+    """Billing view"""
     # Redirect to /orders if order doesn't exist
     try:
         order = Order.objects.get(id=order_id)
     except:
         return redirect('checkout')
+
+    if not order.status.is_user_editable():
+        return redirect('orders')
+
+    return_url = request.GET.get('return', None)
 
     if request.method == 'POST':
         form = BillingForm(request.POST)
@@ -115,26 +137,45 @@ def billing(request, order_id):
             order.billing_postal_code = form.cleaned_data['billing_postal_code']
             order.billing_country = form.cleaned_data['billing_country']
             order.save()
-            return redirect('payment_method', order_id=order_id)
+
+            if return_url:
+                return redirect(return_url)
+            else:
+                return redirect('payment_method', order_id=order_id)
     else:
         form = BillingForm(instance=order)
 
     context = {
         'form': form,
-        'order_id': order_id
+        'order_id': order_id,
+        'step': 1
     }
     return render(request, 'billing.html', context)
 
 @login_required
 def review(request, order_id):
-    # Redirect to checkout if order doesn't exist
+    """Review view"""
     try:
         order = Order.objects.get(id=order_id, user=request.user)
     except:
         return redirect('checkout')
 
-    return render(request, 'review.html')
+    if not order.status.is_user_editable():
+        return redirect('orders')
+
+    context = {
+        'order_id': order_id,
+        'order': order,
+        'step': 3
+    }
+
+    return render(request, 'review.html', context)
 
 @login_required
 def confirmation(request, order_id):
-    return render(request, 'confirmation.html')
+    """Confirmation view"""
+    context = {
+        'order_id': order_id,
+        'step': 4
+    }
+    return render(request, 'confirmation.html', context)
