@@ -10,6 +10,7 @@ from .models import Pizza
 # Create your views here.
 
 def base_list(request, model, template, title):
+
     products = model.objects.all().order_by('name')
     products, context = apply_filters(request, products)
     context = dict({
@@ -18,6 +19,7 @@ def base_list(request, model, template, title):
         "categories": ProductCategory.objects.filter(filter=True).order_by('name')
     }, **context)
     return render(request, template, context)
+
 def product_list(request):
     return base_list(request, Product, "base_list.html", "Our Products")
 
@@ -64,7 +66,7 @@ def offer_details(request, offer_id):
     print("AAAAAAAAAAAA")
 
     context = {
-        "pizzas" : pizzas,
+
         "product": product,
         "offer_template": offer_template
     }
@@ -78,11 +80,9 @@ def category(request, slug):
     categories = get_object_or_404(ProductCategory, slug=slug)
     productcategory = ProductCategory.objects.filter(filter=True)
     products = Product.objects.filter(category = categories).order_by('name')
-    template = loader.get_template("category.html")
+    template = loader.get_template("product/list.html")
     products, context = apply_filters(request, products)
     pizzas = Pizza.objects.all().order_by('name')
-
-
 
     context = dict({
         "pizzas": pizzas,
@@ -91,15 +91,14 @@ def category(request, slug):
         "products": products
     }, **context)
 
-
     return HttpResponse(template.render(context, request))
 
 def apply_filters(request, product_list, context = {}):
     product_list = product_list.order_by('name')
-
     category = request.GET.get('category', "")
+
     if category:
-        product_list = ProductCategory.objects.get(slug = category).products.all()
+        product_list = product_list.filter(category__slug=category)
 
     search_filter = request.GET.get('search_filter', "")
     if search_filter:
@@ -109,7 +108,6 @@ def apply_filters(request, product_list, context = {}):
     if order_by:
         if order_by == 'price':
               product_list = product_list.order_by('price')
-
 
     direction = request.GET.get('direction', "")
     if direction:
@@ -127,28 +125,8 @@ def apply_filters(request, product_list, context = {}):
 
     return (product_list, context)
 
-
-
-
-def search(request):
-
-    template = loader.get_template("search.html")
-
-    products = Product.objects.all().order_by('name')
-    ajax = request.GET.get('ajax', False)
-    products = apply_filters(request, products)
-
-    if ajax:
-        template = loader.get_template("search_ajax.html")
-
-    context = {
-        "page_title": "Menu",
-        "products": products
-    }
-    return HttpResponse(template.render(context, request))
-
 def offer(request, slug):
-    template = loader.get_template("category.html")
+    template = loader.get_template("base_list.html")
     categories = get_object_or_404(ProductCategory, slug=slug)
     products = Product.objects.filter(category=categories)
     offer_template = OfferTemplate.objects.all()
