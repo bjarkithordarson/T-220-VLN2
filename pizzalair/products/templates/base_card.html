@@ -3,11 +3,7 @@
         <img class="thumb" src="{% block 'picture_url' %}{{  product.picture.url }}{% endblock %}" alt="{% block 'img_alt' %}{{ product.name }}{% endblock %}">
         <div class="label">
             {% block 'name' %}{{ product.name }}{% endblock %}
-            {% if pizza == product.id %}
-                <p>{% block 'description' %}{{ product.description }}{% endblock %}</p>
-            {% else %}
-                <p>No description.</p>
-            {% endif %}
+            <p>{% block 'description' %}{{ product.description }}{% endblock %}</p>
             <p>Price: {% block 'price' %}{{ product.price }}{% endblock %}</p>
         </div>
     </a>
