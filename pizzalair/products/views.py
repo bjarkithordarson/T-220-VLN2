@@ -10,16 +10,15 @@ from products.models import Pizza
 # Create your views here.
 
 def base_list(request, model, template, title):
-    template = loader.get_template(template)
     products = model.objects.all().order_by('name')
-    context = {
+    products, context = apply_filters(request, products)
+    context = dict({
         "page_title": title,
         "products": products
-    }
-    return HttpResponse(template.render(context, request))
-
+    }, **context)
+    return render(request, template, context)
 def product_list(request):
-    return base_list(request, Product, "product/list.html", "Our Products")
+    return base_list(request, Product, "base_list.html", "Our Products")
 
 def pizza_list(request):
     return base_list(request, Pizza, "pizza/list.html", "Pizzas")
@@ -30,20 +29,23 @@ def offer_list(request):
 def merch_list(request):
     return base_list(request, Product, "merch/list.html", "Merch")
 
-def base_details(request, model, template):
-    template = loader.get_template(template)
-    products = model.objects.all().order_by('name')
+def base_details(request, model, template, id):
+    product = get_object_or_404(model, pk=id)
+
     context = {
-        "page_title": "Menu",
-        "products": products
+        "product": product
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, template, context)
 
 def product_details(request, product_id):
-    return base_details(request, Product, "product/details.html")
+    ajax = request.GET.get("ajax", False) != False
+    template = "product/details.html" if not ajax else "product/details_ajax.html"
+    return base_details(request, Product, template, product_id)
 
 def pizza_details(request, pizza_id):
-    return base_details(request, Pizza, "pizza/details.html")
+    ajax = request.GET.get("ajax", False) != False
+    template = "product/details.html" if not ajax else "product/details_ajax.html"
+    return base_details(request, Product, template, pizza_id)
 
 def offer_details(request, offer_id):
     is_popup = request.GET.get('popup', False)
@@ -81,7 +83,7 @@ def category(request, slug):
         "products": products
     }, **context)
 
-    
+
     return HttpResponse(template.render(context, request))
 
 def apply_filters(request, product_list, context = {}):

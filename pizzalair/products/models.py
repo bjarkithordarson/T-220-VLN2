@@ -27,6 +27,8 @@ class Product(models.Model):
              url=self.picture.url
          ))
 
+    def type(self):
+        return self.__class__.__name__.lower()
 
     def __str__(self):
         return self.name

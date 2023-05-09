@@ -1,14 +1,14 @@
 <div class="card">
-    <a href="{% url 'product_details' product.id %}">
-        <img class="thumb" src="{{  product.picture.url }}" alt="{{ product.name }}">
+    <a href="{% block 'url' %}{% url 'product_details' product.id %}{% endblock %}">
+        <img class="thumb" src="{% block 'picture_url' %}{{  product.picture.url }}{% endblock %}" alt="{% block 'img_alt' %}{{ product.name }}{% endblock %}">
         <div class="label">
-            <a href="{% url 'product_details' product.id %}">{{ product.name }}</a>
+            {% block 'name' %}{{ product.name }}{% endblock %}
             {% if pizza == product.id %}
-                <p>{{ pizza.toppings }}</p>
-                {% else %}
-                <p>No toppings</p>
+                <p>{% block 'description' %}{{ product.description }}{% endblock %}</p>
+            {% else %}
+                <p>No description.</p>
             {% endif %}
-            <p>Price: {{ product.price }}</p>
+            <p>Price: {% block 'price' %}{{ product.price }}{% endblock %}</p>
         </div>
     </a>
 </div>
