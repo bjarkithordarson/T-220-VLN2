@@ -275,13 +275,15 @@ body.overlay {
 body.overlay .popup-overlay {
     display: flex;
 }
+
 .popup-overlay {
     position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
-    min-width: 1280px;
+    min-width: 1290px;
     height: 100vh;
+    min-height: 900px;
     background: rgba(0,0,0,0.4);
     display: none;
     justify-content: center;
