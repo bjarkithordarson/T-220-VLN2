@@ -26,13 +26,10 @@ def checkout(request):
     # Check if there's an order with this cart
     cart_id = request.session.get('cart')
 
-    try:
-        order = Order.objects.get(cart=cart_id, user=request.user)
-    except:
-        order = Order()
-        order.cart = Cart.objects.get(id=cart_id)
-        order.user = request.user
-        order.save()
+    order, _ = Order.objects.get_or_create(
+        cart=Cart.objects.get(id=cart_id),
+        user=request.user
+    )
 
     return redirect('billing', order_id=order.id)
 
