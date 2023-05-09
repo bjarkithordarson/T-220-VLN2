@@ -42,7 +42,12 @@ class Offer(Product):
     #template = models.CharField(max_length=120)
 
 class OfferTemplate(models.Model):
-    offer = models.ForeignKey(Offer, blank=True, null=True, on_delete=models.CASCADE)
+    offer = models.ForeignKey(Offer, blank=True, null=True, on_delete=models.CASCADE, related_name="templates")
     quantity = models.IntegerField(default=0)
     category = models.ForeignKey(ProductCategory, blank=True, null=True, on_delete=models.CASCADE)
-    type = models.CharField(max_length=120)
+
+    def quantity_as_range(self):
+        return range(self.quantity)
+
+    def products(self):
+        return Product.objects.filter(category=self.category)
