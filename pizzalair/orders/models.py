@@ -2,6 +2,12 @@ from django.db import models
 from cart.models import Cart
 from users.models import User
 
+class Country(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
 class OrderStatus(models.Model):
     INITIAL = 1
     RECEIVED = 2
@@ -49,8 +55,8 @@ class OrderPaymentMethod(models.Model):
 
     def __str__(self):
         return self.name
-
 # Create your models here.
+
 class Order(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -59,7 +65,7 @@ class Order(models.Model):
     billing_address = models.CharField(null=True)
     billing_city = models.CharField(null=True)
     billing_postal_code = models.CharField(null=True)
-    billing_country = models.CharField(null=True)
+    billing_country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
     payment_method = models.ForeignKey(OrderPaymentMethod, on_delete=models.SET_NULL, null=True)
     payment_card_name = models.CharField(null=True)
     payment_card_number = models.CharField(null=True)
