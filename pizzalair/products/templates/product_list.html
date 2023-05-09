@@ -1,0 +1,36 @@
+{% extends "base_page.html" %}
+{% block page_title %}{{page_title}}{% endblock %}
+{% block page_body %}
+
+ <div id="search_form">
+ {% include "search_form.html" %}
+ </div>
+
+ <nav class="submenu">
+        <a href="/products/category/pizzas" class="btn xlarge">Pizzas</a>
+        <a href="/products/category/offers" class="btn xlarge">Offers</a>
+        <a href="/products/category/sides" class="btn xlarge">Sides</a>
+</nav>
+<div class="product-list">
+{% if products %}
+    {% for product in products %}
+        <div class="card">
+            <a href="{% url 'product_details' product.id %}">
+                <img class="thumb" src="{{  product.picture.url }}" alt="{{ product.name }}">
+                <div class="label">
+                    <a href="{% url 'product_details' product.id %}">{{ product.name }}</a>
+                    {% if pizza == product.id %}
+                        <p>{{ pizza.toppings }}</p>
+                        {% else %}
+                        <p>No toppings</p>
+                    {% endif %}
+                    <p>Price: {{ product.price }}</p>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>No items</h1>
+{% endif %}
+</div>
+{% endblock %}

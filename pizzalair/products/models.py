@@ -18,7 +18,7 @@ class Product(models.Model):
     name = models.CharField(max_length=120)
     price = models.IntegerField(default=0)
     description = models.TextField()
-    category = models.ManyToManyField(ProductCategory)
+    category = models.ManyToManyField(ProductCategory, related_name='products')
     picture = models.ImageField()
     loyalty_points = models.IntegerField(default=0)
     loyalty_points_only = models.BooleanField(default=False)
@@ -37,5 +37,17 @@ class Pizza(Product):
     toppings = models.CharField(max_length=120)
 
 class Offer(Product):
+    pass
     #product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Offer')
-    template = models.CharField(max_length=120)
+    #template = models.CharField(max_length=120)
+
+class OfferTemplate(models.Model):
+    offer = models.ForeignKey(Offer, blank=True, null=True, on_delete=models.CASCADE, related_name="templates")
+    quantity = models.IntegerField(default=0)
+    category = models.ForeignKey(ProductCategory, blank=True, null=True, on_delete=models.CASCADE)
+
+    def quantity_as_range(self):
+        return range(self.quantity)
+
+    def products(self):
+        return Product.objects.filter(category=self.category)

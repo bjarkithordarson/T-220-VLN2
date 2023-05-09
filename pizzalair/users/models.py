@@ -1,11 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from PIL import Image
+from django.template.defaultfilters import slugify
+import os
 
 
 # Create your models here.
 class User(AbstractUser):
-    #user = models.OneToOneField(on_delete=models.CASCADE, null=True)
     loyalty_points = models.IntegerField(default=0)
-    profile_picture = models.ImageField(null=True, default='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
+    profile_picture = models.ImageField(null=True, default='blank-profile-picture.webp', upload_to='profile_pics')
 
 
+    # resizing images
+    def save(self, *args, **kwargs):
+        super().save()
+        img = Image.open(self.profile_picture.path)
+
+
+
+        if img.height > 300 or img.width > 300:
+            new_img = (300, 300)
+            img.thumbnail(new_img)
+            img.save(self.profile_picture.path)
