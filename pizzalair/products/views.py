@@ -4,13 +4,35 @@ from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from products.models import Product
 from products.models import ProductCategory
-from products.models import OfferTemplate
+from products.models import OfferTemplate, Offer
 from products.models import Pizza
 
 # Create your views here.
-def index(request):
-    template = loader.get_template("category.html")
-    products = Product.objects.all().order_by('name')
+
+def base_list(request, model, template, title):
+    template = loader.get_template(template)
+    products = model.objects.all().order_by('name')
+    context = {
+        "page_title": title,
+        "products": products
+    }
+    return HttpResponse(template.render(context, request))
+
+def product_list(request):
+    return base_list(request, Product, "product/list.html", "Our Products")
+
+def pizza_list(request):
+    return base_list(request, Pizza, "pizza/list.html", "Pizzas")
+
+def offer_list(request):
+    return base_list(request, Offer, "offer/list.html", "Offers")
+
+def merch_list(request):
+    return base_list(request, Product, "merch/list.html", "Merch")
+
+def base_details(request, model, template):
+    template = loader.get_template(template)
+    products = model.objects.all().order_by('name')
     context = {
         "page_title": "Menu",
         "products": products
@@ -18,23 +40,30 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def product_details(request, product_id):
+    return base_details(request, Product, "product/details.html")
+
+def pizza_details(request, pizza_id):
+    return base_details(request, Pizza, "pizza/details.html")
+
+def offer_details(request, offer_id):
     is_popup = request.GET.get('popup', False)
 
     if is_popup:
-        template = loader.get_template("details_popup.html")
+        template = loader.get_template("product/details_ajax.html")
     else:
-        template = loader.get_template("details.html")
+        template = loader.get_template("product/details.html")
 
-    product = get_object_or_404(Product, pk=product_id)
-    offer_template = OfferTemplate.objects.filter(offer_id=product_id)
-
-
+    product = get_object_or_404(Product, pk=offer_id)
+    offer_template = OfferTemplate.objects.filter(offer_id=offer_id)
 
     context = {
         "product": product,
         "offer_template": offer_template
     }
     return HttpResponse(template.render(context, request))
+
+def merch_details(request, merch_id):
+    pass
 
 def category(request, slug):
 

@@ -1,0 +1,22 @@
+{% extends 'base_details_ajax.html' %}
+{% load humanize %}
+
+{% block 'aside' %}
+    <img src="{{ product.picture.url }}" alt="{{ product.name }}">
+{% endblock %}
+{% block 'name' %}{{ product.name }}{% endblock %}
+{% block 'description' %}
+        <p>{{ product.description }}</p>
+        {% for offer in offer_template %}
+            <label for="offers">Choose your pizza</label>
+            {% for x in offer.quantity_as_range %}
+                <select name="pizzas" id="selected-pizza{{ x }}">
+                {% for item in offer.products %}
+                    <option value="product_selection">{{ item }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+            {% endfor %}
+        {% endfor %}
+{% endblock %}
+{% block 'price' %}{{ product.price | intcomma }} kr.{% endblock %}
