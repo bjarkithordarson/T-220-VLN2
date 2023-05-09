@@ -4,7 +4,7 @@
             <input value = "{{ filter.search_filter}}" class="form-control" id="search_box" type="text" name="search_filter" placeholder="Search the Pizzalair..." />
             <select  name="category" id="category">
                 <option value="">All Categories</option>
-                {% for category in productcategory %}
+                {% for category in categories %}
                 <option {% if filter.category == category.slug %} selected{% endif %} value="{{ category.slug }}">{{ category.name }}</option>
                 {% endfor %}
             </select>

@@ -14,7 +14,8 @@ def base_list(request, model, template, title):
     products, context = apply_filters(request, products)
     context = dict({
         "page_title": title,
-        "products": products
+        "products": products,
+        "categories": ProductCategory.objects.filter(filter=True).order_by('name')
     }, **context)
     return render(request, template, context)
 def product_list(request):
