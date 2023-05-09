@@ -4,32 +4,60 @@ from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from products.models import Product
 from products.models import ProductCategory
-from products.models import OfferTemplate
+from products.models import OfferTemplate, Offer
 from products.models import Pizza
 
 # Create your views here.
-def index(request):
-    template = loader.get_template("category.html")
-    products = Product.objects.all().order_by('name')
+
+def base_list(request, model, template, title):
+    products = model.objects.all().order_by('name')
+    products, context = apply_filters(request, products)
+    context = dict({
+        "page_title": title,
+        "products": products,
+        "categories": ProductCategory.objects.filter(filter=True).order_by('name')
+    }, **context)
+    return render(request, template, context)
+def product_list(request):
+    return base_list(request, Product, "base_list.html", "Our Products")
+
+def pizza_list(request):
+    return base_list(request, Pizza, "pizza/list.html", "Pizzas")
+
+def offer_list(request):
+    return base_list(request, Offer, "offer/list.html", "Offers")
+
+def merch_list(request):
+    return base_list(request, Product, "merch/list.html", "Merch")
+
+def base_details(request, model, template, id):
+    product = get_object_or_404(model, pk=id)
+
     context = {
-        "page_title": "Menu",
-        "products": products
+        "product": product
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, template, context)
 
 def product_details(request, product_id):
+    ajax = request.GET.get("ajax", False) != False
+    template = "product/details.html" if not ajax else "product/details_ajax.html"
+    return base_details(request, Product, template, product_id)
+
+def pizza_details(request, pizza_id):
+    ajax = request.GET.get("ajax", False) != False
+    template = "product/details.html" if not ajax else "product/details_ajax.html"
+    return base_details(request, Product, template, pizza_id)
+
+def offer_details(request, offer_id):
     is_popup = request.GET.get('popup', False)
 
     if is_popup:
-        template = loader.get_template("details_popup.html")
+        template = loader.get_template("product/details_ajax.html")
     else:
-        template = loader.get_template("details.html")
+        template = loader.get_template("product/details.html")
 
-    product = get_object_or_404(Product, pk=product_id)
-    pizzas = Pizza.objects.all().order_by('name')
-
-  
-    offer_template = OfferTemplate.objects.filter(offer_id=product_id)
+    product = get_object_or_404(Product, pk=offer_id)
+    offer_template = OfferTemplate.objects.filter(offer_id=offer_id)
 
     context = {
         "pizzas" : pizzas,
@@ -37,6 +65,9 @@ def product_details(request, product_id):
         "offer_template": offer_template
     }
     return HttpResponse(template.render(context, request))
+
+def merch_details(request, merch_id):
+    pass
 
 def category(request, slug):
 
@@ -56,7 +87,7 @@ def category(request, slug):
         "products": products
     }, **context)
 
-    
+
     return HttpResponse(template.render(context, request))
 
 def apply_filters(request, product_list, context = {}):

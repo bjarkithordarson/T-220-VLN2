@@ -1,0 +1,25 @@
+{% extends "base_page.html" %}
+{% block page_title %}{{page_title}}{% endblock %}
+{% block page_body %}
+
+ <div id="search_form">
+ {% include "search_form.html" %}
+ </div>
+
+ <nav class="submenu">
+        <a href="/products/pizzas" class="btn xlarge">Pizzas</a>
+        <a href="/products/offers" class="btn xlarge">Offers</a>
+        <a href="/products/sides" class="btn xlarge">Sides</a>
+</nav>
+<div class="product-list">
+{% if products %}
+    {% for product in products %}
+        {% block 'card' %}
+            {% include 'base_card.html' with product=product %}
+        {% endblock %}
+    {% endfor %}
+{% else %}
+    <h1>No items</h1>
+{% endif %}
+</div>
+{% endblock %}
