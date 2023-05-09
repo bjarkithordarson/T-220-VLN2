@@ -19,11 +19,15 @@
                 <img class="thumb" src="{{  product.picture.url }}" alt="{{ product.name }}">
                 <div class="label">
                     <a href="{% url 'product_details' product.id %}">{{ product.name }}</a>
-                    {% if pizza == product.id %}
-                        <p>{{ pizza.toppings }}</p>
-                        {% else %}
-                        <p>No toppings</p>
-                    {% endif %}
+{#                    {% if product.id in pizzas.id %}#}
+                        {% for pizza in pizzas %}
+                            {% if pizza.id == product.id %}
+                                <p>{{ pizza.toppings }}</p>
+                            {% endif %}
+                        {% endfor %}
+{#                    {% else %}#}
+                        <p>{{ product.description }}</p>
+{#                    {% endif %}#}
                     <p>Price: {{ product.price }}</p>
                 </div>
             </a>

@@ -25,8 +25,10 @@ def product_details(request, product_id):
         template = loader.get_template("details.html")
 
     product = get_object_or_404(Product, pk=product_id)
+    pizzas = Pizza.objects.all().order_by('name')
 
     context = {
+        "pizzas" : pizzas,
         "product": product
     }
     return HttpResponse(template.render(context, request))
@@ -38,16 +40,16 @@ def category(request, slug):
     products = Product.objects.filter(category = categories).order_by('name')
     template = loader.get_template("category.html")
     products, context = apply_filters(request, products)
-    pizza = Pizza.objects.all()
+    pizzas = Pizza.objects.all().order_by('name')
+
 
     context = dict({
-        "pizza": pizza,
+        "pizzas": pizzas,
         "productcategory": productcategory,
         "page_title": "Menu",
         "products": products
     }, **context)
 
-    
     return HttpResponse(template.render(context, request))
 
 def apply_filters(request, product_list, context = {}):
