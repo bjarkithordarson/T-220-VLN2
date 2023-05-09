@@ -138,7 +138,23 @@ h1, h2, h3, p {
     color: #18BE72;
     border: 5px ;
 }
-
+#Slogan{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    color: white;
+    font-family: Gliker, sans-serif;
+    text-shadow: -2px -2px 0px #18BE72,
+                 -2px 0px 0px #18BE72,
+                 -2px 2px 0px #18BE72,
+                 0px -2px 0px #18BE72,
+                 0px 2px 0px #18BE72,
+                 2px -2px 0px #18BE72,
+                 2px 0px 0px #18BE72,
+                 2px 1px 0px #18BE72,
+                 10px 10px 0px #18BE72;
+}
 a {
     font-family: Gliker, serif;
     color: #18BE72;
