@@ -69,7 +69,7 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.status:
-            self.status = OrderStatus.objects.filter(type=OrderStatus.OrderStatusType.INITIAL).first()
+            self.status = OrderStatus.objects.filter(type=OrderStatus.INITIAL).first()
 
         super().save(*args, **kwargs)
 
