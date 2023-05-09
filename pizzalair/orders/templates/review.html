@@ -1,0 +1,29 @@
+{% extends 'checkout_step.html' %}
+{% block step_number %}3{% endblock %}
+{% block step_name %}Review{% endblock %}
+{% block step_content %}
+    <div class="checkout-review">
+        <div class="card">
+            <h2>Payment</h2>
+            <a href="{% url 'payment_method' order_id %}?return={% url 'review' order_id %}" class="btn small">Edit</a>
+            <div class="card-body">
+                {% include 'review_payment.html' %}
+            </div>
+        </div>
+        <div class="card">
+        <h2>Billing</h2> <a href="{% url 'billing' order_id %}?return={% url 'review' order_id %}" class="btn small">Edit</a>
+        <div class="card-body">
+            {% include 'review_billing.html' %}
+        </div>
+    </div>
+    <div class="card">
+        <h2>Your order</h2>
+        <a href="{% url 'cart' %}?return={% url 'review' order_id %}" class="btn small">Cart</a>
+        <div class="card-body">
+            {% include 'review_order.html' %}
+        </div>
+    </div>
+    </div>
+
+    <a class="btn" href="{% url 'confirmation' order_id %}">Confirm and Pay</a>
+{% endblock %}

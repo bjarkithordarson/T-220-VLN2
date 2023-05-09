@@ -22,7 +22,7 @@ class CartItem(models.Model):
     quantity = models.IntegerField(default=1)
     item_price = models.IntegerField(default=0)
     total_price = models.IntegerField(default=0)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name="items")
 
     def __str__(self):
         return f"{self.quantity}x {self.name} at {self.total_price} ISK"

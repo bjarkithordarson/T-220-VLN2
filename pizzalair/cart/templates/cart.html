@@ -1,44 +1,33 @@
 {% extends 'base_page.html' %}
 {% load humanize %}
 {% load static %}
-{% block page_title %}Cart{% endblock %}
 {% block page_body %}
-    <p>{{ test }}</p>
+<h1 id="YourOrder">Your Order</h1>
     {% if items %}
-        <table id="CartTable" style="width:100%">
-            <thead>
-                <tr>
-                    <td>Product</td>
-                    <td>Qty.</td>
-                    <td>Item price</td>
-                    <td>Total amount</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody>
+        <table id="CartTable" >
+            <tbody class="cartItems">
                 {% for item in items %}
                     <tr data-cart-item="{{ item.id }}">
                         <td>{{ item.name }}</td>
                         <td><input required type="number" class="quantity" data-cart-item="{{ item.id }}" name="quantity[{{ item.id }}]" value="{{ item.quantity }}"></td>
-                        <td class="item-price">{{ item.item_price | intcomma }} kr.</td>
                         <td class="item-total">{{ item.total_price | intcomma }} kr.</td>
-                        <td><button onclick="window.location.href='/cart/remove/{{ item.id }}'">Remove from cart</button></td>
+                        <td><button id="removeItem" onclick="window.location.href='/cart/remove/{{ item.id }}'">X</button></td>
                     </tr>
                 {% endfor %}
             </tbody>
             <tfoot>
                 <tr class="summary">
-                    <td></td>
-                    <td></td>
+                    <td>Total amount:</td>
                     <td></td>
                     <td class="cart-total">{{ cart_total | intcomma }} kr.</td>
+                    <td></td>
                     <td></td>
                 </tr>
             </tfoot>
         </table>
-        <button>Checkout</button>
+        <a id="checkOutBTN" class="btn" href="{% url 'checkout' %}">Checkout</a>
     {% else %}
-        <p>Your cart is empty :(</p>
+        <p id="Empty">Your cart is empty</p>
     {% endif %}
 {% endblock %}
 

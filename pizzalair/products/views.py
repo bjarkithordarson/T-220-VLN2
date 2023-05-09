@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from products.models import Product
 from products.models import ProductCategory
+from products.models import OfferTemplate
 from products.models import Pizza
 
 # Create your views here.
@@ -27,9 +28,13 @@ def product_details(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     pizzas = Pizza.objects.all().order_by('name')
 
+  
+    offer_template = OfferTemplate.objects.filter(offer_id=product_id)
+
     context = {
         "pizzas" : pizzas,
-        "product": product
+        "product": product,
+        "offer_template": offer_template
     }
     return HttpResponse(template.render(context, request))
 
@@ -43,6 +48,7 @@ def category(request, slug):
     pizzas = Pizza.objects.all().order_by('name')
 
 
+
     context = dict({
         "pizzas": pizzas,
         "productcategory": productcategory,
@@ -50,6 +56,7 @@ def category(request, slug):
         "products": products
     }, **context)
 
+    
     return HttpResponse(template.render(context, request))
 
 def apply_filters(request, product_list, context = {}):
@@ -102,5 +109,18 @@ def search(request):
     context = {
         "page_title": "Menu",
         "products": products
+    }
+    return HttpResponse(template.render(context, request))
+
+def offer(request, slug):
+    template = loader.get_template("category.html")
+    categories = get_object_or_404(ProductCategory, slug=slug)
+    products = Product.objects.filter(category=categories)
+    offer_template = OfferTemplate.objects.all()
+
+    context = {
+        "page_title": "Menu",
+        "products": products,
+        "offer_template": offer_template
     }
     return HttpResponse(template.render(context, request))

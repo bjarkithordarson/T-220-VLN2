@@ -10,6 +10,18 @@
         <p>Toppings: {{ pizza.toppings }}</p>
     {% endif %}
         {% endfor %}
+{% for offer in offer_template %}
+        <label for="offers">Choose your pizza</label>
+            {% for x in offer.quantity_as_range %}
+                <select name="pizzas" id="selected-pizza{{ x }}">
+                {% for item in offer.products %}
+                    <option value="product_selection">{{ item }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+            {% endfor %}
+{% endfor %}
+
     <p id="price">Total: {{ product.price | intcomma }} kr.</p>
     <!--<button class="add-to-cart" onclick="window.location.(`/cart/add/{{ product.id }}/1`)">Add to cart</button>-->
     <a href="/cart/add/{{ product.id }}/1" class="add-to-cart btn" onclick="add_to_cart(event)">Add to cart</a>
