@@ -482,3 +482,15 @@ form .helptext {
 #CartItemCount::after {
     content: ')';
 }
+
+.input-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.input-group select
+{   background-color:#ffffff;
+    border: 2px solid #18BE72;
+    border-radius: 3px;
+}
