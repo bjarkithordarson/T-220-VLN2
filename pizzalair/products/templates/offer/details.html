@@ -8,7 +8,7 @@
 {% block 'description' %}
         <p>{{ product.description }}</p>
         {% for offer in offer_template %}
-            <label for="offers">Choose your pizza</label>
+            <label for="offers">Choose your pizzaasdf</label>
             {% for x in offer.quantity_as_range %}
                 <select name="pizzas" id="selected-pizza{{ x }}">
                 {% for item in offer.products %}

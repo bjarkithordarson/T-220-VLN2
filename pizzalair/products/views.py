@@ -52,14 +52,16 @@ def offer_details(request, offer_id):
     ajax = request.GET.get('ajax', False)
 
     if ajax:
-        template = loader.get_template("product/details_ajax.html")
+        template = loader.get_template("offer/details_ajax.html")
     else:
-        template = loader.get_template("product/details.html")
+        template = loader.get_template("offer/details.html")
 
     product = get_object_or_404(Product, pk=offer_id)
     offer_template = OfferTemplate.objects.filter(offer_id=offer_id)
 
-    print(offer_template)
+    for x in offer_template:
+        print(x.products())
+    print("AAAAAAAAAAAA")
 
     context = {
         "product": product,
