@@ -2,10 +2,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
-from products.models import Product
-from products.models import ProductCategory
-from products.models import OfferTemplate, Offer
-from products.models import Pizza
+from .models import Product
+from .models import ProductCategory
+from .models import OfferTemplate, Offer
+from .models import Pizza
 
 # Create your views here.
 
@@ -49,15 +49,19 @@ def pizza_details(request, pizza_id):
     return base_details(request, Product, template, pizza_id)
 
 def offer_details(request, offer_id):
-    is_popup = request.GET.get('popup', False)
+    ajax = request.GET.get('ajax', False)
 
-    if is_popup:
-        template = loader.get_template("product/details_ajax.html")
+    if ajax:
+        template = loader.get_template("offer/details_ajax.html")
     else:
-        template = loader.get_template("product/details.html")
+        template = loader.get_template("offer/details.html")
 
     product = get_object_or_404(Product, pk=offer_id)
     offer_template = OfferTemplate.objects.filter(offer_id=offer_id)
+
+    for x in offer_template:
+        print(x.products())
+    print("AAAAAAAAAAAA")
 
     context = {
         "product": product,

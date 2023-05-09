@@ -15,7 +15,6 @@
 {% if products %}
     {% for product in products %}
         {% block 'card' %}
-            {% include 'base_card.html' with product=product %}
         {% endblock %}
     {% endfor %}
 {% else %}
