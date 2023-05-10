@@ -35,6 +35,7 @@ def product_list(request):
     return base_list(request, Product, "base_list.html", "Our Products")
 
 def pizza_list(request):
+    print("YOU ARE IN PIZZA LIST")
     return base_list(request, Pizza, "pizza/list.html", "Pizzas")
 
 def offer_list(request):
