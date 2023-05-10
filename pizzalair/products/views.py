@@ -7,12 +7,12 @@ from .models import ProductCategory
 from .models import OfferTemplate, Offer
 from .models import Pizza
 
-# Create your views here.
 
 def base_list(request, model, template, title):
 
     products = model.objects.all().order_by('name')
     products, context = apply_filters(request, products)
+
     context = dict({
         "page_title": title,
         "products": products,
@@ -20,7 +20,11 @@ def base_list(request, model, template, title):
     }, **context)
     return render(request, template, context)
 
+def base_no_nav(request, model, title):
+    return base_list(request, model, "base_no_nav.html", title)
+
 def product_list(request):
+    print("YOU ARE IN PRODUCT LIST")
     return base_list(request, Product, "base_list.html", "Our Products")
 
 def pizza_list(request):
@@ -28,10 +32,12 @@ def pizza_list(request):
     return base_list(request, Pizza, "pizza/list.html", "Pizzas")
 
 def offer_list(request):
+    print("YOU ARE IN OFFER LIST")
     return base_list(request, Offer, "offer/list.html", "Offers")
 
 def merch_list(request):
-    return base_list(request, Product, "merch/list.html", "Merch")
+    print("YOU ARE IN MERCH LIST")
+    return base_no_nav(request, Product, "merch/list.html", "Merch")
 
 def base_details(request, model, template, id):
     product = get_object_or_404(model, pk=id)
@@ -52,6 +58,7 @@ def pizza_details(request, pizza_id):
     return base_details(request, Product, template, pizza_id)
 
 def offer_details(request, offer_id):
+
     ajax = request.GET.get('ajax', False)
 
     if ajax:
