@@ -1,5 +1,5 @@
 import json
-from .models import Cart, CartItem
+from .models import Cart, CartItem, CartProductItem
 from django.shortcuts import render, redirect, get_object_or_404
 from products.models import Product
 from django.http import Http404, HttpResponse
@@ -25,7 +25,7 @@ def add(request, product_id, quantity=1):
     cart = get_or_create_cart(request)
     product = Product.objects.get(id=product_id)
     print(product)
-    cart_item = CartItem(
+    cart_item = CartProductItem(
         product=product,
         name=product.name,
         quantity=quantity,
@@ -50,6 +50,9 @@ def add(request, product_id, quantity=1):
         return HttpResponse(json.dumps(data), content_type='application/json')
     else:
         return redirect('cart')
+
+def add_offer(request, offer_instance_id, quantity=1):
+    pass
 
 def remove(request, cart_item_id):
     try:
