@@ -17,8 +17,20 @@ product_card_links.forEach(link => {
         const popup_content = await response.text();
         product_popup_content.innerHTML = popup_content;
         document.body.classList.add("overlay");
-        console.log(popup_content);
-        //window.history.pushState('page2', 'Title', url);
+
+        // Get the #OfferInstance form
+        const offer_form = document.getElementById("OfferInstance");
+        offer_form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const url = e.currentTarget.getAttribute("action");
+            const formData = new FormData(e.currentTarget);
+            const response = await fetch(url, {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.text();
+            console.log(data);
+        });
     })
 });
 $(document).ready(function(){

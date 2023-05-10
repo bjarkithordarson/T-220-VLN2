@@ -8,7 +8,7 @@ from django.dispatch import receiver
 from django.core.exceptions import ObjectDoesNotExist
 
 from users.models import User
-from products.models import Product
+from products.models import Product, OfferInstance
 
 
 class Cart(models.Model):
@@ -17,7 +17,6 @@ class Cart(models.Model):
         return f"Anonymous cart created at {self.created_at}"
 
 class CartItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     name = models.CharField()
     quantity = models.IntegerField(default=1)
     item_price = models.IntegerField(default=0)
@@ -26,6 +25,12 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity}x {self.name} at {self.total_price} ISK"
+
+class CartProductItem(CartItem):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+
+class CartOfferItem(CartItem):
+    offer = models.ForeignKey(OfferInstance, on_delete=models.SET_NULL, null=True)
 
 @receiver(pre_save, sender=CartItem)
 def signal_pre_save_cart_item(sender, instance, using, **kwargs):

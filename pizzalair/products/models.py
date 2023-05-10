@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.html import mark_safe
 from django.utils.text import slugify
 
+
 class ProductCategory(models.Model):
     name = models.CharField(max_length=120)
     slug = models.SlugField(unique=True, null=True)
@@ -53,3 +54,8 @@ class OfferTemplate(models.Model):
 
     def products(self):
         return Product.objects.filter(category=self.category)
+
+class OfferInstance(models.Model):
+    offer = models.ForeignKey(Offer, on_delete=models.CASCADE, related_name='type')
+    products = models.ManyToManyField(Product, related_name='products')
+    quantity = models.IntegerField(default=0)
