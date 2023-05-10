@@ -733,6 +733,8 @@ td {
 #YourOrder {
     width: 300px;
     margin-left: 22%;
+    position: relative;
+    top: 91px;
 }
 
 #Empty {
@@ -740,6 +742,8 @@ td {
     margin-left: 25%;
     font-size: 20px;
     text-align: center;
+    position: relative;
+    top: 70px;
 }
 
 .quantity {
