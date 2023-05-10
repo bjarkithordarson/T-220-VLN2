@@ -54,14 +54,19 @@ def pizza_details(request, pizza_id):
     return base_details(request, Product, template, pizza_id)
 
 def offer_details(request, offer_id):
+    if request.method == "POST":
+        form = OfferInstanceForm(offer_id, request.POST)
+        if form.is_valid():
+            instance = form.save()
+
     ajax = request.GET.get('ajax', False)
 
-    form = OfferInstanceForm()
+    form = OfferInstanceForm(offer_id)
 
     if ajax:
         template = loader.get_template("offer/details_ajax.html")
     else:
-        template = loader.get_template("offer/details.html")
+        template = loader.get_template("offer/details_ajax.html")
 
     product = get_object_or_404(Product, pk=offer_id)
     offer_template = OfferTemplate.objects.filter(offer_id=offer_id)
@@ -70,7 +75,7 @@ def offer_details(request, offer_id):
         print(x.products())
 
     context = {
-
+        "form": form,
         "product": product,
         "offer_template": offer_template
     }

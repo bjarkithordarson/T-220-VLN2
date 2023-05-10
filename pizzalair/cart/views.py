@@ -5,10 +5,13 @@ from products.models import Product
 from django.http import Http404, HttpResponse
 from django.db import IntegrityError
 from .helpers import *
+from itertools import chain
+
 
 # Create your views here.
 def index(request):
     items = get_cart_items_if_any(request)
+    print(items)
     context = {
         "test": "Session is not set!",
         "items": items,
@@ -47,6 +50,7 @@ def add(request, product_id, quantity=1):
             'total_price': get_cart_total(request),
             'cart_count': len(get_cart_items_if_any(request))
         }
+        print(get_cart_items_if_any(request))
         return HttpResponse(json.dumps(data), content_type='application/json')
     else:
         return redirect('cart')
