@@ -157,7 +157,7 @@ h1, h2, h3, p {
     position: relative;
     top: -105px;
 }
-}
+
 a {
     font-family: Gliker, serif;
     color: #18BE72;
@@ -178,6 +178,8 @@ a.btn {
 }
 a.btn.small {
     font-size: 18px;
+    font-family: Gliker, sans-serif;
+    color: #18BE72;
 }
 a.btn.large {
     font-size: 30px;
@@ -199,10 +201,6 @@ a.btn.xlarge {
     padding-bottom: 3px;
 }
 
-a.btn.small {
-
-}
-
 a.btn:active {
     box-shadow: inset 2px 2px #18BE72;
 }
@@ -218,9 +216,6 @@ a.btn:active {
     vertical-align: top;
 }
 
-a{
-    text-decoration: none;
-}
 
 .submenu a:active {
     box-shadow: inset 2px 2px #18BE72;
@@ -476,15 +471,31 @@ a.avatar {
     align-items: center;
     justify-items: center;
     gap: 15px;
+    text-decoration: None;
+    font-family: Gliker, sans-serif;
+    color: #18BE72;
 }
 a.avatar img {
     border-radius: 50%;
     width: 50px;
 }
+
+.sign {
+    display: flex !important;
+    align-items: center;
+    justify-items: center;
+    gap: 15px;
+    text-decoration: None;
+    font-family: Gliker, sans-serif;
+    color: #18BE72;
+}
 .user-img {
     max-width: 100%;
     margin-left: 100px;
+}
 
+a {
+    text-decoration: none;
 }
 
 .user-profile{

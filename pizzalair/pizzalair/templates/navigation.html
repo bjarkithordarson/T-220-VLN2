@@ -4,10 +4,10 @@
             <img id="small-img" src="{{ user.profile_picture.url }}" alt="">
             <span>{{ user }}</span>
         </a>
-        <a href="{% url 'signout' %}">Sign out</a>
+        <a class="sign" href="{% url 'signout' %}">Sign out</a>
     {% else %}
-        <a href="{% url 'signin' %}">Sign in</a>
-        <a href="{% url 'signup' %}">Sign up</a>
+        <a class="sign" href="{% url 'signin' %}">Sign in</a>
+        <a class="sign" href="{% url 'signup' %}">Sign up</a>
     {% endif %}
 
 
