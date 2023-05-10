@@ -9,7 +9,7 @@
         <form action="{% url 'offer_details' product.id %}" method="POST">
         {% csrf_token %}
         {{ form.as_div }}
-        <input type="submit" value="Add to cart">
+        <input id="add-to-cart" type="submit" value="Add to cart">
         </form>
 {% endblock %}
 {% block 'price' %}{{ product.price | intcomma }} kr.{% endblock %}

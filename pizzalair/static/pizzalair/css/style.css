@@ -222,6 +222,35 @@ a.btn.xlarge {
     padding-bottom: 3px;
 }
 
+#add-to-cart {
+    width: 157px;
+    font-family: Gliker, sans-serif;
+    color: white;
+    display: inline-block;
+    box-shadow: 2px 2px 0px white;
+    font-size: 24px;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 4px 10px 3px 10px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    top: 33px;
+    right: -69px;
+    background: #18BE72;
+}
+
+#OfferInstance {
+    position: relative;
+    top: -65px;
+}
+
+#OfferInstance input{
+    background: white;
+    width: 50px;
+}
+
+
 a.btn:active {
     box-shadow: inset 2px 2px #18BE72;
 }
@@ -618,6 +647,11 @@ form .helptext {
     content: ')';
 }
 
+#CartItemCount[data-count="0"] {
+    display: None;
+}
+
+
 .progressbar {
     display: flex;
     align-items: center;
@@ -734,8 +768,6 @@ td {
 #YourOrder {
     width: 300px;
     margin-left: 22%;
-    position: relative;
-    top: 91px;
 }
 
 #Empty {
@@ -743,8 +775,6 @@ td {
     margin-left: 25%;
     font-size: 20px;
     text-align: center;
-    position: relative;
-    top: 70px;
 }
 
 .quantity {

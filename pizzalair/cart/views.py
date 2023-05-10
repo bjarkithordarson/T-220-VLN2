@@ -73,12 +73,12 @@ def add_offer(request, offer_instance_id, quantity=1):
     print(cart_offer_item)
 
 
-    if is_ajax:
+    if True:
         data = {
-            'id': cart_item.id,
-            'quantity': cart_item.quantity,
-            'item_price': cart_item.item_price,
-            'item_total_price': cart_item.total_price,
+            'id': cart_offer_item.id,
+            'quantity': cart_offer_item.quantity,
+            'item_price': cart_offer_item.item_price,
+            'item_total_price': cart_offer_item.total_price,
             'total_price': get_cart_total(request),
             'cart_count': len(get_cart_items_if_any(request))
         }

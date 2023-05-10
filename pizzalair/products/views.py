@@ -62,6 +62,7 @@ def pizza_details(request, pizza_id):
 def offer_details(request, offer_id):
     if request.method == "POST":
         form = OfferInstanceForm(offer_id, request.POST)
+        ajax= request.POST.get('ajax', False) != False
         if form.is_valid():
             instance = form.save()
             return redirect('cart_add_offer', offer_instance_id=instance.id, quantity=1)

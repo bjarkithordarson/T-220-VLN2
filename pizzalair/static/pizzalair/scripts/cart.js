@@ -12,8 +12,14 @@ const add_to_cart = async (e) => {
     setTimeout(() => {
         e.target.innerHTML = old_text
     }, 1000);
-    document.getElementById("CartItemCount").innerHTML = data.cart_count;
+    cart_count= document.getElementById("CartItemCount")
+    cart_count.innerHTML = data.cart_count;
+    cart_count.setAttribute("data-count", data.cart_count);
 }
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     cart_table = document.getElementById("CartTable")
     cart_quantity_fields = cart_table.querySelectorAll("input.quantity")
