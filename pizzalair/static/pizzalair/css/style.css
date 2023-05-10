@@ -146,14 +146,17 @@ h1, h2, h3, p {
     color: white;
     font-family: Gliker, sans-serif;
     text-shadow: -2px -2px 0px #18BE72,
-                 -2px 0px 0px #18BE72,
-                 -2px 2px 0px #18BE72,
-                 0px -2px 0px #18BE72,
-                 0px 2px 0px #18BE72,
-                 2px -2px 0px #18BE72,
-                 2px 0px 0px #18BE72,
-                 2px 1px 0px #18BE72,
-                 10px 10px 0px #18BE72;
+                -2px 0px 0px #18BE72,
+                -1px 2px 0px #18BE72,
+                0px -2px 0px #18BE72,
+                0px 2px 0px #18BE72,
+                2px -2px 0px #18BE72,
+                2px 0px 0px #18BE72,
+                0px 0px 0px #18BE72,
+                5px 5px 0px #18BE72;
+    position: relative;
+    top: -105px;
+}
 }
 a {
     font-family: Gliker, serif;
