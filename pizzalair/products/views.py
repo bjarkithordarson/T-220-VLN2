@@ -1,7 +1,9 @@
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
+
+from .forms import OfferInstanceForm
 from .models import Product
 from .models import ProductCategory
 from .models import OfferTemplate, Offer
@@ -61,6 +63,8 @@ def offer_details(request, offer_id):
 
     ajax = request.GET.get('ajax', False)
 
+    form = OfferInstanceForm()
+
     if ajax:
         template = loader.get_template("offer/details_ajax.html")
     else:
@@ -71,7 +75,6 @@ def offer_details(request, offer_id):
 
     for x in offer_template:
         print(x.products())
-    print("AAAAAAAAAAAA")
 
     context = {
 
@@ -145,3 +148,23 @@ def offer(request, slug):
         "offer_template": offer_template
     }
     return HttpResponse(template.render(context, request))
+
+def offer_create(request):
+    if request.method == "POST":
+        # Print all post data to the server console
+        print(request.POST)
+
+        offer_instance_id = 1
+        quantity = request.POST.get("quantity", 1)
+
+        # Return json response
+        return JsonResponse({
+            "success": True,
+            "message": "Offer created successfully"
+        })
+
+        # Add offer to cart
+        return redirect("/cart/add_offer/" + str(offer_instance_id) + "/" + str(quantity))
+
+    else:
+        return redirect("/")
