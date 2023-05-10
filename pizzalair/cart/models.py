@@ -51,7 +51,7 @@ def signal_pre_save_cart_offer_item(sender, instance, using, **kwargs):
     instance.total_price = instance.item_price * instance.quantity
 
     try:
-        item = CartItem.objects.exclude(id=instance.id).get(cart=instance.cart, product=instance.offer)
+        item = CartOfferItem.objects.exclude(id=instance.id).get(cart=instance.cart, offer=instance.offer)
         item.quantity += instance.quantity
         item.save()
         raise IntegrityError('Save operation cancelled')

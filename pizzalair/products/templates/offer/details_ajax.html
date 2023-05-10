@@ -6,7 +6,7 @@
 {% block 'name' %}{{ product.name }}{% endblock %}
 {% block 'description' %}
         <p>{{ product.description }}</p>
-        <form action="{% url 'offer_details' product.id %}" method="POST">
+        <form id="OfferInstance" action="{% url 'offer_details' product.id %}" method="POST">
         {% csrf_token %}
         {{ form.as_div }}
         <input type="submit" value="Add to cart">

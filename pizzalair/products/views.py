@@ -58,6 +58,7 @@ def offer_details(request, offer_id):
         form = OfferInstanceForm(offer_id, request.POST)
         if form.is_valid():
             instance = form.save()
+            return redirect('cart_add_offer', offer_instance_id=instance.id, quantity=1)
 
     ajax = request.GET.get('ajax', False)
 
@@ -66,7 +67,7 @@ def offer_details(request, offer_id):
     if ajax:
         template = loader.get_template("offer/details_ajax.html")
     else:
-        template = loader.get_template("offer/details_ajax.html")
+        template = loader.get_template("offer/details.html")
 
     product = get_object_or_404(Product, pk=offer_id)
     offer_template = OfferTemplate.objects.filter(offer_id=offer_id)
