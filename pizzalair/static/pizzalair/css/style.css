@@ -32,6 +32,9 @@ body {
                  2px 1px 0px #18BE72,
                  10px 10px 0px #18BE72;
     height: 300px;
+    position: relative;
+    top: -60px;
+    margin-bottom: 30px;
 }
 #HeroLogo img {
     height: 200px;
@@ -102,9 +105,6 @@ header {
 }
     .body .page {
         padding: 50px 0;
-        height: 500px;
-        position: relative;
-        top: -100px;
     }
 
 footer {
@@ -159,7 +159,8 @@ h1, h2, h3, p {
                 0px 0px 0px #18BE72,
                 5px 5px 0px #18BE72;
     position: relative;
-    top: -105px;
+    top: -107px;
+    margin-bottom: 0px;
 }
 
 
