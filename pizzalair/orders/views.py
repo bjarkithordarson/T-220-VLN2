@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from cart.helpers import *
 from cart.models import CartItem, Cart
-from .models import Order, OrderPaymentMethod
+from .models import Order, OrderPaymentMethod, OrderStatus
 from .forms import BillingForm, CardPaymentForm, PaymentMethodForm
 
 
@@ -26,13 +26,10 @@ def checkout(request):
     # Check if there's an order with this cart
     cart_id = request.session.get('cart')
 
-    try:
-        order = Order.objects.get(cart=cart_id, user=request.user)
-    except:
-        order = Order()
-        order.cart = Cart.objects.get(id=cart_id)
-        order.user = request.user
-        order.save()
+    order, _ = Order.objects.get_or_create(
+        cart=Cart.objects.get(id=cart_id),
+        user=request.user
+    )
 
     return redirect('billing', order_id=order.id)
 
@@ -163,9 +160,18 @@ def review(request, order_id):
     if not order.status.is_user_editable():
         return redirect('orders')
 
+    errors = {
+        'payment': order.validate_payment_info() == False,
+        'billing': order.validate_billing_info() == False
+    }
+
+    is_complete = not errors['payment'] and not errors['billing']
+
     context = {
         'order_id': order_id,
         'order': order,
+        'errors': errors,
+        'is_complete': is_complete,
         'step': 3
     }
 
@@ -174,8 +180,19 @@ def review(request, order_id):
 @login_required
 def confirmation(request, order_id):
     """Confirmation view"""
-    context = {
-        'order_id': order_id,
-        'step': 4
-    }
-    return render(request, 'confirmation.html', context)
+
+    try:
+        order = Order.objects.get(id=order_id, user=request.user)
+    except:
+        return redirect('checkout')
+
+    if not order.status.is_user_editable():
+        return redirect('orders')
+
+    if not order.validate_payment_info() or not order.validate_billing_info():
+        return redirect('review', order_id=order_id)
+
+    order.status = OrderStatus.objects.filter(type=OrderStatus.RECEIVED).first()
+    order.save()
+
+    return redirect('order', order_id=order_id)
