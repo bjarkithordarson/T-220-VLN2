@@ -6,13 +6,13 @@
 {% endblock %}
 {% block 'name' %}{{ product.name }}{% endblock %}
 {% block 'description' %}
-        <p>{{ product.description }}</p>
-        {% for offer in offer_template %}
+    <p>{{ product.description }}</p>
+    {% for offer in offer_template %}
     <label for="offers">Choose:</label>
-    {% for x in offer.quantity_as_range %}
+        {% for x in offer.quantity_as_range %}
         <select class="buy-options" name="buy">
             <option class="hidden" selected disabled value="">Please select beverage</option>
-        {% for item in offer.products %}
+            {% for item in offer.products %}
             <option value="{{ item }}">{{ item }}</option>
             {% endfor %}
         </select>
