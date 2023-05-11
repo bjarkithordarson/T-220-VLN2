@@ -234,9 +234,9 @@ a.btn.xlarge {
     padding: 4px 10px 3px 10px;
     text-align: center;
     cursor: pointer;
-    position: relative;
-    top: 33px;
-    right: -69px;
+    position: absolute;
+    top: 217px;
+    right: 42px;
     background: #18BE72;
 }
 
@@ -465,9 +465,6 @@ p {
     top: -5px;
 }
 
-
-
-
 #category-selector {
     height: 35px;
     width: 159px;
@@ -518,7 +515,7 @@ p {
         background: #18BE72;
         border-radius: 13px;
         padding: 15px 20px;
-        height: 120px;
+        height: 90px;
     }
     .card .label a,
     .card .label p {
