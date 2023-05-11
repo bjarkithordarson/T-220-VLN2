@@ -617,6 +617,14 @@ form .helptext {
         display: block;
     }
 
+
+/*-------- PAYMENT PAGE -----------*/
+
+.payment_card input[type=submit] {
+    font-family: 'Gliker', sans-serif;
+    color: #18BE72;
+}
+
 /*---------- LABEL -------------*/
 
 
