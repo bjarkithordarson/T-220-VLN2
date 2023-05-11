@@ -1,0 +1,14 @@
+<div class="left">
+    {% block 'aside' %}
+    {% endblock %}
+</div>
+<div class="right">
+    <h2>{% block 'name' %}{% endblock %}</h2>
+    {% block 'description' %}
+    {% endblock %}
+    <p id="price">Total: {% block 'price' %}{% endblock %}</p>
+{% block 'add' %}
+    <a id= add-buttn href="/cart/add/{{ product.id }}/1" class="add-to-cart btn" onclick="add_to_cart(event)">Add to cart</a>
+{% endblock %}
+    <button class="close" onclick="closePopUp()">X</button>
+</div>

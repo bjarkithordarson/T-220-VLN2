@@ -1,0 +1,10 @@
+<div class="card">
+    <a href="{% block 'url' %}{% url 'product_details' product.id %}{% endblock %}">
+        <img class="thumb" src="{% block 'picture_url' %}{{  product.picture.url }}{% endblock %}" alt="{% block 'img_alt' %}{{ product.name }}{% endblock %}">
+        <div class="label">
+            {% block 'name' %}{{ product.name }}{% endblock %}
+            <p id = 'description'>{% block 'description' %}{{ product.description }}{% endblock %}</p>
+            <p>{% block 'price' %} Price: {{ product.price }}{% endblock %}</p>
+        </div>
+    </a>
+</div>

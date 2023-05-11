@@ -1,0 +1,21 @@
+{% extends 'base_page.html' %}
+{% load humanize %}
+{% block page_title %}Your Orders{% endblock %}
+{% block page_body %}
+
+    {% for order in orders %}
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Order #{{ order.id }}</h3>
+                <p>Order Total: {{ order.cart.total_price | intcomma }}</p>
+                <p>Order Status: {{ order.status.name }}</p>
+                <p>Order Items:</p>
+                <ul>
+                    {% for item in order.cart.items.all %}
+                        <li>{{ item.product.name }} - {{ item.product.price | intcomma }} kr. x {{ item.quantity }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base_page.html" %}
+{% block page_title %}{{page_title}}{% endblock %}
+{% block page_body %}
+
+    <div class="product-list">
+{% if products %}
+    {% for product in products %}
+        {% block 'card' %}
+        {% endblock %}
+    {% endfor %}
+{% else %}
+    <h1>No items</h1>
+{% endif %}
+</div>
+
+{% endblock %}

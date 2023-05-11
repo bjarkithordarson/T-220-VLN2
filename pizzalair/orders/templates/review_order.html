@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <tr>
+            <td>Product</td>
+            <td>Quantity</td>
+            <td>Price</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in order.cart.products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.price }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,9 +1,12 @@
 {% extends 'base_page.html' %}
+{% load static %}
 {% block page_title %}{{ user }}'s Profile{% endblock %}
 {% block page_body %}
+    <div class="user-profile">
     <div class="row my-3 p-3">
-        <img class="rounded-circle account-img" src="{{ user.profile_picture }}" style="cursor: pointer;"/>
+        <img class="rounded-circle account-img" src="{{ user.profile_picture.url }}"/>
     </div>
+    <div>
     {% if user_form.errors %}
         <div class="alert alert-danger alert-dismissible" role="alert">
             <div id="form_errors">
@@ -25,17 +28,20 @@
                         <label class="small mb-1">Username:</label>
                             {{ user_form.username }}
                     </div>
-                    <div class="form-group">
-                        <hr>
-                        <label class="small mb-1">Change Avatar:</label>
-                        {{ user_form.profile_picture }}
+                    <div class="form-group profile-pic">
+
+                        <label class="small mb-1">Change profile picture:</label>
+                         {{ user_form.profile_picture }}
                     </div>
                 </div>
             </div>
+            <div>Loyalty Points: {{user.loyalty_points  }}</div>
             <br><br>
             <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
             <button type="reset" class="btn btn-dark btn-lg">Reset</button>
         </form>
+    </div>
+    </div>
     </div>
 {% endblock page_body %}
 

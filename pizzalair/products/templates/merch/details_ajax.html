@@ -1,0 +1,11 @@
+{% extends 'base_details_ajax.html' %}
+{% load humanize %}
+
+{% block 'aside' %}
+    <img src="{{ product.picture.url }}" alt="{{ product.name }}">
+{% endblock %}
+{% block 'name' %}{{ product.name }}{% endblock %}
+{% block 'description' %}
+    <p>{{ product.description }}</p>
+{% endblock %}
+{% block 'price' %}{{ product.loyalty_points | intcomma }} Loyalty Points.{% endblock %}

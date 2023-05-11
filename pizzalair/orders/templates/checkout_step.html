@@ -1,0 +1,44 @@
+{% extends 'base_page.html' %}
+{% block page_title %}
+    Step {% block step_number %}{% endblock %}: {% block step_name %}{% endblock %}
+{% endblock %}
+{% block page_body %}
+    <div class="progressbar">
+        <div class="step{% if step >= 1 %} active{% endif %}">
+            <div class="marker">
+                <a href="{% url 'billing' order_id %}">
+                    <span class="number">1</span>
+                    <span class="label">Billing</span>
+                </a>
+            </div>
+        </div>
+        <div class="step{% if step >= 2 %} active{% endif %}">
+            <div class="line"></div>
+            <div class="marker">
+                <a href="{% url 'payment_method' order_id %}">
+                    <span class="number">2</span>
+                    <span class="label">Payment</span>
+                </a>
+            </div>
+        </div>
+        <div class="step{% if step >= 3 %} active{% endif %}">
+            <div class="line"></div>
+            <div class="marker">
+                <a href="{% url 'review' order_id %}">
+                    <span class="number">3</span>
+                    <span class="label">Review</span>
+                </a>
+            </div>
+        </div>
+        <div class="step{% if step >= 4 %} active{% endif %}">
+            <div class="line"></div>
+            <div class="marker">
+                <a href="{% url 'confirmation' order_id %}">
+                    <span class="number">4</span>
+                    <span class="label">Confirmation</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% block step_content %}{% endblock %}
+{% endblock %}
