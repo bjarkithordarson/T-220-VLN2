@@ -13,5 +13,4 @@ urlpatterns = [
     path("offers/create", views.offer_create, name="offer_create"),
     path("merch/<int:merch_id>/", views.merch_details, name="merch_details"),
     path("<int:product_id>/popup", views.product_details, name="product_details_popup")
-
 ]

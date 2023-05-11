@@ -5,16 +5,15 @@ const add_to_cart = async (e) => {
     console.log(url);
 
     const old_text = e.target.innerHTML;
-    e.target.innerHTML = "Adding to cart..."
     const response = await fetch(url + "?ajax=1");
     const data = await response.json();
-    e.target.innerHTML = "Done!"
     setTimeout(() => {
         e.target.innerHTML = old_text
     }, 1000);
     cart_count= document.getElementById("CartItemCount")
     cart_count.innerHTML = data.cart_count;
     cart_count.setAttribute("data-count", data.cart_count);
+    closePopUp()
 }
 
 

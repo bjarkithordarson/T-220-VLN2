@@ -32,7 +32,7 @@ product_card_links.forEach(link => {
             });
             const data = await response.json();
             console.log(data);
-            // TODO: show that cart has been updated
+
             cart_count= document.getElementById("CartItemCount")
             cart_count.innerHTML = data.cart_count;
             cart_count.setAttribute("data-count", data.cart_count);
