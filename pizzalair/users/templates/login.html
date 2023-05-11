@@ -5,7 +5,7 @@
         {% csrf_token %}
         {% if form.errors %}
           <ul class="errors">
-            {% for field, errors in form.errors.items %}
+            {% for errors in form.errors %}
                 {% for error in errors %}
                     <li>{{ error }}</li>
                 {% endfor %}

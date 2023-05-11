@@ -26,6 +26,7 @@
             </tfoot>
         </table>
         <a id="checkOutBTN" class="btn" href="{% url 'checkout' %}">Checkout</a>
+        <button id="removeAllItems" onclick="window.location.href='/cart/remove/0'">Empty cart</button>
     {% else %}
         <p id="Empty">Your cart is empty</p>
     {% endif %}

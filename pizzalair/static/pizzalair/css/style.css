@@ -784,6 +784,21 @@ td {
     top: 20px;
 }
 
+#removeAllItems {
+    position: relative;
+    left: 15%;
+    top: 20px;
+    display: inline-block;
+    box-shadow: 2px 2px 0px #18BE72;
+    font-size: 24px;
+    border: 1px solid #18BE72;
+    border-radius: 4px;
+    padding: 4px 10px 3px 10px;
+    text-align: center;
+    cursor: pointer;
+    background: white;
+}
+
 #YourOrder {
     width: 300px;
     margin-left: 22%;
