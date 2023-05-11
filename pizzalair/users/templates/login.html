@@ -1,31 +1,11 @@
 {% extends "base_page.html" %}
-{% block page_title %}Login{% endblock %}
 {% block page_body %}
-    <form id="LoginForm" method="post" style="display: block">
+    <form method="post" class="form form-horizontal">
         {% csrf_token %}
-        {% if form.errors %}
-          <ul class="errors">
-            {% for errors in form.errors %}
-                {% for error in errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-          </ul>
-        {% endif %}
-        <div>
-            <label>
-                Username<br>
-                <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required>
-            </label>
-        </div>
-
-        <div>
-            <label>
-                Password<br>
-                <input type="password" name="password" required id="id_password">
-            </label>
-        </div>
+        <h2>Sign in</h2>
+        {{ form.as_p }}
     <input type="submit" class="btn btn_primary" value="Login"/>
     </form>
 
 {% endblock %}
+
