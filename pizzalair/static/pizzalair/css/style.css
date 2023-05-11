@@ -848,6 +848,7 @@ table {
     display: flex;
     margin-top: 30px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .cartItems tr{
@@ -868,13 +869,6 @@ td {
     height: 48px;
 }
 
-#checkOutBTN {
-<<<<<<< HEAD
-=======
-    position: relative;
-    left: 53%;
-    top: 20px;
-}
 
 #removeAllItems {;
     display: inline-block;
@@ -891,7 +885,6 @@ td {
 #YourOrder {
     width: 300px;
     margin-left: 22%;
->>>>>>> main
 }
 
 #Empty {
