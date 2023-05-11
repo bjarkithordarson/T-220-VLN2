@@ -13,6 +13,11 @@ from products.models import Product, OfferInstance
 
 class Cart(models.Model):
     created_at = models.DateField(auto_now=True)
+    def total_price(self):
+        return sum([item.total_price() for item in self.items.all()])
+    def total_loyalty_points(self):
+        return sum([item.total_loyalty_points() for item in self.items.all()])
+
     def __str__(self):
         return f"Anonymous cart created at {self.created_at}"
 
@@ -20,7 +25,7 @@ class CartItem(models.Model):
     name = models.CharField()
     quantity = models.IntegerField(default=1)
     item_price = models.IntegerField(default=0)
-    #total_price = models.IntegerField(default=0)
+    item_loyalty_points = models.IntegerField(default=0)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name="items")
 
     def __str__(self):
@@ -29,13 +34,20 @@ class CartItem(models.Model):
     def total_price(self):
         return self.quantity * self.item_price
 
+    def total_loyalty_points(self):
+        return self.quantity * self.item_loyalty_points
+
 class CartProductItem(CartItem):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+
+    def total_loyalty_points(self):
+        return self.quantity * self.product.loyalty_points
 
 class CartOfferItem(CartItem):
     offer = models.ForeignKey(OfferInstance, on_delete=models.SET_NULL, null=True)
 
-
+    def total_loyalty_points(self):
+        return self.quantity * self.offer.loyalty_points
 
 @receiver(post_delete, sender=CartItem)
 def signal_post_delete_cart_item(sender, instance, using, **kwargs):
