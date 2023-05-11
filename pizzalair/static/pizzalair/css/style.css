@@ -245,20 +245,6 @@ a.btn.xlarge {
     top: -65px;
 }
 
-#OfferInstance select {
-    width: 150px;
-    border-radius: 5px;
-}
-
-#OfferInstance div {
-    margin: 5px;
-}
-
-form input{
-    background: white;
-    width: 50px;
-}
-
 
 a.btn:active {
     box-shadow: inset 2px 2px #18BE72;
@@ -723,12 +709,12 @@ form .helptext {
         box-shadow: 5px 5px 0px #18BE72;
     }
 
-.checkout-review {
+.checkout-review .steps {
     display: flex;
     gap: 30px;
     margin-top: 30px;
 }
-    .checkout-review .card {
+    .checkout-review .steps .card {
         flex: 1;
         padding: 20px;
         display: grid;
@@ -746,6 +732,12 @@ form .helptext {
     .checkout-review .card>.card-body {
         grid-area: body;
     }
+
+    .checkout-review .btn-right .btn {
+        float: right;
+        margin-top: 50px;
+    }
+
 
 dl {
     display: grid;

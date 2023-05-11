@@ -1,6 +1,7 @@
 from django.db import models
 from cart.models import Cart
 from users.models import User
+from . import validators
 
 class Country(models.Model):
     name = models.CharField(max_length=255)
@@ -23,25 +24,10 @@ class OrderStatus(models.Model):
         (CANCELLED, 'Cancelled')
     ]
 
-    order_status_type = models.IntegerField(
-        choices=ORDER_STATUS_TYPE_CHOICES,
-        default=INITIAL
-    )
-
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     type = models.IntegerField(choices=ORDER_STATUS_TYPE_CHOICES, default=INITIAL)
 
-    def is_closed(self):
-        return self.order_status_type in [
-            self.FINISHED,
-            self.CANCELLED
-        ]
-
-    def is_user_editable(self):
-        return self.order_status_type in [
-            self.INITIAL
-        ]
     def __str__(self):
         return self.name
 
@@ -56,7 +42,6 @@ class OrderPaymentMethod(models.Model):
     def __str__(self):
         return self.name
 # Create your models here.
-
 class Order(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -67,11 +52,11 @@ class Order(models.Model):
     billing_postal_code = models.CharField(null=True)
     billing_country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
     payment_method = models.ForeignKey(OrderPaymentMethod, on_delete=models.SET_NULL, null=True)
-    payment_card_name = models.CharField(null=True)
-    payment_card_number = models.CharField(null=True)
-    payment_expiry_month = models.CharField(null=True)
-    payment_expiry_year = models.CharField(null=True)
-    payment_cvc = models.CharField(null=True)
+    payment_card_name = models.CharField(null=True, )
+    payment_card_number = models.CharField(null=True, validators=[validators.credit_card_number_validator])
+    payment_expiry_month = models.CharField(null=True, validators=[validators.expiry_month_validator])
+    payment_expiry_year = models.CharField(null=True, validators=[validators.expiry_year_validator])
+    payment_cvc = models.CharField(null=True, validators=[validators.cvc_validator])
 
     def save(self, *args, **kwargs):
         if not self.status:
@@ -108,6 +93,20 @@ class Order(models.Model):
         if not self.payment_cvc:
             return False
         return True
+
+    def is_user_editable(self):
+        print("=====================================")
+        print(self.status.type)
+        print(self.status)
+        return self.status.type in [
+            OrderStatus.INITIAL,
+        ]
+
+    def is_closed(self):
+        return self.status.type in [
+            OrderStatus.FINISHED,
+            OrderStatus.CANCELLED
+        ]
 
     def __str__(self):
         return f"Order #{self.id} by {self.user}"

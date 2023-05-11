@@ -1,6 +1,32 @@
 {% extends 'base_page.html' %}
-{% block page_title %}{% endblock %}
+{% block page_title %}{{ order }} ({{ order.status }}){% endblock %}
 {% block page_body %}
-
+    <div class="checkout-review">
+        <div class="steps">
+            <div class="card">
+                <div class="card-body">
+                    {% if errors.billing %}
+                        <p>Your billing info is missing or invalid. Please edit your billing info to continue.</p>
+                    {% endif %}
+                    {% include 'review_billing.html' %}
+                </div>
+            </div>
+            <div class="card">
+                <h2>Payment</h2>
+                <div class="card-body">
+                    {% if errors.payment %}
+                        <p>Your payment info is missing or invalid. Please edit your payment info to continue.</p>
+                    {% endif %}
+                    {% include 'review_payment.html' %}
+                </div>
+            </div>
+            <div class="card">
+                <h2>Your order</h2>
+                <div class="card-body">
+                    {% include 'review_order.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
