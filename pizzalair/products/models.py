@@ -58,7 +58,6 @@ class OfferTemplate(models.Model):
 class OfferInstance(models.Model):
     offer = models.ForeignKey(Offer, on_delete=models.CASCADE, related_name='type')
     products = models.ManyToManyField(Product, related_name='products')
-    quantity = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.offer.name} - {self.quantity}x {', '.join([str(product) for product in self.products.all()])}"
+        return f"{self.offer.name} - {', '.join([str(product) for product in self.products.all()])}"

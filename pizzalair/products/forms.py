@@ -9,7 +9,6 @@ class OfferInstanceForm(forms.ModelForm):
 
         offer = Offer.objects.filter(id=self.fields['offer'].initial).first()
         self.fields['offer'].initial = offer_id
-        self.fields['quantity'].initial = 1
 
         templates = OfferTemplate.objects.filter(offer=offer_id)
         print("TEMPLATES")
@@ -49,7 +48,7 @@ class OfferInstanceForm(forms.ModelForm):
 
     class Meta:
         model = OfferInstance
-        fields = ['offer', 'quantity']
+        fields = ['offer']
         widgets = {
             'offer': forms.HiddenInput()
         }
