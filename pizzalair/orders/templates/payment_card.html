@@ -2,7 +2,7 @@
 {% block step_number %}2{% endblock %}
 {% block step_name %}Payment{% endblock %}
 {% block step_content %}
-    <form action="{% url 'payment_card' order_id %}" method="post">
+    <form class="payment-card" action="{% url 'payment_card' order_id %}" method="post">
         {% csrf_token %}
         {{ form.as_div }}
         <input type="submit" value="Save and Review Order">
