@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Product
+from .models import Product, OfferInstance
 from .models import Pizza
 from .models import ProductCategory
 from .models import Offer
@@ -32,4 +32,4 @@ admin.site.register(Pizza, PizzaAdmin)
 admin.site.register(ProductCategory, ProductCategoryAdmin)
 admin.site.register(Offer, OfferAdmin)
 admin.site.register(OfferTemplate, OfferTemplateAdmin)
-
+admin.site.register(OfferInstance)

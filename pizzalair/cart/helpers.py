@@ -1,5 +1,6 @@
-from .models import Cart, CartItem
+from .models import Cart, CartItem, CartProductItem, CartOfferItem
 from django.db.models import Sum
+from itertools import chain
 
 def get_or_create_cart(request):
     try:
@@ -15,7 +16,9 @@ def get_cart_items_if_any(request):
     try:
         cart_id = request.session.get('cart')
         cart = Cart.objects.get(id=cart_id)
-        return CartItem.objects.filter(cart=cart)
+        products = CartProductItem.objects.filter(cart=cart)
+        offers = CartOfferItem.objects.filter(cart=cart)
+        return list(chain(products, offers))
     except:
         return []
 
@@ -23,6 +26,6 @@ def get_cart_total(request):
     items = get_cart_items_if_any(request)
     if len(items):
         print(items)
-        return items.aggregate(s=Sum("total_price"))['s']
+        return sum([item.total_price for item in items])
     else:
         return 0

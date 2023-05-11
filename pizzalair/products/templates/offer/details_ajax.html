@@ -6,23 +6,10 @@
 {% block 'name' %}{{ product.name }}{% endblock %}
 {% block 'description' %}
         <p>{{ product.description }}</p>
-        <form action="{% url 'offer_create' %}" id="OfferInstance">
+        <form id="OfferInstance" action="{% url 'offer_details' product.id %}" method="POST">
         {% csrf_token %}
-        {% for offer in offer_template %}
-            <label style="color: white;">Choose your {{offer.category.name}}</label>
-            {% for x in offer.quantity_as_range %}
-                <select name="category[{{ offer.id }}][]">
-                {% for item in offer.products %}
-                    <option value="{{ item.id }}">{{ item }}</option>
-                {% endfor %}
-                </select>
-            {% endfor %}
-        {% endfor %}
-            <label style="color:white">Quantity:
-                <input type="number" value="1">
-            </label>
-            <input type="submit">
+        {{ form.as_div }}
+        <input id="add-to-cart" type="submit" value="Add to cart">
         </form>
 {% endblock %}
 {% block 'price' %}{{ product.price | intcomma }} kr.{% endblock %}
-

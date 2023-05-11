@@ -32,12 +32,26 @@ class CartProductItem(CartItem):
 class CartOfferItem(CartItem):
     offer = models.ForeignKey(OfferInstance, on_delete=models.SET_NULL, null=True)
 
-@receiver(pre_save, sender=CartItem)
-def signal_pre_save_cart_item(sender, instance, using, **kwargs):
+
+@receiver(pre_save, sender=CartProductItem)
+def signal_pre_save_cart_product_item(sender, instance, using, **kwargs):
     instance.total_price = instance.item_price * instance.quantity
 
     try:
-        item = CartItem.objects.exclude(id=instance.id).get(cart=instance.cart, product=instance.product)
+        item = CartProductItem.objects.exclude(id=instance.id).get(cart=instance.cart, product=instance.product)
+        item.quantity += instance.quantity
+        item.save()
+        raise IntegrityError('Save operation cancelled')
+    except ObjectDoesNotExist:
+        pass
+
+
+@receiver(pre_save, sender=CartOfferItem)
+def signal_pre_save_cart_offer_item(sender, instance, using, **kwargs):
+    instance.total_price = instance.item_price * instance.quantity
+
+    try:
+        item = CartOfferItem.objects.exclude(id=instance.id).get(cart=instance.cart, offer=instance.offer)
         item.quantity += instance.quantity
         item.save()
         raise IntegrityError('Save operation cancelled')
