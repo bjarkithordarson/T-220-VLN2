@@ -2,7 +2,7 @@
 {% block step_number %}1{% endblock %}
 {% block step_name %}Billing{% endblock %}
 {% block step_content %}
-    <form action="{% url 'billing' order_id %}" method="post">
+    <form class="billing-form" action="{% url 'billing' order_id %}" method="post">
         {% csrf_token %}
         {{ form.as_div }}
         <input type="submit" value="Save and Continue">

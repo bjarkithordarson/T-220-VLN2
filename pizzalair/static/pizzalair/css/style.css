@@ -202,7 +202,8 @@ footer {
 
 #LoginForm,
 #RegisterForm,
-.form-horizontal{
+.form-horizontal,
+form{
     width: 40%;
     margin: auto;
 }
@@ -400,8 +401,6 @@ footer {
         font-size: 15px;
     }
 
-
-
 .left img {
     width: 100%;
 }
@@ -421,12 +420,114 @@ top: -65px;
     }
 
 
-
 /*-------- CART PAGE -----------*/
 
 
+table {
+  border-collapse: collapse;
+}
+
+#CartTable {
+    width: 70%;
+    margin: auto;
+    border-top: 2px solid #18BE72;
+    padding-top: 20px;
+}
+
+.loyalty-points {
+    position: relative;
+    right: -15%;
+}
 
 
+#checkOutBTN {
+    position: relative;
+    right: 15%;
+}
+
+#removeAllItems {;
+    display: inline-block;
+    font-size: 24px;
+    padding: 4px 10px 3px 10px;
+    cursor: pointer;
+    background: white;
+    position: relative;
+    right: -7%;
+}
+
+
+/*-------- CHECKOUT PAGE -----------*/
+
+
+div label {
+    padding: 10px;
+}
+
+form input[type=text] {
+    background: #18BE7240;
+    border: none;
+    width: 75%;
+    height: 31px;
+    border-radius: 5px;
+}
+
+.billing-form select {
+    background: #18BE7240;
+    border: none;
+    width: 76%;
+    height: 31px;
+    border-radius: 5px;
+}
+
+.billing-form input {
+
+}
+
+
+
+.progressbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+    .progressbar .step {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .progressbar .step .marker {
+        border-radius: 20px;
+        background: #fff;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        gap: 10px;
+        border: 2px solid #18BE72;
+        box-shadow: 5px 5px 0px #18BE72;
+    }
+        .progressbar .step .number {
+            display: none;
+        }
+        .progressbar .step.active .marker {
+            background: #18BE72;
+            color: white;
+            border-color: #ffffff;
+        }
+            .progressbar .step.active .marker a {
+                color: #ffffff;
+            }
+        .progressbar .step.active .line {
+            border-color: #ffffff;
+            background: #18BE72;
+        }
+    .progressbar .line {
+        width: 100px;
+        height: 10px;
+        border: 2px solid #18BE72;
+        border-width: 2px 0;
+        box-shadow: 5px 5px 0px #18BE72;
+    }
 
 
 
@@ -468,7 +569,6 @@ form label{
 .form-content label {
     margin-left: 0px;
 }
-
 
 
 form .errors,
@@ -749,50 +849,6 @@ a {
     display: None;
 }
 
-
-.progressbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-    .progressbar .step {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .progressbar .step .marker {
-        border-radius: 20px;
-        background: #fff;
-        padding: 20px;
-        text-align: center;
-        display: flex;
-        gap: 10px;
-        border: 2px solid #18BE72;
-        box-shadow: 5px 5px 0px #18BE72;
-    }
-        .progressbar .step .number {
-            display: none;
-        }
-        .progressbar .step.active .marker {
-            background: #18BE72;
-            color: white;
-            border-color: #ffffff;
-        }
-            .progressbar .step.active .marker a {
-                color: #ffffff;
-            }
-        .progressbar .step.active .line {
-            border-color: #ffffff;
-            background: #18BE72;
-        }
-    .progressbar .line {
-        width: 100px;
-        height: 10px;
-        border: 2px solid #18BE72;
-        border-width: 2px 0;
-        box-shadow: 5px 5px 0px #18BE72;
-    }
-
 .checkout-review .steps {
     display: flex;
     gap: 30px;
@@ -833,17 +889,6 @@ dl {
     dl dt::after {
         content: ':';
     }
-table {
-  border-collapse: collapse;
-}
-
-#CartTable {
-    width: 100%;
-    margin: auto;
-    border-top: 2px solid #18BE72;
-    padding-top: 20px;
-}
-
 .checkout-btn-container {
     display: flex;
     margin-top: 30px;
@@ -868,30 +913,10 @@ td {
     height: 48px;
 }
 
-#checkOutBTN {
-<<<<<<< HEAD
-=======
-    position: relative;
-    left: 53%;
-    top: 20px;
-}
-
-#removeAllItems {;
-    display: inline-block;
-    box-shadow: 2px 2px 0px #18BE72;
-    font-size: 24px;
-    border: 1px solid #18BE72;
-    border-radius: 4px;
-    padding: 4px 10px 3px 10px;
-    text-align: center;
-    cursor: pointer;
-    background: white;
-}
 
 #YourOrder {
     width: 300px;
-    margin-left: 22%;
->>>>>>> main
+    margin-left: 12%;
 }
 
 #Empty {
@@ -913,6 +938,7 @@ td {
     box-shadow: none;
     cursor: pointer;
 }
+
 .input-group{
     display: flex;
     align-items: center;
