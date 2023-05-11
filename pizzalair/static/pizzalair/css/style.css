@@ -512,7 +512,13 @@ p {
         background: #18BE72;
         border-radius: 13px;
         padding: 15px 20px;
-        height: 120px;
+        height: 65px;
+
+    }
+    .card #description{
+                overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
     }
     .card .label a,
     .card .label p {
