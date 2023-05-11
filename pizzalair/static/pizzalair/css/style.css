@@ -235,7 +235,7 @@ a.btn.xlarge {
     text-align: center;
     cursor: pointer;
     position: absolute;
-    top: 217px;
+    top: 244px;
     right: 42px;
     background: #18BE72;
 }
@@ -243,6 +243,15 @@ a.btn.xlarge {
 #OfferInstance {
     position: relative;
     top: -65px;
+}
+
+#OfferInstance select {
+    width: 150px;
+    border-radius: 5px;
+}
+
+#OfferInstance div {
+    margin: 5px;
 }
 
 form input{
@@ -385,6 +394,7 @@ body.overlay .popup-overlay {
         margin: 40px;
         position: relative;
         top: -37px;
+        min-height: 47px;
     }
 
     .right label {
@@ -416,7 +426,7 @@ body.overlay .popup-overlay {
     }
     #price {
         position: absolute;
-        top: 362px;
+        top: 387px;
         font-size: 15px;
     }
 
@@ -424,7 +434,7 @@ body.overlay .popup-overlay {
         font-size: 20px;
         min-width: 160px;
         position: absolute;
-        top: 386px;
+        top: 408px;
         right: 36px;
         box-shadow: 2px 2px white;
         border: 1px solid white;
@@ -594,6 +604,15 @@ a {
     align-items: center;
     flex-direction: column;
     margin-left: 50px;
+}
+
+#id_username {
+    width: 180px;
+    background: #18BE7230;
+}
+
+#Loyalty-points {
+    margin-top: 20px;
 }
 
 .form-content label {
