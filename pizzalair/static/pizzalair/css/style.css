@@ -325,20 +325,40 @@ form{
 
 
 /*-------- PRODUCT POP UP -----------*/
+#add-to-cart,
+#add-buttn {
+    width: 157px;
+    font-family: Gliker, sans-serif;
+    color: white;
+    display: inline-block;
+    box-shadow: 2px 2px 0px white;
+    font-size: 24px;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 4px 10px 3px 10px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 244px;
+    right: 42px;
+    background: #18BE72;
+}
 
-
+#add-buttn {
+    top: 84%;
+    right: 8%;
+}
 
 .popup {
     width: 60%;
-    height: 55%;
-    background: white;
-    border: 2px solid #18BE72;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.15);
-    display: block;
-    overflow: hidden;
+    text-align: center;
     position: relative;
+    min-height: 47px;
+    margin: 50px;
+    font-size: 40px;
+    top: 6%;
 }
+
     .popup .content {
         display: flex;
         height: 100%;
@@ -397,12 +417,15 @@ form{
     }
     #price {
         position: absolute;
-        top: 387px;
-        font-size: 15px;
+        top: 80%;
+        font-size: 18px;
+        right: 56%;
     }
 
 .left img {
     width: 100%;
+    position: relative;
+    top: 19%;
 }
 
 #OfferInstance {
