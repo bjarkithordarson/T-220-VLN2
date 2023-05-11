@@ -165,18 +165,17 @@ h1, h2, h3, p {
 
 
 merch{
+    box-sizing: border-box;
 
-box-sizing: border-box;
+    position: absolute;
+    width: 132px;
+    height: 126px;
+    left: 267px;
+    top: 535px;
 
-position: absolute;
-width: 132px;
-height: 126px;
-left: 267px;
-top: 535px;
-
-background: url(_39e615e9-d3f6-486e-aca5-f9286461fa68);
-border: 1.5px solid #18BE72;
-filter: drop-shadow(4px 4px 0px #18BE72);
+    background: url(_39e615e9-d3f6-486e-aca5-f9286461fa68);
+    border: 1.5px solid #18BE72;
+    filter: drop-shadow(4px 4px 0px #18BE72);
 }
 
 a {

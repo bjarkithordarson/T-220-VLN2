@@ -32,7 +32,7 @@ def add(request, product_id, quantity=1):
         name=product.name,
         quantity=quantity,
         item_price = product.price,
-        total_price = product.price * quantity,
+        #total_price = product.price * quantity,
         cart=cart
     )
     try:
@@ -45,7 +45,7 @@ def add(request, product_id, quantity=1):
             'id': cart_item.id,
             'quantity': cart_item.quantity,
             'item_price': cart_item.item_price,
-            'item_total_price': cart_item.total_price,
+            'item_total_price': cart_item.total_price(),
             'total_price': get_cart_total(request),
             'cart_count': len(get_cart_items_if_any(request))
         }
@@ -64,7 +64,7 @@ def add_offer(request, offer_instance_id, quantity=1):
         name=str(instance),
         quantity=quantity,
         item_price=instance.offer.price,
-        total_price=instance.offer.price * quantity,
+        #total_price=instance.offer.price * quantity,
         cart=cart
     )
 
@@ -78,7 +78,7 @@ def add_offer(request, offer_instance_id, quantity=1):
             'id': cart_offer_item.id,
             'quantity': cart_offer_item.quantity,
             'item_price': cart_offer_item.item_price,
-            'item_total_price': cart_offer_item.total_price,
+            'item_total_price': cart_offer_item.total_price(),
             'total_price': get_cart_total(request),
             'cart_count': len(get_cart_items_if_any(request))
         }
@@ -112,7 +112,7 @@ def update(request, cart_item_id, quantity):
                 'deleted': quantity <= 0,
                 'quantity': item.quantity,
                 'item_price': item.item_price,
-                'item_total_price': item.total_price,
+                'item_total_price': item.total_price(),
                 'total_price': get_cart_total(request),
                 'cart_count': len(get_cart_items_if_any(request))
             }
