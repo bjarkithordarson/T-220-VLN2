@@ -80,8 +80,8 @@ header {
         justify-content: space-between;
         height: 100%;
     }
-    header .page h1 {
-    }
+    
+
     header .page nav {
         grid-area: menu;
         display: flex;
@@ -372,8 +372,8 @@ body.overlay .popup-overlay {
     .popup .content .right {
         flex: 1;
     }
-    .popup .left {
-    }
+    
+    
     .popup .right {
         position: relative;
         background: #18BE72;
@@ -515,7 +515,13 @@ p {
         background: #18BE72;
         border-radius: 13px;
         padding: 15px 20px;
-        height: 90px;
+        height: 65px;
+
+    }
+    .card #description{
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
     }
     .card .label a,
     .card .label p {
