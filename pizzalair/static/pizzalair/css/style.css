@@ -282,15 +282,22 @@ footer {
     width: 170px;
     height: 30px;
     border-radius: 5px;
+    position: relative;
+    top: -5px;
 }
 
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 50px 0;
+    gap: 30px;
+}
 
 #category-selector {
     height: 35px;
     width: 159px;
     border: solid 1px #18BE72;
 }
-
 
 .input-group select
 {   background-color:#ffffff;
@@ -300,7 +307,6 @@ footer {
     position: relative;
     top: -5px;
 }
-
 
 .input-group {
     display: flex;
@@ -341,6 +347,12 @@ footer {
         flex: 1;
     }
 
+     .left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 496px;
+    }
 
     .popup .right {
         position: relative;
@@ -354,6 +366,7 @@ footer {
         position: relative;
         top: -37px;
         min-height: 47px;
+        font-size: 14px;
     }
 
     .right label {
@@ -370,9 +383,7 @@ footer {
         top: -6px;
     }
 
-    .right p {
-        font-size: 14px;
-    }
+
     .close {
         position: absolute;
         top: 12px;
@@ -389,29 +400,34 @@ footer {
         font-size: 15px;
     }
 
-    a.add-to-cart {
-        font-size: 20px;
-        min-width: 160px;
-        position: absolute;
-        top: 408px;
-        right: 36px;
-        box-shadow: 2px 2px white;
-        border: 1px solid white;
-        background: #18BE72;
-        color: white;
-        padding: 10px;
+
+
+.left img {
+    width: 100%;
+}
+
+#OfferInstance {
+position: relative;
+top: -65px;
+}
+
+    #OfferInstance select {
+        border-radius: 3px;
+        width: 150px;
     }
 
-    .left img {
-        width: 100%;
+    #OfferInstance div {
+        height: 50px;
     }
 
-    .left {
-        display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 496px;
-    }
+
+
+/*-------- CART PAGE -----------*/
+
+
+
+
+
 
 
 button {
@@ -531,7 +547,8 @@ a.btn.large {
 
 
 
-#add-to-cart {
+#add-to-cart,
+#add-buttn {
     width: 157px;
     font-family: Gliker, sans-serif;
     color: white;
@@ -549,9 +566,9 @@ a.btn.large {
     background: #18BE72;
 }
 
-#OfferInstance {
-    position: relative;
-    top: -65px;
+#add-buttn {
+    top: 412px;
+    right: 8%;
 }
 
 
@@ -628,12 +645,6 @@ body.overlay .popup-overlay {
 
 p {
     font-size: 12px;
-}
-.search-container {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 50px 0;
-    gap: 30px;
 }
 
 
