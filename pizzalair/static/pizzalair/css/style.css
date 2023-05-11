@@ -454,11 +454,17 @@ p {
     gap: 30px;
 }
 
+#search_box {
+    border: 1px solid #18BE72;
+    width: 170px;
+}
+
 .search-container select{
     height: 35px;
     position: relative;
     top: -5px;
 }
+
 
 
 
@@ -797,6 +803,6 @@ td {
 }
 .input-group select
 {   background-color:#ffffff;
-    border: 2px solid #18BE72;
+    border: 1px solid #18BE72;
     border-radius: 3px;
 }
