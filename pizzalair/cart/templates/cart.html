@@ -34,6 +34,7 @@
                 Earn {{ cart.total_loyalty_points | intcomma }} Loyalty Points, if you checkout now!
                 {% endif %}
             </span>
+            <button id="removeAllItems" onclick="window.location.href='/cart/remove/0'">Empty cart</button>
             <a id="checkOutBTN" class="btn" href="{% url 'checkout' %}">Checkout</a>
         </div>
     {% else %}

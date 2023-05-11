@@ -4,8 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import UpdateUserForm, UpdateProfileForm
-from .forms import SignUpForm
-
+from django.contrib.auth.views import LoginView
 
 
 # Create your views here.
@@ -30,6 +29,8 @@ def register(request):
     })
 
 
+
+
 def profile(request):
     return render(request, 'profile.html')
 
@@ -50,3 +51,4 @@ def updateUser(request):
         profile_form = UpdateProfileForm(instance=request.user)
 
     return render(request, 'profile.html', {'user_form': user_form, 'profile_form': profile_form})
+

@@ -90,6 +90,13 @@ def add_offer(request, offer_instance_id, quantity=1):
         return redirect('cart')
 
 def remove(request, cart_item_id):
+
+    if cart_item_id == 0:
+        cart = get_or_create_cart(request)
+        items = CartItem.objects.filter(cart_id=cart.id)
+        for item in items:
+            item.delete()
+        return redirect('cart')
     try:
         cart = get_or_create_cart(request)
         item = CartItem.objects.get(id=cart_item_id, cart=cart)
