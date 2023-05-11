@@ -35,9 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let item_id = field.getAttribute('data-cart-item');
             let quantity = field.value;
             const url = (id, quantity) => `/cart/update/${id}/${quantity}?ajax=1`
-
+            console.log("I'm here")
             e.target.disabled = true
-
             if (quantity <= 0) {
                 if (confirm("Do you want to remove this item from your cart?")) {
                     await fetch(url(item_id, quantity));
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 let response = await fetch(url(item_id, quantity));
                 let data = await response.json();
-
+                console.log(data)
                 let cart_item_row = cart_table.querySelector(`tr[data-cart-item="${item_id}"]`)
                 let cart_item_total = cart_item_row.querySelector("td.item-total")
                 let cart_total = cart_table.querySelector("td.cart-total")
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const numberWithCommas = (x) => {
                     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
-
+                console.log(data.item_total_price, data.total_price)
                 cart_item_total.innerHTML = numberWithCommas(data.item_total_price) + " kr."
                 cart_total.innerHTML = numberWithCommas(data.total_price) + " kr."
             }
