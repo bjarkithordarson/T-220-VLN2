@@ -661,12 +661,12 @@ form .helptext {
         box-shadow: 5px 5px 0px #18BE72;
     }
 
-.checkout-review {
+.checkout-review .steps {
     display: flex;
     gap: 30px;
     margin-top: 30px;
 }
-    .checkout-review .card {
+    .checkout-review .steps .card {
         flex: 1;
         padding: 20px;
         display: grid;
@@ -684,6 +684,12 @@ form .helptext {
     .checkout-review .card>.card-body {
         grid-area: body;
     }
+
+    .checkout-review .btn-right .btn {
+        float: right;
+        margin-top: 50px;
+    }
+
 
 dl {
     display: grid;
