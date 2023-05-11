@@ -327,7 +327,7 @@ form{
 /*-------- PRODUCT POP UP -----------*/
 #add-to-cart,
 #add-buttn {
-    width: 157px;
+        width: 157px;
     font-family: Gliker, sans-serif;
     color: white;
     display: inline-block;
@@ -339,8 +339,8 @@ form{
     text-align: center;
     cursor: pointer;
     position: absolute;
-    top: 244px;
-    right: 42px;
+    top: 175%;
+    right: -50%
     background: #18BE72;
 }
 
@@ -373,12 +373,15 @@ form{
         justify-content: center;
         align-items: center;
         height: 496px;
+        background: white;
+         border-radius: 17px 0px 0px 17px
     }
 
     .popup .right {
         position: relative;
         background: #18BE72;
         text-align: center;
+        border-radius: 0px 17px 17px 0px;
     }
     .popup .right p {
         color: white;
@@ -417,7 +420,7 @@ form{
     }
     #price {
         position: absolute;
-        top: 80%;
+        top: 75%;
         font-size: 18px;
         right: 56%;
     }
@@ -425,7 +428,7 @@ form{
 .left img {
     width: 100%;
     position: relative;
-    top: 19%;
+    top: 2%;
 }
 
 #OfferInstance {
@@ -486,25 +489,30 @@ div label {
     padding: 10px;
 }
 
-form input[type=text] {
+.payment_card input[type=text] {
     background: #18BE7240;
     border: none;
     width: 75%;
-    height: 31px;
+    height: 37px;
     border-radius: 5px;
 }
 
 .billing-form select {
     background: #18BE7240;
     border: none;
-    width: 76%;
-    height: 31px;
+    width: 77%;
+    height: 43px;
     border-radius: 5px;
 }
 
 .billing-form input {
-
+   background: #18BE7240;
+    border: none;
+    width: 76%;
+    height: 40px;
+    border-radius: 5px;
 }
+
 
 
 
@@ -578,6 +586,7 @@ form label{
     font-family: Gliker, sans-serif;
     color: #18BE72;
     display: block;
+    font-size: 20px;
 }
 
 
@@ -620,9 +629,39 @@ form .helptext {
 
 /*-------- PAYMENT PAGE -----------*/
 
-.payment_card input[type=submit] {
+.payment_card input[type=submit],
+.billing-form input[type=submit]{
     font-family: 'Gliker', sans-serif;
     color: #18BE72;
+    background: white;
+    border: 1px solid #18BE72;
+    padding: 12px;
+    width: 77%;
+    margin-top: 30px;
+    box-shadow: 3px 3px 0px #18BE72;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.payment-method {
+    text-align: center;
+}
+
+.payment-method a {
+   font-size: 35px;
+    border: 1px solid #18BE72;
+    padding: 30px;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 0px #18BE72;
+    border-radius: 5px;
+    background: white;
+}
+    .payment-method a:active {
+        box-shadow: inset 5px 5px 0px #18BE72;
+    }
+
+.payment-method h2 {
+    margin: 60px;
 }
 
 /*---------- LABEL -------------*/
@@ -674,32 +713,6 @@ a.btn.small {
 }
 a.btn.large {
     font-size: 30px;
-}
-
-
-
-#add-to-cart,
-#add-buttn {
-    width: 157px;
-    font-family: Gliker, sans-serif;
-    color: white;
-    display: inline-block;
-    box-shadow: 2px 2px 0px white;
-    font-size: 24px;
-    border: 1px solid white;
-    border-radius: 4px;
-    padding: 4px 10px 3px 10px;
-    text-align: center;
-    cursor: pointer;
-    position: absolute;
-    top: 244px;
-    right: 42px;
-    background: #18BE72;
-}
-
-#add-buttn {
-    top: 412px;
-    right: 8%;
 }
 
 
