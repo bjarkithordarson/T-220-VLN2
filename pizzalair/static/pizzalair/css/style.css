@@ -80,8 +80,8 @@ header {
         justify-content: space-between;
         height: 100%;
     }
-    header .page h1 {
-    }
+    
+
     header .page nav {
         grid-area: menu;
         display: flex;
@@ -222,6 +222,35 @@ a.btn.xlarge {
     padding-bottom: 3px;
 }
 
+#add-to-cart {
+    width: 157px;
+    font-family: Gliker, sans-serif;
+    color: white;
+    display: inline-block;
+    box-shadow: 2px 2px 0px white;
+    font-size: 24px;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 4px 10px 3px 10px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 217px;
+    right: 42px;
+    background: #18BE72;
+}
+
+#OfferInstance {
+    position: relative;
+    top: -65px;
+}
+
+form input{
+    background: white;
+    width: 50px;
+}
+
+
 a.btn:active {
     box-shadow: inset 2px 2px #18BE72;
 }
@@ -343,8 +372,8 @@ body.overlay .popup-overlay {
     .popup .content .right {
         flex: 1;
     }
-    .popup .left {
-    }
+    
+    
     .popup .right {
         position: relative;
         background: #18BE72;
@@ -425,13 +454,16 @@ p {
     gap: 30px;
 }
 
+#search_box {
+    border: 1px solid #18BE72;
+    width: 170px;
+}
+
 .search-container select{
     height: 35px;
     position: relative;
     top: -5px;
 }
-
-
 
 #category-selector {
     height: 35px;
@@ -483,7 +515,13 @@ p {
         background: #18BE72;
         border-radius: 13px;
         padding: 15px 20px;
-        height: 75px;
+        height: 65px;
+
+    }
+    .card #description{
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
     }
     .card .label a,
     .card .label p {
@@ -618,6 +656,11 @@ form .helptext {
     content: ')';
 }
 
+#CartItemCount[data-count="0"] {
+    display: None;
+}
+
+
 .progressbar {
     display: flex;
     align-items: center;
@@ -740,8 +783,6 @@ td {
 #YourOrder {
     width: 300px;
     margin-left: 22%;
-    position: relative;
-    top: 91px;
 }
 
 #Empty {
@@ -749,8 +790,6 @@ td {
     margin-left: 25%;
     font-size: 20px;
     text-align: center;
-    position: relative;
-    top: 70px;
 }
 
 .quantity {
@@ -773,6 +812,6 @@ td {
 }
 .input-group select
 {   background-color:#ffffff;
-    border: 2px solid #18BE72;
+    border: 1px solid #18BE72;
     border-radius: 3px;
 }

@@ -6,10 +6,11 @@
 {% block 'name' %}{{ product.name }}{% endblock %}
 {% block 'description' %}
         <p>{{ product.description }}</p>
-        <form action="{% url 'offer_details' product.id %}" method="POST">
+        <form id="OfferInstance" action="{% url 'offer_details' product.id %}" method="POST">
         {% csrf_token %}
         {{ form.as_div }}
-        <input type="submit" value="Add to cart">
+        <input id="add-to-cart" type="submit" value="Add to cart">
         </form>
 {% endblock %}
+{% block 'add' %}{% endblock %}
 {% block 'price' %}{{ product.price | intcomma }} kr.{% endblock %}

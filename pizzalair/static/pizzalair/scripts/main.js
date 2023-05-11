@@ -24,14 +24,19 @@ product_card_links.forEach(link => {
         const offer_form = document.getElementById("OfferInstance");
         offer_form.addEventListener('submit', async (e) => {
             e.preventDefault()
-            const url = e.currentTarget.getAttribute("action");
+            const url = e.currentTarget.getAttribute("action")+ "?ajax=1";
             const formData = new FormData(e.currentTarget);
             const response = await fetch(url, {
                 method: 'POST',
                 body: formData,
             });
-            const data = await response.text();
+            const data = await response.json();
             console.log(data);
+
+            cart_count= document.getElementById("CartItemCount")
+            cart_count.innerHTML = data.cart_count;
+            cart_count.setAttribute("data-count", data.cart_count);
+            closePopUp();
         });
     })
 });
