@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%7g260l%q3-n&0txmjtygk+w3(pcg0*3g)85*#&vpd3rg5$yc+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -140,6 +140,7 @@ if DEBUG:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 else:
+    # STATIC_ROOT = "/pizzalair/static/"
     BASE_DIR = Path(__file__).resolve().parent.parent
     STATIC_URL = 'static/'
     STATICFILES_DIRS = [
