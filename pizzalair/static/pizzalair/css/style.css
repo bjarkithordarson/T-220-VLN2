@@ -753,11 +753,16 @@ table {
 }
 
 #CartTable {
-    width: 500px;
-    margin-right: 25%;
-    margin-left: 25%;
+    width: 100%;
+    margin: auto;
     border-top: 2px solid #18BE72;
     padding-top: 20px;
+}
+
+.checkout-btn-container {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
 }
 
 .cartItems tr{
@@ -779,14 +784,6 @@ td {
 }
 
 #checkOutBTN {
-    position: relative;
-    left: 53%;
-    top: 20px;
-}
-
-#YourOrder {
-    width: 300px;
-    margin-left: 22%;
 }
 
 #Empty {
