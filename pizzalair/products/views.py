@@ -12,12 +12,16 @@ from .models import Pizza
 
 def base_list(request, model, template, title):
     products = model.objects.all().order_by('name')
-    categories = get_object_or_404(ProductCategory, name=title)
-    products = products.filter(category=categories)
+    category = get_object_or_404(ProductCategory, name=title)
+    products = products.filter(category=category)
     products, context = apply_filters(request, products)
+    categories = ProductCategory.objects.all()
+    categories = categories.filter(filter=True)
+
     #check if the title is "Our Products" and make the title based on the product category
 
     context = dict({
+        "categories": categories,
         "page_title": title,
         "products": products,
     }, **context)
@@ -25,10 +29,10 @@ def base_list(request, model, template, title):
 
 def base_no_nav(request, model, template, title):
     products = model.objects.all().order_by('name')
-    categories = get_object_or_404(ProductCategory, name=title)
-    products = products.filter(category=categories)
-
+    category = get_object_or_404(ProductCategory, name=title)
+    products = products.filter(category=category)
     products, context = apply_filters(request, products)
+
     context = dict({
         "page_title": title,
         "products": products,
@@ -39,13 +43,17 @@ def base_no_nav(request, model, template, title):
 def product_list(request, slug):
 # I want to imitate base_list but I want to use the slug instead of the title
     products = Product.objects.all().order_by('name')
-    categories = get_object_or_404(ProductCategory, slug=slug)
-    products = products.filter(category=categories)
+    category = get_object_or_404(ProductCategory, slug=slug)
+    products = products.filter(category=category)
     products, context = apply_filters(request, products)
+    categories = ProductCategory.objects.all()
+    categories = categories.filter(filter=True)
+
     context = dict({
-        "page_title": categories.name,
-        "products": products,
-    }, **context)
+        "categories": categories,
+        "page_title": category.name,
+            "products": products,
+        }, **context)
     return render(request, "product/list.html", context)
 
 def pizza_list(request):
@@ -104,7 +112,7 @@ def offer_details(request, offer_id):
 
 def merch_details(request, merch_id):
     ajax = request.GET.get("ajax", False) != False
-    template = "product/details.html" if not ajax else "product/details_ajax.html"
+    template = "merch/details.html" if not ajax else "merch/details_ajax.html"
     return base_details(request, Product, template, merch_id)
 
 def apply_filters(request, product_list, context = {}):

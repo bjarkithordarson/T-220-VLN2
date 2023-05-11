@@ -4,7 +4,7 @@
         <div class="label">
             {% block 'name' %}{{ product.name }}{% endblock %}
             <p>{% block 'description' %}{{ product.description }}{% endblock %}</p>
-            <p>Price: {% block 'price' %}{{ product.price }}{% endblock %}</p>
+            <p>{% block 'price' %} Price: {{ product.price }}{% endblock %}</p>
         </div>
     </a>
 </div>
