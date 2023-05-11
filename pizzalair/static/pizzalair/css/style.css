@@ -245,11 +245,6 @@ a.btn.xlarge {
     top: -65px;
 }
 
-form input{
-    background: white;
-    width: 50px;
-}
-
 
 a.btn:active {
     box-shadow: inset 2px 2px #18BE72;
