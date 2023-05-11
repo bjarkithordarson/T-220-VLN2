@@ -2,10 +2,8 @@
 {% block step_number %}2{% endblock %}
 {% block step_name %}Payment{% endblock %}
 {% block step_content %}
-    <div class="payment-method">
     {% for payment_method in payment_methods %}
         <h2><a href="?method={{ payment_method.id }}">{{ payment_method.name }}</a></h2>
         <p>{{ payment_method.description }}</p>
     {% endfor %}
-    </div>
 {% endblock %}

@@ -261,7 +261,7 @@ form{
         background: #18BE72;
         border-radius: 13px;
         padding: 15px 20px;
-        height: 75px;
+        height: 65px;
 
     }
     .card #description{
@@ -326,29 +326,7 @@ form{
 
 /*-------- PRODUCT POP UP -----------*/
 
-#add-to-cart,
-#add-buttn {
-    width: 157px;
-    font-family: Gliker, sans-serif;
-    color: white;
-    display: inline-block;
-    box-shadow: 2px 2px 0px white;
-    font-size: 24px;
-    border: 1px solid white;
-    border-radius: 4px;
-    padding: 4px 10px 3px 10px;
-    text-align: center;
-    cursor: pointer;
-    position: absolute;
-    top: 244px;
-    right: 42px;
-    background: #18BE72;
-}
 
-#add-buttn {
-    top: 84%;
-    right: 8%;
-}
 
 .popup {
     width: 60%;
@@ -387,7 +365,7 @@ form{
         text-align: center;
         margin: 40px;
         position: relative;
-        top: 5%;
+        top: -37px;
         min-height: 47px;
         font-size: 14px;
     }
@@ -403,7 +381,7 @@ form{
         margin: 50px;
         font-size: 40px;
         position: relative;
-        top: 6%;
+        top: -6px;
     }
 
 
@@ -419,16 +397,12 @@ form{
     }
     #price {
         position: absolute;
-        top: 80%;
-        font-size: 18px;
-        right: 56%;
+        top: 387px;
+        font-size: 15px;
     }
 
 .left img {
     width: 100%;
-    position: relative;
-    top: 19%;
-
 }
 
 #OfferInstance {
@@ -448,49 +422,6 @@ top: -65px;
 
 /*-------- CART PAGE -----------*/
 
-.checkout-btn-container {
-    display: flex;
-    margin-top: 30px;
-    justify-content: space-between;
-}
-
-#checkOutBTN {
-    position: relative;
-    right: 15%;
-}
-
-.cartItems tr{
-    border-bottom: 1px solid #18BE7240;
-}
-
-#Loyalty-points {
-    margin-top: 20px;
-}
-
-#YourOrder {
-    width: 300px;
-    margin-left: 12%;
-}
-
-#Empty {
-    width: 200px;
-    margin-left: 25%;
-    font-size: 20px;
-    text-align: center;
-}
-
-.quantity {
-    width: 50px;
-}
-
-#removeItem {
-    background: none;
-    font-family: sans-serif;
-    font-size: 20px;
-    border: none;
-    box-shadow: none;
-    cursor: pointer;
-}
 
 table {
   border-collapse: collapse;
@@ -508,6 +439,12 @@ table {
     right: -15%;
 }
 
+
+#checkOutBTN {
+    position: relative;
+    right: 15%;
+}
+
 #removeAllItems {;
     display: inline-block;
     font-size: 24px;
@@ -522,6 +459,10 @@ table {
 /*-------- CHECKOUT PAGE -----------*/
 
 
+div label {
+    padding: 10px;
+}
+
 form input[type=text] {
     background: #18BE7240;
     border: none;
@@ -530,40 +471,18 @@ form input[type=text] {
     border-radius: 5px;
 }
 
-.billing-form div {
-
-}
-
 .billing-form select {
     background: #18BE7240;
     border: none;
     width: 76%;
-    height: 32px;
+    height: 31px;
     border-radius: 5px;
 }
 
-.billing-form input[type=submit],
-.payment-card input[type=submit]{
-    font-family: Gliker, sans-serif;
-    margin-top: 30px;
-    width: 76%;
-    height: 38px;
-    border-radius: 4px;
-    border: 1px solid #18BE72;
-    color: #18BE72;
-    background: white;
-    box-shadow: 3px 3px 0px #18BE72;
-    font-size: 20px;
-}
-    .billing-form input[type=submit]:active,
-    .payment-card input[type=submit]:active {
-        box-shadow: inset 2px 2px #18BE72;
-    }
+.billing-form input {
 
-.billing-form label {
-    padding: 10px;
-    font-size: 20px;
 }
+
 
 
 .progressbar {
@@ -610,58 +529,6 @@ form input[type=text] {
         box-shadow: 5px 5px 0px #18BE72;
     }
 
-/*-------- PAYMENT PAGE -----------*/
-
-.payment-method {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 50px;
-}
-
-.payment-method h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-    border: 2px solid #18BE72;
-    padding: 25px;
-    box-shadow: 3px 3px #18BE72;
-}
-     .payment-method h2:active {
-        box-shadow: inset 2px 2px #18BE72;
-     }
-
-.payment-method p {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.payment-card div {
-    margin-top: 5%;
-    font-size: 20px;
-}
-
-
-/*-------- REVIEW PAGE -----------*/
-
-
-dl {
-    display: grid;
-    grid-template-columns: 0.4fr 1fr;
-}
-    dl dt {
-        font-weight: bold;
-        padding: 7px;
-    }
-    dl dt::after {
-        content: ':';
-    }
-
-
-#confirmation {
-    text-align: center;
-    font-size: 30px;
-}
 
 
 button {
@@ -727,6 +594,7 @@ form .helptext {
         display: block;
     }
 
+/*---------- LABEL -------------*/
 
 
 h1, h2, h3, p {
@@ -777,6 +645,31 @@ a.btn.large {
     font-size: 30px;
 }
 
+
+
+#add-to-cart,
+#add-buttn {
+    width: 157px;
+    font-family: Gliker, sans-serif;
+    color: white;
+    display: inline-block;
+    box-shadow: 2px 2px 0px white;
+    font-size: 24px;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 4px 10px 3px 10px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 244px;
+    right: 42px;
+    background: #18BE72;
+}
+
+#add-buttn {
+    top: 412px;
+    right: 8%;
+}
 
 
 a.btn:active {
@@ -917,6 +810,17 @@ a {
     color: #18BE72;
 }
 
+
+
+
+
+
+#Loyalty-points {
+    margin-top: 20px;
+}
+
+
+
 .btn-update {
     position: relative;
     left: 500px;
@@ -975,6 +879,25 @@ a {
     }
 
 
+dl {
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+}
+    dl dt {
+        font-weight: bold;
+    }
+    dl dt::after {
+        content: ':';
+    }
+.checkout-btn-container {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.cartItems tr{
+    border-bottom: 1px solid #18BE7240;
+}
 
 tr {
     height: 60px;
@@ -990,6 +913,31 @@ td {
     height: 48px;
 }
 
+
+#YourOrder {
+    width: 300px;
+    margin-left: 12%;
+}
+
+#Empty {
+    width: 200px;
+    margin-left: 25%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.quantity {
+    width: 50px;
+}
+
+#removeItem {
+    background: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
 
 .input-group{
     display: flex;
