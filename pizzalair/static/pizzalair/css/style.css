@@ -235,7 +235,7 @@ a.btn.xlarge {
     text-align: center;
     cursor: pointer;
     position: absolute;
-    top: 217px;
+    top: 244px;
     right: 42px;
     background: #18BE72;
 }
@@ -243,11 +243,6 @@ a.btn.xlarge {
 #OfferInstance {
     position: relative;
     top: -65px;
-}
-
-form input{
-    background: white;
-    width: 50px;
 }
 
 
@@ -385,6 +380,7 @@ body.overlay .popup-overlay {
         margin: 40px;
         position: relative;
         top: -37px;
+        min-height: 47px;
     }
 
     .right label {
@@ -416,7 +412,7 @@ body.overlay .popup-overlay {
     }
     #price {
         position: absolute;
-        top: 362px;
+        top: 387px;
         font-size: 15px;
     }
 
@@ -424,7 +420,7 @@ body.overlay .popup-overlay {
         font-size: 20px;
         min-width: 160px;
         position: absolute;
-        top: 386px;
+        top: 408px;
         right: 36px;
         box-shadow: 2px 2px white;
         border: 1px solid white;
@@ -596,6 +592,15 @@ a {
     margin-left: 50px;
 }
 
+#id_username {
+    width: 180px;
+    background: #18BE7230;
+}
+
+#Loyalty-points {
+    margin-top: 20px;
+}
+
 .form-content label {
     margin-left: 0px;
 }
@@ -704,12 +709,12 @@ form .helptext {
         box-shadow: 5px 5px 0px #18BE72;
     }
 
-.checkout-review {
+.checkout-review .steps {
     display: flex;
     gap: 30px;
     margin-top: 30px;
 }
-    .checkout-review .card {
+    .checkout-review .steps .card {
         flex: 1;
         padding: 20px;
         display: grid;
@@ -727,6 +732,12 @@ form .helptext {
     .checkout-review .card>.card-body {
         grid-area: body;
     }
+
+    .checkout-review .btn-right .btn {
+        float: right;
+        margin-top: 50px;
+    }
+
 
 dl {
     display: grid;

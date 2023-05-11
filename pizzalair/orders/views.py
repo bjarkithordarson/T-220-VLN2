@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect
 from cart.helpers import *
 from cart.models import CartItem, Cart
 from .models import Order, OrderPaymentMethod, OrderStatus
-from .forms import BillingForm, CardPaymentForm, PaymentMethodForm
+from .forms import BillingForm, CardPaymentForm
+from django.http import Http404
 
 
 # Create your views here.
@@ -31,12 +32,21 @@ def checkout(request):
         user=request.user
     )
 
+    print(order.is_user_editable())
+    print(order.status)
+
+    if not order.is_user_editable():
+        raise Http404("Order not found or already completed")
+
     return redirect('billing', order_id=order.id)
 
 @login_required
 def order(request, order_id):
-    """Overview of all orders for a user"""
-    return render(request, 'order.html')
+    order = Order.objects.get(id=order_id, user=request.user)
+    context = {
+        'order': order
+    }
+    return render(request, 'order.html', context)
 
 @login_required
 def payment_method(request, order_id):
@@ -46,8 +56,8 @@ def payment_method(request, order_id):
     except:
         return redirect('checkout')
 
-    if not order.status.is_user_editable():
-        return redirect('orders')
+    if not order.is_user_editable():
+        raise Http404("Order not found or already completed")
 
     template = 'payment_method.html'
 
@@ -86,8 +96,8 @@ def payment_card(request, order_id):
     except:
         return redirect('checkout')
 
-    if not order.status.is_user_editable():
-        return redirect('orders')
+    if not order.is_user_editable():
+        raise Http404("Order not found or already completed")
 
     if request.method == 'POST':
         form = CardPaymentForm(request.POST)
@@ -119,8 +129,8 @@ def billing(request, order_id):
     except:
         return redirect('checkout')
 
-    if not order.status.is_user_editable():
-        return redirect('orders')
+    if not order.is_user_editable():
+        raise Http404("Order not found or already completed")
 
     return_url = request.GET.get('return', None)
 
@@ -157,8 +167,8 @@ def review(request, order_id):
     except:
         return redirect('checkout')
 
-    if not order.status.is_user_editable():
-        return redirect('orders')
+    if not order.is_user_editable():
+        raise Http404("Order not found or already completed.")
 
     errors = {
         'payment': order.validate_payment_info() == False,
@@ -186,13 +196,26 @@ def confirmation(request, order_id):
     except:
         return redirect('checkout')
 
-    if not order.status.is_user_editable():
-        return redirect('orders')
-
     if not order.validate_payment_info() or not order.validate_billing_info():
         return redirect('review', order_id=order_id)
 
-    order.status = OrderStatus.objects.filter(type=OrderStatus.RECEIVED).first()
-    order.save()
+    print("++++++++++++++")
+    if order.status.type == OrderStatus.INITIAL:
+        print("-----------")
+        order.status = OrderStatus.objects.filter(type=OrderStatus.RECEIVED).first()
+        print(order.status)
+        os = OrderStatus.objects.all()
+        for s in os:
+            print(s)
+            print(s.type)
+            print(OrderStatus.RECEIVED)
+        order.save()
+        request.session['cart'] = None
 
-    return redirect('order', order_id=order_id)
+    context = {
+        'order_id': order_id,
+        'order': order,
+        'step': 4
+    }
+
+    return render(request, 'confirmation.html', context)

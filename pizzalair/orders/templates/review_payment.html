@@ -1,13 +1,13 @@
 {% if order.payment_method.method == "card" %}
     <dl>
         <dt>Cardholder</dt>
-        <dd>{{ order.payment_method.cardholder_name }}</dd>
+        <dd>{{ order.payment_card_name }}</dd>
         <dt>Card number</dt>
-        <dd>{{ order.payment_method.card_number }}</dd>
+        <dd>{{ order.payment_card_number }}</dd>
         <dt>Expiry date</dt>
-        <dd>{{ order.payment_method.card_expiry }}</dd>
+        <dd>{{ order.payment_expiry_month }} / {{ order.payment_expiry_year }}</dd>
         <dt>CVV</dt>
-        <dd>{{ order.payment_method.card_cvv }}</dd>
+        <dd>***</dd>
     </dl>
 {% elif order.payment_method.method == "pickup" %}
     <p>You will pay when you pick up your order. We accept cash and card at our stores.</p>
