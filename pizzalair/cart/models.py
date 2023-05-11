@@ -35,8 +35,6 @@ class CartProductItem(CartItem):
 class CartOfferItem(CartItem):
     offer = models.ForeignKey(OfferInstance, on_delete=models.SET_NULL, null=True)
 
-
-
 @receiver(post_delete, sender=CartItem)
 def signal_post_delete_cart_item(sender, instance, using, **kwargs):
     # Delete the cart if it's empty
