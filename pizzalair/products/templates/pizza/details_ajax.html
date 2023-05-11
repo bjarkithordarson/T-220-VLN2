@@ -6,7 +6,8 @@
 {% endblock %}
 {% block 'name' %}{{ product.name }}{% endblock %}
 {% block 'description' %}
-    <p>{{ product.description}}</p>
+    <p>{{ product.description}} <br> Toppings: {{ product.toppings }}</p>
+
 {% endblock %}
     <a href="/cart/add/{{ product.id }}/1" class="add-to-cart btn" onclick="add_to_cart(event)">Add to cart</a>
 {% block 'price' %}{{ product.price | intcomma }} kr.{% endblock %}

@@ -11,27 +11,54 @@ from .models import Pizza
 
 
 def base_list(request, model, template, title):
-
     products = model.objects.all().order_by('name')
+    category = get_object_or_404(ProductCategory, name=title)
+    products = products.filter(category=category)
+    products, context = apply_filters(request, products)
+    categories = ProductCategory.objects.all()
+    categories = categories.filter(filter=True)
+
+    #check if the title is "Our Products" and make the title based on the product category
+
+    context = dict({
+        "categories": categories,
+        "page_title": title,
+        "products": products,
+    }, **context)
+    return render(request, template, context)
+
+def base_no_nav(request, model, template, title):
+    products = model.objects.all().order_by('name')
+    category = get_object_or_404(ProductCategory, name=title)
+    products = products.filter(category=category)
     products, context = apply_filters(request, products)
 
     context = dict({
         "page_title": title,
         "products": products,
-        "categories": ProductCategory.objects.filter(filter=True).order_by('name')
     }, **context)
+
     return render(request, template, context)
 
-def base_no_nav(request, model, title):
-    return base_list(request, model, "base_no_nav.html", title)
+def product_list(request, slug):
+# I want to imitate base_list but I want to use the slug instead of the title
+    products = Product.objects.all().order_by('name')
+    category = get_object_or_404(ProductCategory, slug=slug)
+    products = products.filter(category=category)
+    products, context = apply_filters(request, products)
+    categories = ProductCategory.objects.all()
+    categories = categories.filter(filter=True)
 
-def product_list(request):
-    print("YOU ARE IN PRODUCT LIST")
-    return base_list(request, Product, "base_list.html", "Our Products")
+    context = dict({
+        "categories": categories,
+        "page_title": category.name,
+            "products": products,
+        }, **context)
+    return render(request, "product/list.html", context)
 
 def pizza_list(request):
     print("YOU ARE IN PIZZA LIST")
-    return base_list(request, Pizza, "pizza/list.html", "Pizzas")
+    return base_list(request, Pizza, "pizza/list.html", "Pizza")
 
 def offer_list(request):
     print("YOU ARE IN OFFER LIST")
@@ -56,8 +83,8 @@ def product_details(request, product_id):
 
 def pizza_details(request, pizza_id):
     ajax = request.GET.get("ajax", False) != False
-    template = "product/details.html" if not ajax else "product/details_ajax.html"
-    return base_details(request, Product, template, pizza_id)
+    template = "pizza/details.html" if not ajax else "pizza/details_ajax.html"
+    return base_details(request, Pizza, template, pizza_id)
 
 def offer_details(request, offer_id):
     if request.method == "POST":
@@ -90,25 +117,9 @@ def offer_details(request, offer_id):
     return HttpResponse(template.render(context, request))
 
 def merch_details(request, merch_id):
-    pass
-
-def category(request, slug):
-
-    categories = get_object_or_404(ProductCategory, slug=slug)
-    productcategory = ProductCategory.objects.filter(filter=True)
-    products = Product.objects.filter(category = categories).order_by('name')
-    template = loader.get_template("product/list.html")
-    products, context = apply_filters(request, products)
-    pizzas = Pizza.objects.all().order_by('name')
-
-    context = dict({
-        "pizzas": pizzas,
-        "productcategory": productcategory,
-        "page_title": "Menu",
-        "products": products
-    }, **context)
-
-    return HttpResponse(template.render(context, request))
+    ajax = request.GET.get("ajax", False) != False
+    template = "merch/details.html" if not ajax else "merch/details_ajax.html"
+    return base_details(request, Product, template, merch_id)
 
 def apply_filters(request, product_list, context = {}):
     product_list = product_list.order_by('name')
@@ -174,3 +185,4 @@ def offer_create(request):
 
     else:
         return redirect("/")
+
