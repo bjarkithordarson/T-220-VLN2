@@ -10,12 +10,14 @@ from itertools import chain
 
 # Create your views here.
 def index(request):
+    cart = get_or_create_cart(request)
     items = get_cart_items_if_any(request)
 
     context = {
         "test": "Session is not set!",
         "items": items,
-        "cart_total": get_cart_total(request)
+        "cart_total": get_cart_total(request),
+        "cart": cart
     }
     if request.session.get("cart"):
         context["test"] = "Session is set! The value is: " + str(request.session.get("cart"))
@@ -32,7 +34,7 @@ def add(request, product_id, quantity=1):
         name=product.name,
         quantity=quantity,
         item_price = product.price,
-        #total_price = product.price * quantity,
+        item_loyalty_points=product.loyalty_points,
         cart=cart
     )
     try:
@@ -64,7 +66,7 @@ def add_offer(request, offer_instance_id, quantity=1):
         name=str(instance),
         quantity=quantity,
         item_price=instance.offer.price,
-        #total_price=instance.offer.price * quantity,
+        item_loyalty_points=instance.offer.loyalty_points,
         cart=cart
     )
 
@@ -88,6 +90,13 @@ def add_offer(request, offer_instance_id, quantity=1):
         return redirect('cart')
 
 def remove(request, cart_item_id):
+
+    if cart_item_id == 0:
+        cart = get_or_create_cart(request)
+        items = CartItem.objects.filter(cart_id=cart.id)
+        for item in items:
+            item.delete()
+        return redirect('cart')
     try:
         cart = get_or_create_cart(request)
         item = CartItem.objects.get(id=cart_item_id, cart=cart)
