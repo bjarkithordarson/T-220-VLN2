@@ -413,6 +413,7 @@ form{
         padding: 20px;
         padding-bottom: 50px;
         overflow: auto;
+        font-size: 0.7em;
     }
     .popup .right p {
         color: white;
