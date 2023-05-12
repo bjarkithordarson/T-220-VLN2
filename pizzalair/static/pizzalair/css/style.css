@@ -229,6 +229,15 @@ form{
         box-shadow: inset 2px 2px #18BE72;
     }
 
+    .login {
+        width: 200px;
+        font-size: 20px;
+    }
+
+    #sign-in {
+        text-align: left;
+    }
+
 
 /*-------- PRODUCT PAGE -----------*/
 
