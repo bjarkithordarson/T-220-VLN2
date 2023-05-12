@@ -13,7 +13,6 @@ product_card_links.forEach(link => {
     link.addEventListener('click', async (e) => {
         e.preventDefault();
         const url = e.currentTarget.getAttribute("href");
-        console.log(url);
 
         const response = await fetch(url + "?ajax=1");
         const popup_content = await response.text();
@@ -22,6 +21,9 @@ product_card_links.forEach(link => {
 
         // Get the #OfferInstance form
         const offer_form = document.getElementById("OfferInstance");
+        if (!offer_form) {
+            return
+        }
         offer_form.addEventListener('submit', async (e) => {
             e.preventDefault()
             const url = e.currentTarget.getAttribute("action")+ "?ajax=1";
@@ -31,7 +33,6 @@ product_card_links.forEach(link => {
                 body: formData,
             });
             const data = await response.json();
-            console.log(data);
 
             cart_count= document.getElementById("CartItemCount")
             cart_count.innerHTML = data.cart_count;
@@ -54,17 +55,14 @@ $(document).ready(function(){
             url: '?search_filter=' + searchText,
             type: 'GET',
             success: function (resp) {
-                console.log(resp.data.map)
         let  newHtml= resp.data.map(d => (
           `<div class="card"> <a href ="products/${d.id}/ "><img class="thumb" src="/media/${d.picture}" alt="${d.name}"><div class="label"><a href="/products/${d.id}"> ${d.name} </a> <p>${d.description}</p></div></a></div>`
         ))
         $('.product-list').html(newHtml.join(''));
-        console.log(newHtml,resp.data)
         $('#search-box').val('');
             },
             error: function (xhr, status, error) {
-                //TODO: make better
-                console.error(error);
+                console.error(error)
             }
         })
     });

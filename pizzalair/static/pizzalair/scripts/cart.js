@@ -21,21 +21,21 @@ const add_to_cart = async (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     cart_table = document.getElementById("CartTable")
+    if (!cart_table) {
+        return
+    }
     cart_quantity_fields = cart_table.querySelectorAll("input.quantity")
     add_to_cart_buttons = document.querySelectorAll(".add-to-cart")
 
     add_to_cart_buttons.forEach(button => {
         button.addEventListener('click', add_to_cart)
-        console.log(button)
     });
 
     cart_quantity_fields.forEach(field => {
-        console.log(field, field.getAttribute('data-cart-item'), field.value)
         field.addEventListener('change', async (e) => {
             let item_id = field.getAttribute('data-cart-item');
             let quantity = field.value;
             const url = (id, quantity) => `/cart/update/${id}/${quantity}?ajax=1`
-            console.log("I'm here")
             e.target.disabled = true
             if (quantity <= 0) {
                 if (confirm("Do you want to remove this item from your cart?")) {
@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 let response = await fetch(url(item_id, quantity));
                 let data = await response.json();
-                console.log(data)
                 let cart_item_row = cart_table.querySelector(`tr[data-cart-item="${item_id}"]`)
                 let cart_item_total = cart_item_row.querySelector("td.item-total .value")
                 let cart_total = cart_table.querySelector("td.cart-total .value")
@@ -85,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     cart_new_lp.innerHTML = numberWithCommas(data.loyalty_points.new_balance)
                 }
             }
-            console.log(e.currentTarget)
             e.target.disabled = false
         })
     });
