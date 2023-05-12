@@ -24,7 +24,6 @@ class Product(models.Model):
     category = models.ManyToManyField(ProductCategory, related_name='products')
     picture = models.ImageField()
     second_picture = models.ImageField(null=True, blank=True)
-    loyalty_points = models.IntegerField(default=0)
     loyalty_points_only = models.BooleanField(default=False)
     def img_preview(self): #new
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
