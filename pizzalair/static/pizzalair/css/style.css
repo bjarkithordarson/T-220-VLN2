@@ -949,6 +949,17 @@ dl {
     border-radius: 15px;
 }
 
+.cart-error,
+.error {
+    color: red;
+    text-align: center;
+    margin: 20px 0;
+    /* Background red but more muted */
+    background: #c15353;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+
 .cartItems tr{
     border-bottom: 1px solid #18BE7240;
 }
