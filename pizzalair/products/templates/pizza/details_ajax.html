@@ -2,7 +2,14 @@
 {% load humanize %}
 
 {% block 'aside' %}
-    <img src="{{ product.picture.url }}" alt="{{ product.name }}">
+    <div class="flip-container">
+        <div class="front">
+            <img src="{{ product.picture.url }}" alt="{{ product.name }}">
+        </div>
+        <div class="back">
+            <img src="{{ product.second_picture.url }}" alt="{{ product.name }}">
+        </div>
+    </div>
 {% endblock %}
 {% block 'name' %}{{ product.name }}{% endblock %}
 {% block 'description' %}
