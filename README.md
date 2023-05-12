@@ -19,7 +19,7 @@ source /path/to/project/venv/bin/activate
 
 ##### Windows
 ```
-/path/to/project/venv/scripts/activate.bat
+/path/to/project/venv/scripts/activate.ps1
 ```
 
 ### Install
