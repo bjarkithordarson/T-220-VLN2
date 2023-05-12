@@ -49,6 +49,33 @@ Open http://localhost:8000
 | FeedmePizza | PizzaIsMylife420 | Has 6900 amount of loyalty points |
 | Dade | vinna1234 | Has 5500 amount of loyalty points |
 
+## Functionality
+### Requirements
+We believe all minimum requirements have been met.
+### Additional functionality
+#### Loyalty Points
+Users earn loyalty points when orders are made. Certain products (merch) can only be bought using Loyalty Points.
+#### Crust Inspector
+Pizza crusts can be inspected by hovering over the pizza picture. Crust lovers rejoyce!
+#### Fully customizable offers
+Offers are fully customizable. An offer consists of an Offer object, which has one or more OfferTemplates. When an offer is added to the cart, an OfferInstance is created according to the OfferTemplates specified in the Offer.
+#### CSS written by us
+We took the chance to deepen our CSS knowledge by struggling through *so many* flex boxes. It may not be the most optimal CSS, but we love the final product and the experience it gave us.
+#### Fully implemented admin
+
+## If we had more time
+### No JavaScript
+There is partially (50-ish %) implemented functionality to make the whole website work without JavaScript.
+### Deployment
+We thought about deploying the app for fun. We might. The lair.pizza domain is available by the way ;)
+
+## Stats
+Cups of coffees: 40
+Cans of monster: 15
+Pizzas eaten: 2
+Hours worked: 150
+Number of AI-generated dragon images: All of them.
+
 
 
 ## Links
