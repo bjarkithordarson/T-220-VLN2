@@ -82,14 +82,16 @@ WSGI_APPLICATION = 'pizzalair.wsgi.application'
 
 # Database
 
+ON_HEROKU = 'ON_HEROKU' in os.environ
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pizzalair',
-        'USER': 'pizzalair',
-        'PASSWORD': 'tuG=L3muT{m%K&ki',
-        'HOST': '35.242.130.83',
-        'PORT': '5432'
+        'NAME': os.environ['DB_NAME'] if ON_HEROKU else 'pizzalair',
+        'USER': os.environ['DB_USER'] if ON_HEROKU else 'pizzalair',
+        'PASSWORD': os.environ['DB_PASS'] if ON_HEROKU else 'tuG=L3muT{m%K&ki',
+        'HOST': os.environ['DB_HOST'] if ON_HEROKU else '35.242.130.83',
+        'PORT': os.environ['DB_PORT'] if ON_HEROKU else '5432'
     }
 }
 
