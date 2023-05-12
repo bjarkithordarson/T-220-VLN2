@@ -42,6 +42,14 @@ class Product(models.Model):
 class Pizza(Product):
     #product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='Pizza')
     toppings = models.CharField(max_length=120)
+    new_toppings = models.ManyToManyField('PizzaTopping', related_name='pizzas', blank=True)
+
+class PizzaTopping(models.Model):
+    name = models.CharField(max_length=120)
+
+    def __str__(self):
+        return self.name
+
 
 class Offer(Product):
     pass

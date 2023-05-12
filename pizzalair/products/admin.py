@@ -7,6 +7,7 @@ from .models import Pizza
 from .models import ProductCategory
 from .models import Offer
 from .models import OfferTemplate
+from .models import PizzaTopping
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -29,6 +30,7 @@ class OfferTemplateAdmin(admin.ModelAdmin):
     list_display = ('id', 'offer', 'quantity', 'category')
 
 admin.site.register(Pizza, PizzaAdmin)
+admin.site.register(PizzaTopping)
 admin.site.register(ProductCategory, ProductCategoryAdmin)
 admin.site.register(Offer, OfferAdmin)
 admin.site.register(OfferTemplate, OfferTemplateAdmin)
