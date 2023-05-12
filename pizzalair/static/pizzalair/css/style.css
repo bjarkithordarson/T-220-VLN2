@@ -602,8 +602,10 @@ form label{
     margin-left: 50px;
 }
 
-.form-content label {
-    margin-left: 0px;
+
+.form-content form{
+    width: 100%;
+
 }
 
 
@@ -846,6 +848,11 @@ a {
         width: 100%;
     }
 
+.user-profile label {
+    position: relative;
+    top: 7px;
+    height: 30px;
+}
 
 .body .page h1{
     text-align: center;
@@ -854,16 +861,9 @@ a {
     color: #18BE72;
 }
 
-
-
-
-
-
 #Loyalty-points {
     margin-top: 20px;
 }
-
-
 
 .btn-update {
     position: relative;
@@ -878,9 +878,6 @@ a {
     top: 46px;
     cursor: pointer;
 }
-
-
-
 
 #CartItemCount::before {
     content: '(';
