@@ -20,7 +20,7 @@
                 {% endfor %}
             </tbody>
             <tfoot>
-                {% if cart.total_loyalty_points_price > 0 %}
+                {% if loyalty_points and cart.total_loyalty_points_price > 0 %}
                 <tr class="summary">
                     <td><small>Loyalty Points Balance:</small></td>
                     <td></td>

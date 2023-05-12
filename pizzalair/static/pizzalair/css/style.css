@@ -957,6 +957,7 @@ dl {
     color: red;
     text-align: center;
     margin: 20px 0;
+    /* Background red but more muted */
     background: #c15353;
     color: #ffffff;
     padding: 20px;
