@@ -461,8 +461,7 @@ table {
 }
 
 .loyalty-points {
-    position: relative;
-    right: -15%;
+
 }
 
 
@@ -473,12 +472,16 @@ table {
 
 #removeAllItems {;
     display: inline-block;
+    box-shadow: 2px 2px 0px #18BE72;
     font-size: 24px;
+    border: 1px solid #18BE72;
+    border-radius: 4px;
     padding: 4px 10px 3px 10px;
+    text-align: center;
     cursor: pointer;
     background: white;
     position: relative;
-    right: -7%;
+    right: -15%;
 }
 
 
@@ -564,6 +567,7 @@ div label {
 
 button {
     font-family: Gliker, sans-serif;
+    background: white;
     color: #18BE72;
     box-shadow: 2px 2px #18BE72;
     text-align: center;
@@ -598,8 +602,10 @@ form label{
     margin-left: 50px;
 }
 
-.form-content label {
-    margin-left: 0px;
+
+.form-content form{
+    width: 100%;
+
 }
 
 
@@ -641,7 +647,12 @@ form .helptext {
     box-shadow: 3px 3px 0px #18BE72;
     border-radius: 5px;
     font-size: 17px;
+    cursor: pointer;
 }
+    .payment_card input[type=submit]:active,
+    .billing-form input[type=submit]:active {
+        box-shadow: 5px 5px 0px #18BE72;
+    }
 
 .payment-method {
     text-align: center;
@@ -744,20 +755,6 @@ footer {
     color: #18BE72;
 }
 
-button {
-    font-family: Gliker, sans-serif;
-    color: #18BE72;
-    box-shadow: 2px 2px #18BE72;
-    text-align: center;
-    vertical-align: top;
-    border: 1px solid #18BE72;
-    border-radius: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 5px;
-    padding-bottom: 3px;
-}
-
 button:active {
     box-shadow: inset 2px 2px #18BE72;
 }
@@ -833,18 +830,28 @@ a {
     justify-content: center;
 }
 
-.profile-pic input {
-    height: 33px;
-    width: 200px;
-    background: none;
-}
+    .profile-pic input {
+        height: 33px;
+        width: 200px;
+        background: none;
+    }
+
+    .user-profile label {
+        position: relative;
+        top: 7px;
+        height: 30px;
+        width: 300px;
+    }
+
+    .user-profile form {
+        margin: 0px;
+        width: 100%;
+    }
 
 .user-profile label {
     position: relative;
     top: 7px;
     height: 30px;
-    margin-right: 30px;
-    margin-left: 30px;
 }
 
 .body .page h1{
@@ -854,16 +861,9 @@ a {
     color: #18BE72;
 }
 
-
-
-
-
-
 #Loyalty-points {
     margin-top: 20px;
 }
-
-
 
 .btn-update {
     position: relative;
@@ -878,9 +878,6 @@ a {
     top: 46px;
     cursor: pointer;
 }
-
-
-
 
 #CartItemCount::before {
     content: '(';
@@ -981,17 +978,6 @@ tfoot {
     height: 48px;
 }
 
-#removeAllItems {;
-    display: inline-block;
-    box-shadow: 2px 2px 0px #18BE72;
-    font-size: 24px;
-    border: 1px solid #18BE72;
-    border-radius: 4px;
-    padding: 4px 10px 3px 10px;
-    text-align: center;
-    cursor: pointer;
-    background: white;
-}
 
 #Empty {
     width: 200px;
