@@ -241,7 +241,7 @@ form{
         font-size: 20px;
     }
 
-    #sign-in {
+    #sign-in{
         text-align: left;
     }
 
@@ -452,25 +452,22 @@ form{
 }
 
 #OfferInstance {
-position: relative;
-top: -65px;
+    width: 100%;
 }
 
     #OfferInstance select {
         border-radius: 3px;
-        width: 150px;
-        position: relative;
-        top: -59%;
+        width: 100%;
     }
 
     #OfferInstance div {
-        height: 50px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin-bottom: 10px;
     }
 
 
 /*-------- CART PAGE -----------*/
-
-
 table {
   border-collapse: collapse;
 }
@@ -509,10 +506,10 @@ table {
 
 /*-------- CHECKOUT PAGE -----------*/
 
-
+/*
 div label {
     padding: 10px;
-}
+}*/
 
 .payment_card input[type=text] {
     background: #18BE7240;

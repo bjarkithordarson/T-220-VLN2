@@ -1,7 +1,7 @@
 {% extends "base_page.html" %}
 {% block page_body %}
-    <h1>Sign up now!</h1>
     <form id="RegisterForm" method="post">
+    <h1 id="sign-in">Sign up now!</h1>
         {% csrf_token %}
         {{ form }}
         <input type="submit" class="btn btn_primary" value="Sign up"/>
