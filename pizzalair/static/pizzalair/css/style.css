@@ -959,6 +959,13 @@ dl {
     color: white;
     height: 50px;
 }
+.summary.lp {
+    text-align: center;
+    height: 40px;
+}
+.summary.lp td {
+    padding: 0;
+}
 
 .cart-error,
 .error {
