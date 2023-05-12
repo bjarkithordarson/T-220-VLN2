@@ -1,3 +1,4 @@
 {% extends 'base_card.html' %}
+{% load humanize %}
 {% block 'url' %}{% url 'merch_details' product.id %}{% endblock %}
-{% block 'price' %}<p>{{ product.loyalty_points_bonus }} Loyalty Points</p>{% endblock %}
+{% block 'price' %}<p>{{ product.price | intcomma }} Loyalty Points</p>{% endblock %}
