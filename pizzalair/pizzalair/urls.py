@@ -35,3 +35,4 @@ urlpatterns = [
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'pizzalair.views.http404'
+handler500 = 'pizzalair.views.http500'
