@@ -1,7 +1,7 @@
 <div class="search-container">
     <form method="get" id="search-filter" action = "">
         <div class="input-group">
-            <input value = "{{ filter.search_filter}}" class="form-control" id="search_box" type="text" name="search_filter" placeholder="Search the Pizzalair..." />
+            <input value = "{{ filter.search_filter}}" class="form-control" id="search_box" type="text" name="search_filter" placeholder="Search... " />
             <select  name="category" id="category">
                 <option value="">No Filter</option>
                 {% for category in categories %}
