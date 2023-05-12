@@ -222,9 +222,10 @@ form{
     box-shadow: 2px 2px #18BE72;
     height: 40px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-    .btn-primary:active {
+    .btn_primary:active {
         box-shadow: inset 2px 2px #18BE72;
     }
 
@@ -325,9 +326,9 @@ form{
 
 
 /*-------- PRODUCT POP UP -----------*/
-#add-to-cart,
-#add-buttn {
-        width: 157px;
+.content #add-to-cart,
+.content #add-buttn {
+    width: 157px;
     font-family: Gliker, sans-serif;
     color: white;
     display: inline-block;
@@ -338,15 +339,14 @@ form{
     padding: 4px 10px 3px 10px;
     text-align: center;
     cursor: pointer;
-    position: absolute;
-    top: 175%;
-    right: -50%;
     background: #18BE72;
 }
 
+
+#add-to-cart{
+}
+
 #add-buttn {
-    top: 84%;
-    right: 8%;
 }
 
 .popup {
@@ -386,7 +386,7 @@ form{
     .popup .right p {
         color: white;
         text-align: center;
-        margin: 40px;
+        margin: 17px;
         position: relative;
         top: -37px;
         min-height: 47px;
@@ -394,7 +394,6 @@ form{
     }
 
     .right label {
-        font-family: Gliker, sans-serif;
         color: white;
     }
 
@@ -406,7 +405,6 @@ form{
         position: relative;
         top: -6px;
     }
-
 
     .close {
         position: absolute;
@@ -420,7 +418,7 @@ form{
     }
     #price {
         position: absolute;
-        top: 75%;
+        top: 82%;
         font-size: 18px;
         right: 56%;
     }
@@ -439,6 +437,8 @@ top: -65px;
     #OfferInstance select {
         border-radius: 3px;
         width: 150px;
+        position: relative;
+        top: -59%;
     }
 
     #OfferInstance div {
@@ -515,9 +515,6 @@ div label {
     height: 40px;
     border-radius: 5px;
 }
-
-
-
 
 .progressbar {
     display: flex;
@@ -684,7 +681,6 @@ h1, h2, h3, p {
     border: 5px ;
 }
 
-
 merch{
     box-sizing: border-box;
 
@@ -698,6 +694,7 @@ merch{
     border: 1.5px solid #18BE72;
     filter: drop-shadow(4px 4px 0px #18BE72);
 }
+
 
 a {
     font-family: Gliker, serif;
@@ -937,6 +934,12 @@ dl {
     align-items: center;
 }
 
+.summary {
+    background: #18BE72;
+    color: white;
+    height: 50px;
+}
+
 .cart-error,
 .error {
     color: red;
@@ -959,9 +962,11 @@ dl {
     color: #ffffff;
     padding: 20px;
     border-radius: 15px;
+}
 
 .cartItems tr{
     border-bottom: 1px solid #18BE7240;
+    height: 60px;
 }
 
 tr {
