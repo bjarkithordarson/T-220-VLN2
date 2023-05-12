@@ -22,19 +22,3 @@ class User(AbstractUser):
             new_img = (300, 300)
             img.thumbnail(new_img)
             img.save(self.profile_picture.path)
-
-class LoyaltyPoints(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    points = models.IntegerField(default=0)
-
-    def __str__(self):
-        return f"{self.user.username} - {self.points} points"
-
-class LoyaltyPointsTransaction(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    points = models.IntegerField(default=0)
-    date = models.DateTimeField(auto_now_add=True)
-    reference = models.CharField(max_length=100, null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.user.username} - {self.points} points - {self.date}"

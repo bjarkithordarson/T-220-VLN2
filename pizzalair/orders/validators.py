@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+import datetime
 
 def credit_card_number_validator(value):
     if not value.isdigit():
@@ -25,6 +26,11 @@ def expiry_year_validator(value):
         raise ValidationError('Expiry year must be all digits')
     if len(value) != 4:
         raise ValidationError('Expiry year must be 4 digits long')
-    if int(value) < 2020:
+    if int(value) < datetime.datetime.now().year:
         raise ValidationError('Expiry year must be in the future')
 
+def phone_number_validator(value):
+    if not value.isdigit():
+        raise ValidationError('Phone number must be all digits')
+    if len(value) < 7 or len(value) > 15:
+        raise ValidationError('Phone number must be between 7 and 15 digits long')

@@ -69,7 +69,7 @@ $(document).ready(function(){
         })
     });
 });
-
+/*
 openCategory = (name) => {
   var i;
   var x = document.getElementsByClassName("city");
@@ -79,18 +79,4 @@ openCategory = (name) => {
   document.getElementById(cityName).style.display = "block";
 }
 
-
-
-
-
-
-
-// <div className="card">
-//     <a href="{% url 'product_details' product.id %}">
-//         <img className="thumb" src="{{  product.picture.url }}" alt="{{ product.name }}">
-//             <div className="label">
-//                 <a href="{% url 'product_details' product.id %}">{{product.name}}</a>
-//                 <p>{{product.description}}</p>
-//             </div>
-//     </a>
-// </div>
+ */

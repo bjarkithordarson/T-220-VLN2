@@ -52,7 +52,7 @@
             <button id="removeAllItems" onclick="window.location.href='/cart/remove/0'">Empty cart</button>
             <span class="loyalty-points">
                 {% if loyalty_points.spent == 0 and loyalty_points.earned > 0 %}
-                Earn {{ loyalty_points.earned | intcomma }} Loyalty Points, if you checkout now!<br><a href="{% url 'merch_list' %}">Click here to spend them</a> or save them for later!
+                    Earn <span class="lp-earned">{{ loyalty_points.earned | intcomma }}</span> Loyalty Points, if you checkout now!<br><a href="{% url 'merch_list' %}">Click here to spend them</a> or save them for later!
                 {% endif %}
             </span>
             <a id="checkOutBTN" class="btn" href="{% url 'checkout' %}">Checkout</a>

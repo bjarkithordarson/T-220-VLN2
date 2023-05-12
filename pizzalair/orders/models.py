@@ -47,6 +47,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     status = models.ForeignKey(OrderStatus, on_delete=models.SET_NULL, null=True)
     billing_name = models.CharField(null=True)
+    billing_phone_number = models.CharField(null=True, validators=[validators.phone_number_validator])
     billing_address = models.CharField(null=True)
     billing_city = models.CharField(null=True)
     billing_postal_code = models.CharField(null=True)

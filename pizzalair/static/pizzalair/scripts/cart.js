@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let cart_item_total = cart_item_row.querySelector("td.item-total .value")
                 let cart_total = cart_table.querySelector("td.cart-total .value")
                 let cart_total_lp = cart_table.querySelector(".lp-earned")
-                let cart_earned_lp = cart_table.querySelector(".lp-earned")
+                let cart_earned_lp = document.querySelectorAll(".lp-earned")
                 let cart_spent_lp = cart_table.querySelector(".lp-spent")
                 let cart_old_lp = cart_table.querySelector(".lp-old-balance")
                 let cart_new_lp = cart_table.querySelector(".lp-new-balance")
@@ -71,7 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     cart_total_lp.innerHTML = numberWithCommas(data.total_loyalty_points_price)
                 }
                 if (cart_earned_lp) {
-                    cart_earned_lp.innerHTML = numberWithCommas(data.loyalty_points.earned)
+                    cart_earned_lp.forEach(element => {
+                        element.innerHTML = numberWithCommas(data.loyalty_points.earned)
+                    });
                 }
                 if (cart_spent_lp) {
                     cart_spent_lp.innerHTML = numberWithCommas(data.loyalty_points.spent)

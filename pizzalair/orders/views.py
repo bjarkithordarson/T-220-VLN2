@@ -150,6 +150,7 @@ def billing(request, order_id):
         if form.is_valid():
             order = Order.objects.get(id=order_id)
             order.billing_name = form.cleaned_data['billing_name']
+            order.billing_phone_number = form.cleaned_data['billing_phone_number']
             order.billing_address = form.cleaned_data['billing_address']
             order.billing_city = form.cleaned_data['billing_city']
             order.billing_postal_code = form.cleaned_data['billing_postal_code']

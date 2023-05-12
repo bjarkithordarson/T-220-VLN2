@@ -2,7 +2,7 @@
 {% block 'url' %}{% url 'pizza_details' product.id %}{% endblock %}
 {% block 'description' %}
     <ul class="toppings small">
-        {% for topping in product.new_toppings.all %}
+        {% for topping in product.toppings.all %}
             <li>{{ topping }}</li>
         {% endfor %}
     </ul>

@@ -1,6 +1,5 @@
 {% load humanize %}
-
-<table id="CartTable">
+<table id="CartTable" class="full-width">
     <thead>
         <tr>
             <td>Product</td>
@@ -19,14 +18,11 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="2">Loyalty Points</td>
-            <td>
-                <small>
-                    {{ loyalty_points.old_balance | intcomma }} LPs<br>
-                    + {{ loyalty_points.earned | intcomma }} LPs<br>
-                    - {{ loyalty_points.spent | intcomma }} LPs<br>
-                    = {{ loyalty_points.new_balance | intcomma }} LPs
-                </small>
+            <td colspan="3"><small>Loyalty Points
+                    {{ loyalty_points.old_balance | intcomma }} LPs
+                    + {{ loyalty_points.earned | intcomma }} LPs
+                    - {{ loyalty_points.spent | intcomma }} LPs
+                = {{ loyalty_points.new_balance | intcomma }} LPs</small>
             </td>
         </tr>
         <tr>
