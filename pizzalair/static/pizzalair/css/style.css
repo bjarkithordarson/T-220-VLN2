@@ -782,7 +782,7 @@ body.overlay .popup-overlay {
 
 
 p {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 
@@ -1010,4 +1010,14 @@ tfoot {
     justify-content: center;
     gap: 10px;
 }
-
+.http-error {
+    text-align: center;
+}
+.http-error img {
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    display: block;
+    margin: auto;
+    width: 400px;
+    height: 400px;
+}

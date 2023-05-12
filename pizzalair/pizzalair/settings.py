@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%7g260l%q3-n&0txmjtygk+w3(pcg0*3g)85*#&vpd3rg5$yc+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -62,7 +62,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/')
+            os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
+            os.path.join(os.path.dirname(__file__), 'pizzalair/templates').replace('\\', '/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
