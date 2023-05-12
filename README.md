@@ -37,6 +37,16 @@ python manage.py runserver
 
 Open http://localhost:8000
 
+##  Users:
+
+Robert - PW - mediumhardpassword
+Hall - PW - realeasypassword
+Enrique - PW - realyhardpassword
+Dade - PW - vinna1234
+PizzaLover67 - PW - ilovepizza67
+FeedmePizza - PW - PizzaIsMylife420
+
+
 
 
 ## Links
