@@ -937,6 +937,19 @@ dl {
     display: flex;
     margin-top: 30px;
     justify-content: space-between;
+    align-items: center;
+}
+
+.cart-error,
+.error {
+    color: red;
+    text-align: center;
+    margin: 20px 0;
+    /* Background red but more muted */
+    background: #c15353;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
 }
 
 .cartItems tr{
@@ -951,16 +964,22 @@ td {
     padding: 10px;
 }
 
-.summary {
+tfoot {
     background: #18BE72;
     color: white;
     height: 48px;
 }
 
-
-#YourOrder {
-    width: 300px;
-    margin-left: 12%;
+#removeAllItems {;
+    display: inline-block;
+    box-shadow: 2px 2px 0px #18BE72;
+    font-size: 24px;
+    border: 1px solid #18BE72;
+    border-radius: 4px;
+    padding: 4px 10px 3px 10px;
+    text-align: center;
+    cursor: pointer;
+    background: white;
 }
 
 #Empty {

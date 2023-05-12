@@ -18,6 +18,8 @@ class ProductCategory(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=120)
     price = models.IntegerField(default=0)
+    pay_with_loyalty_points = models.BooleanField(default=False)
+    loyalty_points_bonus = models.IntegerField(default=0)
     description = models.TextField()
     category = models.ManyToManyField(ProductCategory, related_name='products')
     picture = models.ImageField()

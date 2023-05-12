@@ -2,7 +2,7 @@
     {% if user.is_authenticated %}
         <a class="avatar" href="{% url 'profile' %}">
             <img id="small-img" src="{{ user.profile_picture.url }}" alt="">
-            <span>{{ user }}</span>
+            <span>{{ user }} ({{ user.loyalty_points }} LPs)</span>
         </a>
         <a class="sign" href="{% url 'signout' %}">Sign out</a>
     {% else %}
