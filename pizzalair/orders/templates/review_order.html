@@ -1,6 +1,6 @@
 {% load humanize %}
 
-<table>
+<table id="CartTable">
     <thead>
         <tr>
             <td>Product</td>
@@ -8,7 +8,7 @@
             <td>Price</td>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="cartItems">
         {% for item in order.cart.items.all %}
             <tr>
                 <td>{{ item.name }}</td>
@@ -17,4 +17,21 @@
             </tr>
         {% endfor %}
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">Loyalty Points</td>
+            <td>
+                <small>
+                    {{ loyalty_points.old_balance | intcomma }} LPs<br>
+                    + {{ loyalty_points.earned | intcomma }} LPs<br>
+                    - {{ loyalty_points.spent | intcomma }} LPs<br>
+                    = {{ loyalty_points.new_balance | intcomma }} LPs
+                </small>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">Total</td>
+            <td>{{ order.cart.total_price | intcomma }} kr</td>
+        </tr>
+    </tfoot>
 </table>

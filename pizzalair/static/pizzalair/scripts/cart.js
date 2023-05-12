@@ -50,15 +50,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 let data = await response.json();
                 console.log(data)
                 let cart_item_row = cart_table.querySelector(`tr[data-cart-item="${item_id}"]`)
-                let cart_item_total = cart_item_row.querySelector("td.item-total")
-                let cart_total = cart_table.querySelector("td.cart-total")
-                console.log(cart_item_row, cart_item_total, cart_total)
+                let cart_item_total = cart_item_row.querySelector("td.item-total .value")
+                let cart_total = cart_table.querySelector("td.cart-total .value")
+                let cart_total_lp = cart_table.querySelector(".lp-earned")
+                let cart_earned_lp = cart_table.querySelector(".lp-earned")
+                let cart_spent_lp = cart_table.querySelector(".lp-spent")
+                let cart_old_lp = cart_table.querySelector(".lp-old-balance")
+                let cart_new_lp = cart_table.querySelector(".lp-new-balance")
                 const numberWithCommas = (x) => {
                     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
-                console.log(data.item_total_price, data.total_price)
-                cart_item_total.innerHTML = numberWithCommas(data.item_total_price) + " kr."
-                cart_total.innerHTML = numberWithCommas(data.total_price) + " kr."
+
+                if (cart_item_total) {
+                    cart_item_total.innerHTML = numberWithCommas(data.item_total_price)
+                }
+                if (cart_total) {
+                    cart_total.innerHTML = numberWithCommas(data.total_price)
+                }
+                if (cart_total_lp) {
+                    cart_total_lp.innerHTML = numberWithCommas(data.total_loyalty_points_price)
+                }
+                if (cart_earned_lp) {
+                    cart_earned_lp.innerHTML = numberWithCommas(data.loyalty_points.earned)
+                }
+                if (cart_spent_lp) {
+                    cart_spent_lp.innerHTML = numberWithCommas(data.loyalty_points.spent)
+                }
+                if (cart_old_lp) {
+                    cart_old_lp.innerHTML = numberWithCommas(data.loyalty_points.old_balance)
+                }
+                if (cart_new_lp) {
+                    cart_new_lp.innerHTML = numberWithCommas(data.loyalty_points.new_balance)
+                }
             }
             console.log(e.currentTarget)
             e.target.disabled = false

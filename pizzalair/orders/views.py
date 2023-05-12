@@ -1,11 +1,10 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from cart.helpers import *
 from cart.models import CartItem, Cart
 from .models import Order, OrderPaymentMethod, OrderStatus
 from .forms import BillingForm, CardPaymentForm
 from django.http import Http404
-
 
 # Create your views here.
 @login_required
@@ -23,6 +22,17 @@ def checkout(request):
     items = get_cart_items_if_any(request)
     if not len(items):
         return redirect('index')
+
+    # Redirect to cart if not enough loyalty points
+    cart = get_or_create_cart(request)
+    balance = calculate_loyalty_points_balance(request.user, cart)
+    print(balance)
+
+    if balance['new_balance'] < 0:
+        return redirect(reverse('cart') + '?error=loyalty_points')
+
+    if cart.items.filter(pay_with_loyalty_points=False).count() <= 0:
+        return redirect(reverse('cart') + '?error=only_merch')
 
     # Check if there's an order with this cart
     cart_id = request.session.get('cart')
@@ -81,7 +91,8 @@ def payment_method(request, order_id):
     context = {
         'payment_methods': payment_methods,
         'order_id': order_id,
-        'step': 2
+        'step': 2,
+        'loyalty_points': calculate_loyalty_points_balance(request.user, order.cart)
     }
 
     return render(request, template, context)
@@ -182,7 +193,8 @@ def review(request, order_id):
         'order': order,
         'errors': errors,
         'is_complete': is_complete,
-        'step': 3
+        'step': 3,
+        'loyalty_points': calculate_loyalty_points_balance(request.user, order.cart)
     }
 
     return render(request, 'review.html', context)
@@ -199,16 +211,13 @@ def confirmation(request, order_id):
     if not order.validate_payment_info() or not order.validate_billing_info():
         return redirect('review', order_id=order_id)
 
-    print("++++++++++++++")
     if order.status.type == OrderStatus.INITIAL:
-        print("-----------")
         order.status = OrderStatus.objects.filter(type=OrderStatus.RECEIVED).first()
-        print(order.status)
-        os = OrderStatus.objects.all()
-        for s in os:
-            print(s)
-            print(s.type)
-            print(OrderStatus.RECEIVED)
+
+        user = order.user
+        user.loyalty_points = calculate_loyalty_points_balance(order.user, order.cart)['new_balance']
+        user.save()
+
         order.save()
         request.session['cart'] = None
 

@@ -29,3 +29,11 @@ def get_cart_total(request):
         return sum([item.total_price() for item in items])
     else:
         return 0
+
+def calculate_loyalty_points_balance(user, cart):
+    return {
+        "old_balance": user.loyalty_points,
+        "earned": cart.total_loyalty_points_bonus(),
+        "spent": cart.total_loyalty_points_price(),
+        "new_balance": user.loyalty_points + cart.total_loyalty_points_bonus() - cart.total_loyalty_points_price()
+    }
