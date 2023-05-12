@@ -13,7 +13,6 @@
 {% endblock %}
 {% block 'name' %}{{ product.name }}{% endblock %}
 {% block 'description' %}
-    <p>{{ product.description}} <br> Toppings: {{ product.toppings }}</p>
     <ul class="toppings large">
         {% for topping in product.new_toppings.all %}
             <li>{{ topping }}</li>
