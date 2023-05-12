@@ -84,6 +84,8 @@ Offers are fully customizable. An offer consists of an Offer object, which has o
 We took the chance to deepen our CSS knowledge by struggling through *so many* flex boxes. It may not be the most optimal CSS, but we love the final product and the experience it gave us.
 #### Fully implemented admin site
 The content is fully customizable through the admin site at /admin.
+#### Super adorable 404 and 500 error pages
+Just look at it :3
 
 ## If we had more time
 ### No JavaScript
