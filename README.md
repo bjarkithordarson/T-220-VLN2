@@ -53,7 +53,7 @@ Open http://localhost:8000
 ### Requirements
 | Requirement | Notes |
 | --- | --- |
-| Layout page | |
+| Layout page | The layout was written from scratch by us. |
 | Edit profile | /users/profile |
 | Product catalouge | /products/pizza, /products/offers, /products/merch, /products/<category_slug> |
 | Shopping cart | /cart |
