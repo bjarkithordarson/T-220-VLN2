@@ -85,6 +85,7 @@ body {
     background-size:26px 26px; /* Must be a square */
     background-position:0 0, 12.5px 0, 12.5px -12.5px, 0px 12.5px;
     background-attachment: fixed;
+    font-family: Gliker, sans-serif;
 }
 
 /*-------- Header/Footer -----------*/
@@ -282,6 +283,10 @@ form{
         min-height: 50px;
         box-shadow: 0 0 15px rgba(0,0,0,0.15);
 
+    }
+    .card .label .top {
+        display: flex;
+        justify-content: space-between;
     }
     .card #description{
         overflow: hidden;
@@ -1102,4 +1107,38 @@ tfoot {
     .flip-container:hover .back {
         z-index: 1000;
         transform: rotateX(0deg) rotateY(0deg);
+    }
+
+ul.toppings {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+    ul.toppings.small {
+        margin: 5px 0;
+        gap: 5px;
+    }
+    ul.toppings.single-line {
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+    ul.toppings li {
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid white;
+        font-size: 14px;
+        text-transform: capitalize;
+        white-space: nowrap;
+    }
+    ul.toppings.large li {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    ul.toppings.small li {
+        padding: 5px 5px;
+        font-size: 10px;
     }

@@ -3,9 +3,12 @@
     <a href="{% block 'url' %}{% url 'product_details' product.id %}{% endblock %}">
         <img class="thumb" src="{% block 'picture_url' %}{{ product.picture.url }}{% endblock %}" alt="{% block 'img_alt' %}{{ product.name }}{% endblock %}">
         <div class="label">
-            {% block 'name' %}{{ product.name }}{% endblock %}
+            <div class="top">
+                <span class="name">{% block 'name' %}{{ product.name }}{% endblock %}</span>
+                <span class="price">{% block 'price' %}{{ product.price | intcomma }} kr.{% endblock %}</span>
+
+            </div>
             <p id = 'description'>{% block 'description' %}{{ product.description }}{% endblock %}</p>
-            <p>{% block 'price' %} Price: {{ product.price | intcomma }} kr.{% endblock %}</p>
         </div>
     </a>
 </div>
