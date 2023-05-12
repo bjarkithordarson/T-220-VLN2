@@ -79,7 +79,7 @@ Bought using Pizza Lair's own LP currency.
 #### Crust Inspector
 Pizza crusts can be inspected by hovering over the pizza picture. Crust lovers rejoyce!
 #### Fully customizable offers
-Offers are fully customizable. An offer consists of an Offer object, which has one or more OfferTemplates. When an offer is added to the cart, an OfferInstance is created according to the OfferTemplates specified in the Offer.
+Offers are fully customizable. An offer consists of an Offer object, which has one or more OfferTemplates. When an offer is added to the cart, an OfferInstance is created according to the OfferTemplates specified in the Offer. An offer is added to the cart via a CartOfferItem.
 #### CSS written by us
 We took the chance to deepen our CSS knowledge by struggling through *so many* flex boxes. It may not be the most optimal CSS, but we love the final product and the experience it gave us.
 #### Fully implemented admin site
