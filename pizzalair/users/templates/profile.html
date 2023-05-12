@@ -35,7 +35,11 @@
                     </div>
                 </div>
             </div>
-            <div id="Loyalty-points">Loyalty Points: {{user.loyalty_points  }}</div>
+            <div id="Loyalty-points">
+                Loyalty Points: {{user.loyalty_points  }}
+                <br>
+                <a href="{% url 'merch_list' %}">Spend them here!</a>
+            </div>
             <br><br>
             <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
             <button type="reset" class="btn btn-dark btn-lg">Reset</button>

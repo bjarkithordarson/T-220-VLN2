@@ -17,7 +17,9 @@ def index(request):
         "test": "Session is not set!",
         "items": items,
         "cart_total": get_cart_total(request),
-        "cart": cart
+        "cart": cart,
+        "loyalty_points": calculate_loyalty_points_balance(request.user, cart),
+        "error": request.GET.get('error', None)
     }
     if request.session.get("cart"):
         context["test"] = "Session is set! The value is: " + str(request.session.get("cart"))
@@ -34,7 +36,8 @@ def add(request, product_id, quantity=1):
         name=product.name,
         quantity=quantity,
         item_price = product.price,
-        item_loyalty_points=product.loyalty_points,
+        item_loyalty_points_bonus=product.loyalty_points_bonus,
+        pay_with_loyalty_points=product.pay_with_loyalty_points,
         cart=cart
     )
     try:
@@ -48,6 +51,7 @@ def add(request, product_id, quantity=1):
             'quantity': cart_item.quantity,
             'item_price': cart_item.item_price,
             'item_total_price': cart_item.total_price(),
+            'pay_with_loyalty_points': cart_item.pay_with_loyalty_points,
             'total_price': get_cart_total(request),
             'cart_count': len(get_cart_items_if_any(request))
         }
@@ -66,7 +70,8 @@ def add_offer(request, offer_instance_id, quantity=1):
         name=str(instance),
         quantity=quantity,
         item_price=instance.offer.price,
-        item_loyalty_points=instance.offer.loyalty_points,
+        item_loyalty_points_bonus=instance.offer.loyalty_points_bonus,
+        pay_with_loyalty_points=instance.offer.pay_with_loyalty_points,
         cart=cart
     )
 
@@ -81,6 +86,7 @@ def add_offer(request, offer_instance_id, quantity=1):
             'quantity': cart_offer_item.quantity,
             'item_price': cart_offer_item.item_price,
             'item_total_price': cart_offer_item.total_price(),
+            'pay_with_loyalty_points': cart_offer_item.pay_with_loyalty_points,
             'total_price': get_cart_total(request),
             'cart_count': len(get_cart_items_if_any(request))
         }
@@ -122,7 +128,10 @@ def update(request, cart_item_id, quantity):
                 'quantity': item.quantity,
                 'item_price': item.item_price,
                 'item_total_price': item.total_price(),
-                'total_price': get_cart_total(request),
+                'total_price': item.cart.total_price(),
+                'total_loyalty_points_bonus': item.cart.total_loyalty_points_bonus(),
+                'total_loyalty_points_price': item.cart.total_loyalty_points_price(),
+                'loyalty_points': calculate_loyalty_points_balance(request.user, item.cart),
                 'cart_count': len(get_cart_items_if_any(request))
             }
 

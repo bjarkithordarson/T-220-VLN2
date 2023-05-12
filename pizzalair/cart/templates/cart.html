@@ -10,31 +10,54 @@
                     <tr data-cart-item="{{ item.id }}">
                         <td>{{ item.name }}</td>
                         <td><input required type="number" class="quantity" data-cart-item="{{ item.id }}" name="quantity[{{ item.id }}]" value="{{ item.quantity }}"></td>
-                        {% if item.product.loyalty_points_only %}
-                            <td class="item-total">{{ item.total_price | intcomma }} LPs</td>
+                        {% if item.pay_with_loyalty_points %}
+                            <td class="item-total"><span class="value">{{ item.total_price | intcomma }}</span> LPs</td>
                         {% else %}
-                            <td class="item-total">{{ item.total_price | intcomma }} kr.</td>
+                            <td class="item-total"><span class="value">{{ item.total_price | intcomma }}</span> kr.</td>
                         {% endif %}
                         <td><button id="removeItem" onclick="window.location.href='/cart/remove/{{ item.id }}'">X</button></td>
                     </tr>
                 {% endfor %}
             </tbody>
             <tfoot>
+                {% if cart.total_loyalty_points_price > 0 %}
+                <tr class="summary">
+                    <td><small>Loyalty Points Balance:</small></td>
+                    <td></td>
+                    <td colspan="2" class="cart-total-lp">
+                        <small>
+                            <span class="lp-old-balance">{{ loyalty_points.old_balance | intcomma }}</span> LPs
+                            + <span class="lp-earned">{{ loyalty_points.earned | intcomma }}</span> LPs
+                            - <span class="lp-spent">{{ loyalty_points.spent | intcomma }}</span> LPs
+                            = <span class="lp-new-balance">{{ loyalty_points.new_balance | intcomma }}</span> LPs
+                        </small>
+                    </td>
+                </tr>
+                {% endif %}
                 <tr class="summary">
                     <td>Total amount:</td>
                     <td></td>
-                    <td class="cart-total">{{ cart_total | intcomma }} kr.</td>
+                    <td class="cart-total"><span class="value">{{ cart.total_price | intcomma }}</span> kr.</td>
                     <td></td>
                 </tr>
             </tfoot>
         </table>
+        {% if error %}
+            <div class="cart-error">
+                {% if error == 'loyalty_points' %}
+                    You don't have enough Loyalty Points to pay for this order. Please remove merch from your cart or add products to earn more points!
+                {% elif error == 'only_merch' %}
+                    You cannot order only merch. Please add products to your cart!
+                {% endif %}
+            </div>
+        {% endif %}
         <div class="checkout-btn-container">
+            <button id="removeAllItems" onclick="window.location.href='/cart/remove/0'">Empty cart</button>
             <span class="loyalty-points">
-                {% if cart.total_loyalty_points > 0 %}
-                Earn {{ cart.total_loyalty_points | intcomma }} Loyalty Points, if you checkout now!
+                {% if loyalty_points.spent == 0 and loyalty_points.earned > 0 %}
+                Earn {{ loyalty_points.earned | intcomma }} Loyalty Points, if you checkout now!<br><a href="{% url 'merch_list' %}">Click here to spend them</a> or save them for later!
                 {% endif %}
             </span>
-            <button id="removeAllItems" onclick="window.location.href='/cart/remove/0'">Empty cart</button>
             <a id="checkOutBTN" class="btn" href="{% url 'checkout' %}">Checkout</a>
         </div>
     {% else %}
