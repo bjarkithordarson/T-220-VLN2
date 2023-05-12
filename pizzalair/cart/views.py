@@ -18,9 +18,11 @@ def index(request):
         "items": items,
         "cart_total": get_cart_total(request),
         "cart": cart,
-        "loyalty_points": calculate_loyalty_points_balance(request.user, cart),
         "error": request.GET.get('error', None)
     }
+    if request.user.is_authenticated:
+        context["loyalty_points"] = calculate_loyalty_points_balance(request.user, cart)
+        
     if request.session.get("cart"):
         context["test"] = "Session is set! The value is: " + str(request.session.get("cart"))
 
