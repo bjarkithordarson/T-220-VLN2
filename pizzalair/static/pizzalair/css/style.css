@@ -861,7 +861,6 @@ table {
     color: #ffffff;
     padding: 20px;
     border-radius: 15px;
-}
 
 .cartItems tr{
     border-bottom: 1px solid #18BE7240;
@@ -893,6 +892,12 @@ tfoot {
     background: white;
 }
 
+#YourOrder {
+    width: 300px;
+    margin-left: 22%;
+}
+
+>>>>>>> bc40f33 (Button order)
 #Empty {
     width: 200px;
     margin-left: 25%;
