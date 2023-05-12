@@ -14,6 +14,11 @@
 {% block 'name' %}{{ product.name }}{% endblock %}
 {% block 'description' %}
     <p>{{ product.description}} <br> Toppings: {{ product.toppings }}</p>
+    <ul class="toppings large">
+        {% for topping in product.new_toppings.all %}
+            <li>{{ topping }}</li>
+        {% endfor %}
+    </ul>
 
     <a href="/cart/add/{{ product.id }}/1" class="add-to-cart btn" onclick="add_to_cart(event)">Add to cart</a>
 {% endblock %}
