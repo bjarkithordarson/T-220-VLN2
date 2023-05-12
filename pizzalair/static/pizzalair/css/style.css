@@ -261,7 +261,7 @@ form{
         background: #18BE72;
         border-radius: 13px;
         padding: 15px 20px;
-        height: 65px;
+        height: 75px;
 
     }
     .card #description{
@@ -340,7 +340,7 @@ form{
     cursor: pointer;
     position: absolute;
     top: 175%;
-    right: -50%
+    right: -50%;
     background: #18BE72;
 }
 
