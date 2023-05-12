@@ -461,8 +461,7 @@ table {
 }
 
 .loyalty-points {
-    position: relative;
-    right: -15%;
+
 }
 
 
@@ -473,12 +472,16 @@ table {
 
 #removeAllItems {;
     display: inline-block;
+    box-shadow: 2px 2px 0px #18BE72;
     font-size: 24px;
+    border: 1px solid #18BE72;
+    border-radius: 4px;
     padding: 4px 10px 3px 10px;
+    text-align: center;
     cursor: pointer;
     background: white;
     position: relative;
-    right: -7%;
+    right: -15%;
 }
 
 
@@ -642,7 +645,12 @@ form .helptext {
     box-shadow: 3px 3px 0px #18BE72;
     border-radius: 5px;
     font-size: 17px;
+    cursor: pointer;
 }
+    .payment_card input[type=submit]:active,
+    .billing-form input[type=submit]:active {
+        box-shadow: 5px 5px 0px #18BE72;
+    }
 
 .payment-method {
     text-align: center;
@@ -962,17 +970,6 @@ tfoot {
     height: 48px;
 }
 
-#removeAllItems {;
-    display: inline-block;
-    box-shadow: 2px 2px 0px #18BE72;
-    font-size: 24px;
-    border: 1px solid #18BE72;
-    border-radius: 4px;
-    padding: 4px 10px 3px 10px;
-    text-align: center;
-    cursor: pointer;
-    background: white;
-}
 
 #Empty {
     width: 200px;
