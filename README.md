@@ -32,10 +32,20 @@ pip install -r requirements.txt
 Run the commands:
 ```
 cd pizzalair
-python manage.py runserver
+python manage.py runserver --insecure
 ```
 
 Open http://localhost:8000
+
+## Test Users
+| Username | Password | Notes |
+| --- | --- | --- |
+| admin | admin | Superuser. Has access to /admin. |
+| john | user1 | Has x amount of loyalty points |
+| jane | user2 | Has x amount of loyalty points |
+| jane | user3 | Has x amount of loyalty points |
+| jane | user4 | Has x amount of loyalty points |
+| jane | user5 | Has x amount of loyalty points |
 
 
 
