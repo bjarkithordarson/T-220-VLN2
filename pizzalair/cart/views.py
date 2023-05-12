@@ -57,7 +57,6 @@ def add(request, product_id, quantity=1):
             'total_price': get_cart_total(request),
             'cart_count': len(get_cart_items_if_any(request))
         }
-        print(get_cart_items_if_any(request))
         return HttpResponse(json.dumps(data), content_type='application/json')
     else:
         return redirect('cart')
@@ -78,8 +77,6 @@ def add_offer(request, offer_instance_id, quantity=1):
     )
 
     cart_offer_item.save()
-    print("SAVED")
-    print(cart_offer_item)
 
 
     if True:
@@ -92,7 +89,6 @@ def add_offer(request, offer_instance_id, quantity=1):
             'total_price': get_cart_total(request),
             'cart_count': len(get_cart_items_if_any(request))
         }
-        print(get_cart_items_if_any(request))
         return HttpResponse(json.dumps(data), content_type='application/json')
     else:
         return redirect('cart')

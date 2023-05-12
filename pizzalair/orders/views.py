@@ -26,7 +26,6 @@ def checkout(request):
     # Redirect to cart if not enough loyalty points
     cart = get_or_create_cart(request)
     balance = calculate_loyalty_points_balance(request.user, cart)
-    print(balance)
 
     if balance['new_balance'] < 0:
         return redirect(reverse('cart') + '?error=loyalty_points')
@@ -41,9 +40,6 @@ def checkout(request):
         cart=Cart.objects.get(id=cart_id),
         user=request.user
     )
-
-    print(order.is_user_editable())
-    print(order.status)
 
     if not order.is_user_editable():
         raise Http404("Order not found or already completed")

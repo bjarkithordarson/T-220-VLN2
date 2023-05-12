@@ -96,9 +96,6 @@ class Order(models.Model):
         return True
 
     def is_user_editable(self):
-        print("=====================================")
-        print(self.status.type)
-        print(self.status)
         return self.status.type in [
             OrderStatus.INITIAL,
         ]

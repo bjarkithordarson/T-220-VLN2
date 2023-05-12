@@ -11,13 +11,10 @@ class OfferInstanceForm(forms.ModelForm):
         self.fields['offer'].initial = offer_id
 
         templates = OfferTemplate.objects.filter(offer=offer_id)
-        print("TEMPLATES")
-        print(templates)
+
         for template in templates:
             products = template.category.products.all()
-            print("Qty: " + str(template.quantity))
             for i in range(template.quantity):
-                print(f"products_{i}")
                 field = forms.ModelChoiceField(queryset=products)
                 field.label = template.category.name + " " + str(i+1)
                 self.fields[f"products_{template.id}_{i}"] = field
@@ -35,8 +32,6 @@ class OfferInstanceForm(forms.ModelForm):
     def save(self, commit=True):
         instance = super(OfferInstanceForm, self).save(commit=False)
         instance.save()
-        print("==============================")
-        print(self.cleaned_data['products'])
 
         for product in self.cleaned_data['products']:
             instance.products.add(product)

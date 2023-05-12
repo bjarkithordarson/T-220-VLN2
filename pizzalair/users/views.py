@@ -23,7 +23,6 @@ def register(request):
         return redirect('signup')
 
 
-    print(repr(form))
     return render(request, 'register.html', {
         'form': form
     })

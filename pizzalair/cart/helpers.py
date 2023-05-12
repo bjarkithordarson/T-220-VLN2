@@ -25,7 +25,6 @@ def get_cart_items_if_any(request):
 def get_cart_total(request):
     items = get_cart_items_if_any(request)
     if len(items):
-        print(items)
         return sum([item.total_price() for item in items])
     else:
         return 0

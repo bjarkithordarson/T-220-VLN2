@@ -19,8 +19,6 @@ class Cart(models.Model):
         return sum([item.total_loyalty_points_bonus() for item in self.items.all()])
 
     def total_loyalty_points_price(self):
-        for item in self.items.filter(pay_with_loyalty_points=True):
-            print(item.item_price, item.name)
         return sum([item.total_price() for item in self.items.filter(pay_with_loyalty_points=True)])
 
     def __str__(self):

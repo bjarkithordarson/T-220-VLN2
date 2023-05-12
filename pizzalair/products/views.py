@@ -57,15 +57,12 @@ def product_list(request, slug):
     return render(request, "product/list.html", context)
 
 def pizza_list(request):
-    print("YOU ARE IN PIZZA LIST")
     return base_list(request, Pizza, "pizza/list.html", "Pizza")
 
 def offer_list(request):
-    print("YOU ARE IN OFFER LIST")
     return base_list(request, Offer, "offer/list.html", "Offers")
 
 def merch_list(request):
-    print("YOU ARE IN MERCH LIST")
     return base_no_nav(request, Product, "merch/list.html", "Merch")
 
 def base_details(request, model, template, id):
@@ -105,9 +102,6 @@ def offer_details(request, offer_id):
 
     product = get_object_or_404(Product, pk=offer_id)
     offer_template = OfferTemplate.objects.filter(offer_id=offer_id)
-
-    for x in offer_template:
-        print(x.products())
 
     context = {
         "form": form,
@@ -168,9 +162,6 @@ def offer(request, slug):
 
 def offer_create(request):
     if request.method == "POST":
-        # Print all post data to the server console
-        print(request.POST)
-
         offer_instance_id = 1
         quantity = request.POST.get("quantity", 1)
 

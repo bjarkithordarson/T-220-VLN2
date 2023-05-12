@@ -78,7 +78,7 @@ TEMPLATES = [
         },
     },
 ]
-print(os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'))
+
 WSGI_APPLICATION = 'pizzalair.wsgi.application'
 
 # Database
