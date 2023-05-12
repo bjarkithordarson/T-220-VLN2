@@ -1,0 +1,9 @@
+{% extends 'base_page.html' %}
+{% load static %}
+{% block page_title %}500 - Well this is embarassing...{% endblock %}
+{% block page_body %}
+    <div class="http-error">
+        <img src="{% static '/pizzalair/images/sad_dragon.jpg' %}" alt="Sad pizza dragon">
+        <p>...let's pretend this never happened.</p>
+    </div>
+{% endblock %}

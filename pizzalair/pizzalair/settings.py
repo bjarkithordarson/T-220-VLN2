@@ -62,7 +62,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/')
+            os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
+            os.path.join(os.path.dirname(__file__), 'pizzalair/templates').replace('\\', '/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
