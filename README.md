@@ -16,7 +16,11 @@ Activate the virtual environment. You need to do this every time you start writi
 ```
 source /path/to/project/venv/bin/activate
 ```
-
+#### Load data (if setting up a new database)
+```
+cd pizzalair
+python manage.py loaddata data.json
+```
 ##### Windows
 ```
 /path/to/project/venv/scripts/activate.ps1
